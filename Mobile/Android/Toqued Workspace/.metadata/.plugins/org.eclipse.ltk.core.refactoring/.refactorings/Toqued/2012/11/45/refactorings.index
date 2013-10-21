@@ -1,0 +1,31 @@
+1352044211256	Rename local variable 'projectView'
+1352044863133	Rename local variable 'recipeNum'
+1352044882171	Rename local variable 'recipeNum'
+1352045072333	Rename local variable 'projectNameView'
+1352045087274	Rename local variable 'projectDateView'
+1352045102820	Rename local variable 'projectImageView'
+1352045117845	Rename local variable 'projectView'
+1352045128931	Rename local variable 'projectNameView'
+1352045142028	Rename local variable 'projectOwnerView'
+1352045152070	Rename local variable 'projectDateView'
+1352060934114	Extracts string 'Add ingredient' into R.string.add_ingredient
+1352061142364	Extracts string 'View Ingredients' into R.string.view_ingredients
+1352419710420	Encapsulate field 'id'
+1352420049478	Encapsulate field 'mLocation'
+1352428044750	Encapsulate field 'mType'
+1352431265320	Extracts string 'Create recipe' into R.string.create_recipe
+1352431512129	Extracts string 'Recipe name' into R.string.recipe_name
+1352431532762	Extracts string 'Preparation time' into R.string.preparation_time
+1352431547854	Extracts string 'Servings' into R.string.servings
+1352431994248	Delete element
+1352443857402	Delete element
+1352444338911	Delete element
+1352444341809	Delete element
+1352444344377	Delete element
+1352444414802	Delete element
+1352446012394	Encapsulate field 'mRecipeId'
+1352447520582	Encapsulate field 'mId'
+1352449981115	Extracts string 'Save recipe' into R.string.save_recipe
+1352459216947	Extracts string 'Edit ingredients' into R.string.edit_ingredients
+1352463274617	Delete element
+1352463996337	Delete element

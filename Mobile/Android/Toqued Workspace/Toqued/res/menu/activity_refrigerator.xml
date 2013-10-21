@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/shelf_menu_option"
+        android:title="@string/fridge_shelf"/>
+    <item
+        android:id="@+id/list_menu_option"
+        android:title="@string/fridge_list"/>
+    <item
+        android:id="@+id/add_item"
+        android:title="@string/fridge_add_item"/>
+
+</menu>

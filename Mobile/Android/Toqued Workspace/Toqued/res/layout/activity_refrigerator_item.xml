@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <EditText
+        android:id="@+id/fridge_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/fridge_item_name"
+        android:layout_marginTop="20dp" >
+    </EditText>
+
+    <LinearLayout 
+        android:id="@+id/lin_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/fridge_item_name">
+    <EditText
+        android:id="@+id/fridge_item_qty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/fridge_item_quantity"
+        android:inputType="numberDecimal"
+        android:layout_weight="3"
+        android:layout_gravity="center"  />
+
+    <Spinner
+        android:id="@+id/fridge_item_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/lin_layout"
+        android:layout_marginTop="10dp"
+        android:id="@+id/add_delete_button_layout">
+            <Button
+            android:id="@+id/fridge_item_add_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/fridge_add_item" />
+        <Button
+            android:id="@+id/fridge_item_cancel_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cancel" />
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="meal_array">
+        <item>@string/breakfast</item>
+        <item>@string/lunch</item>
+        <item>@string/dinner</item>
+        <item>@string/dessert</item>
+        <item>@string/snack</item>
+    </string-array>
+    <string-array name="item_array">
+        <item>@string/item</item>
+        <item>@string/num_servings</item>
+        <item>@string/prep_time</item>
+    </string-array>
+    <string-array name="recipe_choice_array">
+        <item>@string/recipe_add</item>
+        <item>@string/recipe_edit</item>
+        <item>@string/recipe_delete</item>
+    </string-array>
+    <string-array name="item_choice_array">
+        <item>@string/item_add</item>
+        <item>@string/item_edit</item>
+        <item>@string/item_delete</item>
+        <item>@string/item_swap</item>
+    </string-array>
+    <string-array name="item_choice_array_limited">
+        <item>@string/item_add</item>
+        <item>@string/item_edit</item>
+        <item>@string/item_delete</item>
+    </string-array>
+    <string-array name="edit_or_delete_recipe_array">
+        <item>@string/recipe_edit</item>
+        <item>@string/recipe_delete</item>
+    </string-array>
+    <string-array name="english_unit_array">
+        <item>@string/tablespoon</item>
+        <item>@string/teaspoon</item>
+        <item>@string/cup</item>
+        <item>@string/quart</item>
+        <item>@string/fluid_ounce</item>
+        <item>@string/pint</item>
+        <item>@string/gallon</item>
+        <item>@string/fahrenheit</item>
+        <item>@string/box</item>
+        <item>@string/bag</item>
+        <item>@string/can</item>
+        <item>@string/empty</item>
+    </string-array>
+    <string-array name="metric_unit_array">
+        <item>@string/empty</item>
+        <item>@string/milliliter</item>
+        <item>@string/liter</item>
+        <item>@string/gram</item>
+        <item>@string/kilogram</item>
+        <item>@string/celsius</item>
+        <item>@string/box</item>
+        <item>@string/bag</item>
+        <item>@string/can</item>
+    </string-array>
+    <string-array name="prep_time_units">
+        <item>@string/second</item>
+        <item>@string/minute</item>
+        <item>@string/hour</item>
+        <item>@string/day</item>
+    </string-array>
+
+</resources>

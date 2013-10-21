@@ -1,0 +1,9 @@
+1350966041075	Delete element
+1350966044687	Delete element
+1350966051711	Delete elements
+1350966060837	Delete elements
+1350966833500	Extracts string 'Instructions: %s' into R.string.recipe_instruction_format
+1350966873232	Extracts string 'Instruction: ' into R.string.recipe_instruction_start
+1350967390052	Extracts string 'Title: ' into R.string.recipe_title_start
+1350967438947	Extracts string 'Ingredients: ' into R.string.recipe_ingredients_start
+1350970909647	Rename local variable 'recipeListAdapter'

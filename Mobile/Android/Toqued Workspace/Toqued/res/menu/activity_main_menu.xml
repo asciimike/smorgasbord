@@ -1,0 +1,7 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/help_menu_option"
+        android:title="@string/menu_help"/>
+    
+    <item android:id="@+id/about_menu_option"
+        android:title="@string/menu_about"/>
+</menu>
