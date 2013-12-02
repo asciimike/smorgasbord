@@ -1,0 +1,20 @@
+NAME
+	unset
+
+SYNOPSIS
+	echo [word …]
+
+DESCRIPTION
+	Display each word separated by a space. Append a newline to the end of output.
+	Note that echo is not required to support advanced text or pattern matching features; 
+	namely, it does not have to handle quoted strings, escaped characters, or multiline input.
+	Furthermore, echo is not required to preserve additional whitespace;
+	multiple spaces in a row may be reduced to a single space.
+
+RETURN VALUE
+
+BUGS
+
+SEE ALSO
+
+Manual Page for echo.  Press 'q' to quit

@@ -1,0 +1,14 @@
+Enter your status report for this milestone in this document. You should include the actual time that you spent on each user story and the total time spent on this milestone.  Be sure to note what you completed and what you still need to work on.
+
+User should be able to background a process using the & option at the end of a command string.  Commands without a & should be executed in the foreground, as per the last milestone.  Example: xssh & runs an additional copy of xssh in the background.
+Took one and a half hours to complete, so far, though glib.h hasn't been successfully run yet.  Required added and subtracting things from a list (used g_list because it was what google recommended as an included list, arraylist's were hard to implement and the queue we implemented would have required more work to link in).  Currently, glib.h isnt't being linked in, but we are confident that when glib.h can be linked in, the code will work flawlessly.
+Additionally, we had to create a process manager to manage our processes.  This is run in a separate thread on an infinite loop so it can constantly poll the active processes and see which  need to be deleted from the list.
+
+User should be able to wait on a specific process by waiting on its PID.  Example: wait 12 waits on the process with PID 12 to finish before continuing execution.
+Using the process manager created above, this took roughly 30 minutes to understand and implement.  This was easier than previously thought because once the process manager was created, it didn't take very long, just three special cases.  Note that the "infinite" loops combined with sleep is not necessarily the best solution.
+
+User should be able to send output directly to a file using the > expression.  Also, user should be able to input directly from a file using the < expression.  Example: echo hello world > hello.txt
+This process is a two part process: first off, identify the name of any input or output files (those proceeded by a < or a >) and save it to the command structure.  After that, in executor, the files are taken and the file descriptors (ints that represent where things go) are swapped around.  These must be reset for builtin commands.  Currently redirection works, but it is buggy and occasionally seizes up.  Also we need to find out how to reset the redirection.
+This took a bulk of the time, probably about four hours.  Text had to be parsed and then the open, dup, close functions had to be used.  Currently this feature works, however it is buggy.
+
+Total Time: Six hours so far, but redirection will take some time.  The main time sink seems to actually be linking in glib.

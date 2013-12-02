@@ -1,0 +1,16 @@
+NAME
+	why
+
+SYNOPSIS
+	why [question]
+
+DESCRIPTION
+	Answers a question prompted by the user.  Secret functionality :)
+	
+RETURN VALUE
+
+BUGS
+
+SEE ALSO
+
+Manual Page for why.  Press 'q' to quit

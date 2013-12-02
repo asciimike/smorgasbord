@@ -1,0 +1,21 @@
+NAME
+	cd
+
+SYNOPSIS
+	cd [path] 
+
+DESCRIPTION
+	Update the present working directory. xssh should attempt the following, in order:
+	If path is given, set the working directory to path.
+	If path is not given, but the HOME environment variable is set, set the working directory to the value given in the HOME environment variable.
+	If path is not given and the HOME environment variable is not set, set the working directory to the drive root (/ in Linux). 
+	Note: the current directory is available from the PWD environment variable. cd must update this environment variable on a successful working directory change.
+
+RETURN VALUE
+
+BUGS
+
+SEE ALSO
+	chdir
+
+Manual Page for cd.  Press 'q' to quit

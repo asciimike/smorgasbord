@@ -1,0 +1,87 @@
+#ifndef XSSH_H
+#define XSSH_H
+
+/* exit status of shell (quit arg) */
+int exit_status;    
+
+/* exit status of last forgound command ($?) */
+int cmd_exit_status;
+
+/* PID of last background command ($!) */
+int background_pid;
+
+/* Flag to make the shell die */
+char exit_shell;
+
+/* Display command lines after variable substitution */
+int show_cmds;
+
+/* Check debug level */
+int debug_level;
+
+#define MAX_SIZE 200
+#define MAX_ARGUEMENTS 50
+<<<<<<< .mine
+#define FILE_SIZE 100
+
+#endif
+
+char currentCMD[MAX_SIZE]
+
+typedef enum CMD
+=======
+#define FILE_SIZE 100
+#define MAX_INPUT 150
+typedef enum 
+>>>>>>> .r9
+  {
+	NONE,
+	ECHO,
+	QUIT,
+	SET,
+	UNSET,
+	WAIT,
+	CD,
+	CHDIR,
+	EXEC
+  }CMD;
+typedef struct {
+  CMD cmd;  /*Command */
+  int n;  /*Number of arguements*/
+  char* values[MAX_ARGUEMENTS];  /*Value of arguements*/
+  char inFile[FILE_SIZE]; /*Input file*/
+  char outFile[FILE_SIZE];  /*Output file*/
+}Builtin;
+
+int code(char *string);
+char currentCMD[MAX_SIZE];
+
+
+static struct cmdLookup{
+  char *command;
+  int code;
+} table[] = {
+  {"echo", ECHO},
+  {"exec", EXEC},
+  {"quit\n", QUIT},
+  {"set", SET},
+  {"unset", UNSET},
+  {"wait", WAIT},
+  {"cd", CD},
+  {"chdir", CHDIR}
+};
+
+
+<<<<<<< .mine
+int code(char *string){
+  int i;
+  for(i=0; i<sizeof(table)/sizeof(table[0]); i++){
+	if(strcmp(table[i].command, string) == 0){
+		return table[i].code;
+	}
+  } return NONE;
+}
+=======
+int code(char *string);
+
+#endif>>>>>>> .r9

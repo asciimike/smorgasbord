@@ -1,0 +1,15 @@
+Enter your status report for this milestone in this document. You should include the actual time that you spent on each user story and the total time spent on this milestone.  Be sure to note what you completed and what you still need to work on.
+
+Command line prompt: A while running loop and printing the ">> " at the beginning.  First parse the input, and store the command and its values into a struct.  Parse the other parts of the line into the values array.  Note the max size here.  This took several hours, probably about two or three.
+
+Echo/Quit: Both of these are essentially the same idea.  Echo is executed via a for loop iterating through the values pulled in to the Builtin function.  Quit exits while possibly returning an error value.  Other Builtin commands will be implemented in much the same fashion.  This took the majority of the time, probably about eight hours.
+
+Comments and blank lines: This is supported in the evaluateLine function and for use in scripts, checking for comments "#" and blank likes (no arguments) on new lines.  Once the evaluate line function was mostly implemented, this took about half an hour.  Comments must be included on a separate line.
+
+Commands from input file:  Consisted of checking first for files at the beginning of the shell (as well as debug flags), and if the file needed to be read, it would go ahead and try reading it.  Took roughly two hours to implement.
+
+-d Option: A flag is set in the evaluateFirstLine function, and when it's selected, it will print info about statements.  Debug levels are supported, and -d 1 prints some nice info.  The command "xssh -d 1" allows for setting the debug level, and do it at the command line.  This took roughly four hours.
+
+External commands: Exec is executed by default and the executable file is executed.  Remember that ./ or other filepath thing must be included... This took roughly three hours to implement.
+
+Total Time Spent: ~20 hours so far.

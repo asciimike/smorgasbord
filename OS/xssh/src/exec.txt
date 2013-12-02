@@ -1,0 +1,26 @@
+NAME
+	exec
+
+SYNOPSIS
+	./external [&]
+
+DESCRIPTION
+	If xssh cannot identify a matching builtin for a command, it attempts to locate an external program matching the command. This matching should proceed as follows:
+	If the command name is a path (i.e., contains a forward slash, /), xssh attempts to locate the file indicated by the path.
+	If the command name begins with a forward slash, the path is taken to be absolute and shall be used as the full path to the executable.
+	If the command name does not begin with a forward slash, the path is taken to be relative to the current working directory. 
+	The executable's path is taken to be the given path appended to the current directory. 
+	If the command name is not a path, xssh shall search the paths given in the PATH environment variable, in order, for a directory which directly contains the given executable name.
+	If such a match is found, searching shall stop immediately and execution will proceed with the found executable. 
+	If xssh cannot find an executable for the given command by following the above rules, it should print an error message and must cancel execution of the given command. 
+	
+	Externals can be backgrounded by using the & after the command.
+	
+RETURN VALUE
+	Values returned from external command.
+
+BUGS
+
+SEE ALSO
+
+Manual Page for exec.  Press 'q' to quit

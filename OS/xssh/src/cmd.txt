@@ -1,0 +1,10 @@
+echo hello world
+echo rawr
+echo 1234567890
+set
+unset
+echo comment:
+# hello world
+echo blank line
+
+quit 1

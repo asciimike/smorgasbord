@@ -1,0 +1,19 @@
+NAME
+	manual
+
+SYNOPSIS
+	manual command
+
+DESCRIPTION
+	Enters the manual page viewing mode.
+	Exit by pressing q.
+	
+	How very meta.
+	
+RETURN VALUE
+
+BUGS
+
+SEE ALSO
+
+Manual Page for manual.  Press 'q' to quit

@@ -1,0 +1,10 @@
+Each user story should describe a single thing that the user can do with your software.  Be sure to give an estimate of the time you think it will take for you to complete each user story.
+
+User should be able to background a process using the & option at the end of a command string.  Commands without a & should be executed in the foreground, as per the last milestone.  Example: xssh & runs an additional copy of xssh in the background.
+--Should take roughly 30 minutes to one hour to implement, as it only requires a boolean variable for backgrounding, a check in the evaulator code, and some additional code to make it backgrounded.
+
+User should be able to wait on a specific process by waiting on its PID.  Example: wait 12 waits on the process with PID 12 to finish before continuing execution.
+--Should take an hour or two to implement.  Really evaluating the line and pulling the PID in shouldn't be that difficult, but testing is going to take a little while to prove that it works.
+
+User should be able to send output directly to a file using the > expression.  Also, user should be able to input directly from a file using the < expression.  Example: echo hello world > hello.txt
+--Both redirection statements should take another several hours, probably between three and four.  They will require more elaborate input and output, though these shouldn't be too hard to test (it will either accept input and print output to a file or it wont).

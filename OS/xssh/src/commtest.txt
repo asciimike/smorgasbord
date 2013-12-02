@@ -1,0 +1,12 @@
+# This is a test for a script
+
+echo
+echo Hello World
+
+#Note the blank lines and lack of space after the pound sign
+
+./test
+echo Cool math
+
+echo Now that were back at home...
+quit 13

@@ -1,0 +1,111 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include "executor.h"
+#include <sys/wait.h>
+#include <string.h>
+
+void executeLine(Builtin* command){
+	switch(code(command->values[0])){
+       case ECHO:
+		 executeEcho(command);
+		 break;
+
+       case QUIT:
+       executeQuit(command);
+		 break;
+	   
+	   case SET:
+		 printf("Feature %s currently unimplemented\n",command->values[0]);
+	     break;
+	   
+	   case UNSET:
+		 printf("Feature %s currently unimplemented\n",command->values[0]);
+	     break;
+
+	   case WAIT:
+		 printf("Feature %s currently unimplemented\n",command->values[0]);
+	     break;
+	 
+	   case CD:
+		 printf("Feature %s currently unimplemented\n",command->values[0]);
+	     break;
+	 
+	   case CHDIR:
+		 printf("Feature %s currently unimplemented\n",command->values[0]);
+	     break;
+
+       case NONE:
+		 printf("Please enter a valid command!\n");
+		 break;
+		 
+		 case EXEC:
+		 executeExec(command);
+		 break;
+		 
+		 case COMMENT:
+		 break;
+		 
+		 default:
+		 executeExec(command);
+		 break;
+	 }
+}
+	 
+void executeEcho(Builtin* command){
+	if(command->n == 1){
+		return;
+	}
+	int i;
+	for(i = 1; i < (command->n)-1; i++) {
+		 printf("%s ", command->values[i]);
+	}
+	printf("%s", command->values[command->n - 1]);
+	
+}
+
+void executeQuit(Builtin* command){
+	if(command->n == 1){
+		exit_status = 0;
+		printf("Thank you for using XSSH, exiting...\n");
+		exit(exit_status);
+	}
+	exit_status = atoi(command->values[1]);
+	printf("Thank you for using XSSH, exiting with exit status: %d\n", exit_status);
+	exit(exit_status);
+}
+	
+void executeExec(Builtin* command){
+	command->values[command->n] = NULL;
+	pid_t child;
+	child = fork();
+	int cStatus = 0;
+
+	if(child < 0){
+		printf("Fork to the child process failed");
+	}
+	else if(child == 0) {
+		int i;		
+		execvp(command->values[0], command->values);
+		printf("%s is not a valid internal or external command\n", command->values[0]);
+		exit(-1);
+	}
+	else {
+		waitpid(child, &cStatus, 0);	
+	}
+}
+void debugCMD(Builtin* command){
+	if(debug_level != 0){
+   int i;
+	printf("Debugging level %d\n", debug_level);
+	printf("Expression: %i\n", command -> cmd);
+	printf("Input file: %s\n", command -> inFile);
+	printf("Output file: %s\n", command -> outFile);
+	printf("Arguments: \n");
+	for(i = 0; i < command -> n; i++){
+		printf("Argument[%d] = %s\n", i, command -> values[i]);
+		}
+	}
+}

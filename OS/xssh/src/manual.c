@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int main(int argc, char *argv[]){
+  
+  if (argc!=2) {
+    printf("Please enter exactly one file.\n");
+    exit(1);
+  }
+  
+  FILE *infile;
+  
+  char* fname = argv[1];
+  strcat(fname, ".txt");
+
+  infile = fopen(fname, "r");
+  if(infile == NULL){
+  	printf("File %s not found\n", fname);
+  	exit(1);
+  }
+ 
+  int numChars = 0;
+  char c;
+  while((c=getc(infile))!=EOF){
+	printf("%c", c);
+	numChars++;
+  }
+  printf("\n");
+  
+  fclose(infile);
+  
+  while(1){
+  	if((getc(stdin) != 'q')){
+  		exit(1);
+  	}
+  }
+  
+}

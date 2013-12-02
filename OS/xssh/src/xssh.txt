@@ -1,0 +1,35 @@
+NAME
+	XSSH
+
+SYNOPSIS
+	xssh [-x] [-d level] [file [arg] …]
+
+DESCRIPTION
+	xssh (an Xtra Simple SHell) is a lightweight shell similar to bash, csh, or tcsh, but lacking many advanced features.
+	
+	-x
+	Display the command line after variable substitution but before it is evaluated.
+	
+	-d level
+	Set the debugging level to level. A debug level of 0 will not output any debug messages while 1 will output enough information to verify the correctness of the operation.
+	The extent of that information is left to the implementation.
+	Additional debug levels may be implemented beyond 0 and 1; however, those two debug levels are required to function as described above.
+	
+	file arg ...
+	If a file is given, it is treated as an xssh script and input is taken from the file instead of stdin.
+	Each additional argument after the filename is treated as an argument to that script and assigned to the positional variables $1, $2, etc. (see VARIABLES, below).
+
+	After xssh has completed executing commands in file (or a syntax error is encountered), it must do one of two things:
+	Quit if it encounters a quit command in the file.
+	Otherwise, prompt for additional commands from standard input as if no file argument was given. 
+
+RETURN VALUE
+	Exit values are returned, either user specified or the exit value of the last foreground process.	
+	
+BUGS
+	Pipelining hasn't been fully tested.
+	Positional variables are occasionally sketchy.
+
+SEE ALSO
+
+Manual Page for xssh.  Press 'q' to quit

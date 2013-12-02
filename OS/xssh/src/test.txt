@@ -1,0 +1,6 @@
+>> Changed is not a valid internal or external command
+>> Closed is not a valid internal or external command
+>> >> this is not a valid internal or external command
+>> >> >> Redirecting output >
+Output redirection code
+Opened file

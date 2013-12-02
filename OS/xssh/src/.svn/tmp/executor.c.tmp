@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "executor.h"
+
+void executeLine(Builtin* command){
+	switch(code(command->values[0])){
+       case ECHO:
+		 executeEcho(command);
+		 break;
+
+       case QUIT:
+       executeQuit(command);
+		 break;
+	   
+	   case SET:
+		 printf("Feature %s currently unimplemented\n",command->values[0]);
+	     break;
+	   
+	   case UNSET:
+		 printf("Feature %s currently unimplemented\n",command->values[0]);
+	     break;
+
+	   case WAIT:
+		 printf("Feature %s currently unimplemented\n",command->values[0]);
+	     break;
+	 
+	   case CD:
+		 printf("Feature %s currently unimplemented\n",command->values[0]);
+	     break;
+	 
+	   case CHDIR:
+		 printf("Feature %s currently unimplemented\n",command->values[0]);
+	     break;
+
+       case NONE:
+		 printf("Please enter a valid command!\n");
+		 break;
+		 
+		 case EXEC:
+		 executeExec(command);
+		 break;
+	 }
+}
+	 
+void executeEcho(Builtin* command){
+	int i;
+	for(i = 1; i < command->n; i++) {
+		printf("%s\n", command->values[i]);
+		}
+	}
+
+void executeQuit(Builtin* command){
+	exit_status = command->n;;
+	printf("Thank you for using XSSH, exiting...");
+	if(exit_status == 1){
+		printf("goodbye \n");
+		exit(exit_status);
+		}
+		else {
+			printf("Exiting with the status of the last foreground command\n");
+			exit(exit_status);
+		}
+	}
+void debugCMD(Builtin* command){
+	if(debug_level != 0){
+   int i;
+	printf("Debugging level %d\n", debug_level);
+	printf("Expression: %s\n", command -> cmd);
+	printf("Input file: %s\n", command -> inFile);
+	printf("Output file: %s\n", command -> outFile);
+	printf("Arguments: \n");
+	for(i = 0; i < exp -> n; i++){
+		printf("s", exp -> values[i]);
+	}
+	printf("\n");
+	}
+}

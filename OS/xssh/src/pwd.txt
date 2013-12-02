@@ -1,0 +1,17 @@
+NAME
+	pwd
+
+SYNOPSIS
+	pwd
+
+DESCRIPTION
+	Print the present working directory.
+
+RETURN VALUE
+
+BUGS
+
+SEE ALSO
+	cd, chdir
+
+Manual Page for pwd.  Press 'q' to quit

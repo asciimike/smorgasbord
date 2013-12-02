@@ -1,0 +1,24 @@
+NAME
+	set
+
+SYNOPSIS
+	set [variable [value]] 
+	
+DESCRIPTION
+    When run with no arguments, display a list of all environment variables and their values.
+    Otherwise set variable to value or the empty string if value is not given.
+    XSSH should follow standard variable naming conventions for syntax-checking variable (see VARIABLES for more details).
+    
+    Note that some environment implementations may be more lax than this standard;
+    if XSSH conforms to these specifications, it must also allow variable names to exist that do not follow this specification.
+    (i.e. XSSH may not alter or unset nonconformant variables)
+
+RETURN VALUE
+
+BUGS
+	Only accepts single values.  Not sure if this is a bug or not, but set $H Hello World only sets $H to Hello.
+
+SEE ALSO
+	unset
+
+Manual Page for set.  Press 'q' to quit

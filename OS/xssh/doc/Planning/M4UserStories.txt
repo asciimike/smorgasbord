@@ -1,0 +1,10 @@
+Each user story should describe a single thing that the user can do with your software.  Be sure to give an estimate of the time you think it will take for you to complete each user story.
+
+User can navigate to a given directory using the cd or chdir command.
+This should take roughly one to two hours, as it only involves moving around some environment variables in the correct order.
+
+User can print the path of the current working directory using the pwd command.
+This should take about 30 minutes to an hour, as all it is is printing an environment variable out.
+
+User can pipeline operations via multiple redirections using the | operator between executable files.
+This will take a majority of the time of the milestone, and will likely take over four hours.  It will involve a lot of redirection and possibly even chaining commands together.

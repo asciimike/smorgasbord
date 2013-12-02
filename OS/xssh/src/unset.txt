@@ -1,0 +1,18 @@
+NAME
+	unset
+
+SYNOPSIS
+	unset [variable …] 
+
+DESCRIPTION
+	Remove the given variables from the environment.
+	The value of a unset variable is undefined. 
+
+RETURN VALUE
+
+BUGS
+
+SEE ALSO
+	set
+
+Manual Page for unset.  Press 'q' to quit

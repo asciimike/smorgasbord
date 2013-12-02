@@ -1,0 +1,8 @@
+#test cases for XSSH
+echo test cases for final project
+
+set $H hello
+set $W world
+echo $H $W
+unset $H $W
+echo $H $W

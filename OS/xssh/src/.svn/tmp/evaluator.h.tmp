@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "xssh.h"
+
+void evaluateLine(Builtin* command, char* line);
+
+<<<<<<< .mine
+/*
+ switch(code(command)){
+       case ECHO:
+		
+		 break;
+=======
+>>>>>>> .r9
+
+<<<<<<< .mine
+       case QUIT:
+		 running = 0;
+		 exit_status = 0;
+		 printf("Thank you for using XSSH, exiting...\n");
+		 break;
+	   
+	   case SET:
+		 printf("Feature %s currently unimplemented\n",command);
+	     break;
+	   
+	   case UNSET:
+		 printf("Feature %s currently unimplemented\n",command);
+	     break;
+
+	   case WAIT:
+		 printf("Feature %s currently unimplemented\n",command);
+	     break;
+	 
+	   case CD:
+		 printf("Feature %s currently unimplemented\n",command);
+	     break;
+	 
+	   case CHDIR:
+		 printf("Feature %s currently unimplemented\n",command);
+	     break;
+
+       case NONE:
+		 printf("Please enter a valid command!\n");
+		 break;
+	 }
+*/=======
+>>>>>>> .r9

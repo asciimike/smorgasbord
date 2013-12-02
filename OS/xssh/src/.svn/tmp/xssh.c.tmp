@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+<<<<<<< .mine
+#include <string.h>
+=======
+#include <string.h>
+#include "xssh.h"
+#include "evaluator.h"
+#include "executor.h"
+>>>>>>> .r9
+
+#include "xssh.h"
+#include "evaluator.h"
+#include "executor.h"
+
+/* This is the shell you must fill in or replace in order to complete
+   this project.  Do not forget to include your team number and each 
+   team member's name in the initial comments of this file.
+
+   You are strongly advised to use top-down design in the form of 
+   functional decomposition as you design and implement this shell.
+
+   Pay close attention to the naming hints given in the provided
+   Makefile.
+*/
+
+
+
+int main(int argc, char *argv[]){
+   char line[MAX_INPUT];
+   Builtin * command = malloc(sizeof(Builtin));
+
+   while(1){
+	 printf(">> ");
+	 fgets(line, MAX_INPUT, stdin);
+
+	 strcpy(currentCMD, line);
+
+	 evaluateLine(command, line);
+	 executeLine(command);
+	 debugCMD(command);
+   }
+ return exit_status;
+}
+int code(char *string){
+  int i;
+  for(i=0; i<sizeof(table)/sizeof(table[0]); i++){
+	if(strcmp(table[i].command, string) == 0){
+		return table[i].code;
+	}
+  } return NONE;
+}
+
+

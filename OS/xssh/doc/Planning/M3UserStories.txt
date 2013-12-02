@@ -1,0 +1,16 @@
+Each user story should describe a single thing that the user can do with your software.  Be sure to give an estimate of the time you think it will take for you to complete each user story.
+
+User will be able to create and destroy variables (prefixed by the $, followed by a character, etc).
+This should take approximately one hour, as it will require some parsing in evaluator and then some setting in executor.
+
+User will be able to prompt $$, $?, and $! to return special values.
+This should take roughly 30 minutes to implement, once the variables are created.  These can probably be implemented as global variables and be easier.  
+
+User will be able to use the -x postfix (xssh -x) to display the command line after environment variables are subbed in. ($a = hello $b = world, echo $a $b -> echo hello world).
+This will take 30 minutes, as it will just print out whats going on.  
+
+User will be able to use the set command to set environment variables.  User can "set $a hello" and then "echo $a" and the command will be evaluated as "echo hello."
+This will most likely take two or three hours.  Space will most likely have to be malloced, named, and kept track of.
+
+User will be able to use the unset command to unset the environment variables.
+This will probably be in the two or three hours for set, as the commands will be built up hand in hand.  Space will have to be freed and then destroyed.

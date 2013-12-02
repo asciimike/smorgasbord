@@ -1,0 +1,11 @@
+xssh: xssh.o evaluator.o executor.o
+	gcc -o xssh xssh.o evaluator.o executor.o `pkg-config --libs glib-2.0` -lpthread -c -g -Wall
+
+xssh.o: xssh.c
+	gcc `pkg-config --libs glib-2.0` xssh.c -c -g -Wall
+
+evaluator.o: evaluator.c
+	gcc `pkg-config --libs glib-2.0` evaluator.c -c -g -Wall
+
+executor.o: executor.c
+	gcc `pkg-config --libs glib-2.0` executor.c -c -g -Wall

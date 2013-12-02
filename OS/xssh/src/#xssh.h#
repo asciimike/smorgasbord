@@ -1,0 +1,69 @@
+#ifndef XSSH_H
+#define XSSH_H
+
+/* exit status of shell (quit arg) */
+int exit_status;    
+
+/* exit status of last forgound command ($?) */
+int cmd_exit_status;
+
+/* PID of last background command ($!) */
+int background_pid;
+
+/* Flag to make the shell die */
+char exit_shell;
+
+/* Display command lines after variable substitution */
+int show_cmds;
+
+#define MAX_INPUT 100
+#define MAX_ARGUEMENTS 50
+#define FILE_SIZE 50
+
+int code(char *string);
+
+#endif
+
+enum CMD
+  {
+	NONE,
+	ECHO,
+	QUIT,
+	SET,
+	UNSET,
+	WAIT,
+	CD,
+	CHDIR
+  };
+
+struct Builtin{
+  CMD cmd;  //Command
+  int n;  //Number of arguements
+  char* values[MAX_ARGUEMENTS];  //Value of arguements
+  char inFile[FILE_SIZE];  //Input file
+  char outFile[FILE_SIZE];  //Output file
+  struct Builtin * next;  //Pointer to next instruction for execution
+};
+
+
+static struct cmdLookup{
+  char *command;
+  int code;
+} table[] = {
+  {"echo", ECHO},
+  {"quit", QUIT},
+  {"set", SET},
+  {"unset", UNSET},
+  {"wait", WAIT},
+  {"cd", CD},
+  {"chdir", CHDIR}
+};
+
+int code(char *string){
+  int i;
+  for(i=0; i<sizeof(table)/sizeof(table[0]); i++){
+	if(strcmp(table[i].command, string) == 0){
+		return table[i].code;
+	}
+  } return NONE;
+}

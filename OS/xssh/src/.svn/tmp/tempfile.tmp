@@ -1,0 +1,364 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include "executor.h"
+#include <sys/wait.h>
+#include <string.h>
+#include <fcntl.h>
+
+#define STDIN 0
+#define STDOUT 1
+
+void executeCommand(Builtin* command){
+	
+	int saveSTDIN;
+	/* Input redirection code */
+	if(strlen(command->inFile) > 0){
+		printf("Input redirection code\n");
+		int inFD = open(command->inFile, O_RDONLY);
+		/*
+		saveSTDIN = open(command->inFile, O_RDONLY | O_WRONLY | O_CREAT | O_TRUNC | O_APPEND);
+		dup2(STDIN, saveSTDIN);
+		*/
+		dup2(inFD, STDIN);
+		close(inFD);
+	}
+	
+	int saveSTDOUT;
+	/*Output redirection code */
+	if(strlen(command->outFile) > 0){
+		printf("Output redirection code\n");
+		int outFD = open(command->outFile, O_WRONLY | O_CREAT | O_TRUNC | O_APPEND);
+		printf("Opened file\n");
+		/*
+		saveSTDOUT = open(command->inFile, O_RDONLY | O_WRONLY | O_CREAT | O_TRUNC | O_APPEND);
+		dup2(STDOUT, saveSTDOUT);
+		*/
+		dup2(outFD, STDOUT);
+		close(outFD);
+	}
+	
+	/* Check for environment variables */
+	/*
+	if(command->values[0][0] == '$'){
+		if(command->values[0][1] == '$'){
+			printf("PID of this XSSH is %d\n", getpid());
+		}
+		else if(command->values[0][1] == '!'){
+			printf("PID of most recent process executed in background is %d\n", background_pid);
+		}
+		else if(command -> values[0][1] == '?'){
+			printf("Exit status of last foreground command is %d\n", cmd_exit_status);
+		}
+		else{
+			printf("%s\n", getenv(&((command->values[0])[1])));
+		}
+		return;
+	}	
+	*/
+	
+	/* Perform environment variable swapping here */
+	if(show_cmds){
+		/* Print original command */
+		int i;
+		printf("Printing the original command: ");
+		for(i = 0; i < command -> n-1; i++){
+			printf("%s ", command -> values[i]);
+		}
+			printf("%s\n", command -> values[command -> n-1]);
+		
+		/* Perform variable substitution */
+		printf("Printing the command after substitution: ");
+		for(i = 0; i < command -> n; i++){
+			char* val = command -> values[i];
+			if(val[0] == '$'){
+				if(getenv(&((command->values[i])[1]))==NULL){
+					printf("");
+				}
+				else{
+					printf("%s ", getenv(&((command->values[i])[1])));
+				}
+			}
+			else{
+				printf("%s ", val);
+			}
+		}
+		printf("\n");
+	}
+	
+	switch(code(command->values[0])){
+       case ECHO:
+		 executeEcho(command);
+		 break;
+
+       case QUIT:
+       executeQuit(command);
+		 break;
+	   
+	   case SET:
+		 executeSet(command);
+	     break;
+	   
+	   case UNSET:
+		 executeUnset(command);
+	     break;
+
+	   case WAIT:
+		 executeWait(command);
+	     break;
+	 
+	   case CD:
+		 printf("Feature %s currently unimplemented\n",command->values[0]);
+	     break;
+	 
+	   case CHDIR:
+		 printf("Feature %s currently unimplemented\n",command->values[0]);
+	     break;
+
+     	case NONE:
+		 printf("Please enter a valid command!\n");
+		 break;
+		 
+		 case EXEC:
+		 executeExec(command);
+		 break;
+		 
+		 case COMMENT:
+		 break;
+		 
+		 default:
+		 executeExec(command);
+		 break;
+	 }
+	
+	/*
+	 dup2(saveSTDIN, STDIN);
+	 close(saveSTDIN);
+	 dup2(saveSTDOUT, STDOUT);
+	 close(saveSTDOUT);
+	 */
+	 debugCMD(command);
+}
+	 
+void executeEcho(Builtin* command){
+	if(command->n == 1 || strlen(command->outFile) > 0){
+		return;
+	}
+	
+	subVar(command);
+	
+	int i;
+	for(i = 1; i < (command->n)-1; i++) {
+		 printf("%s ", command->values[i]);
+	}
+	printf("%s\n", command->values[command->n - 1]);
+}
+
+int subVar(Builtin * command){
+	
+	/*
+	if(command -> cmd == EXEC){
+		printf("Checking initial variable!\n");
+		char* value = command -> values[0];
+		if(value[0] == '$'){
+			char* val = getenv(&((command->values[0])[1]));
+			if(val == NULL){
+				return 0;
+			}
+			else{
+				if(code(val) != EXEC){
+					command -> cmd = code(val);
+				}
+			}
+			
+		}
+	}
+	*/
+	
+	int i;
+	for(i = 1; i < command -> n; i++){
+		char* value = command -> values[i];
+		if(value[0] == '$'){
+			char* val = getenv(&((command->values[i])[1]));
+			if(val != NULL){
+				command -> values[i] = val;
+			}
+			else{
+				command -> values[i] = "";
+			}
+		}		
+	}
+}
+
+void executeQuit(Builtin* command){
+	if(command->n == 1){
+		exit_status = 0;
+		printf("Thank you for using XSSH, exiting...\n");
+		exit(cmd_exit_status);
+	}
+	exit_status = atoi(command->values[1]);
+	printf("Thank you for using XSSH, exiting with exit status: %d\n", exit_status);
+	exit(exit_status);
+}
+	
+void executeExec(Builtin* command){
+	
+	/* Check for environment variables */
+	if(command->values[0][0] == '$'){
+		if(command->values[0][1] == '$'){
+			printf("PID of this XSSH is %d\n", getpid());
+		}
+		else if(command->values[0][1] == '!'){
+			printf("PID of most recent process executed in background is %d\n", background_pid);
+		}
+		else if(command -> values[0][1] == '?'){
+			printf("Exit status of last foreground command is %d\n", cmd_exit_status);
+		}
+		else{
+			printf("%s\n", getenv(&((command->values[0])[1])));
+		}
+		return;
+	}	
+	
+	subVar(command);
+	
+	/* Run external commands */
+	command->values[command->n] = NULL;
+	pid_t child;
+	child = fork();
+	int cStatus = 0;
+
+	if(child < 0){
+		printf("Fork to the child process failed\n");
+	}
+	else if(child == 0) {
+		 /* printf("Forking child %d\n", getpid()); */
+		int i;		
+		execvp(command->values[0], command->values);
+		printf("%s is not a valid internal or external command\n", command->values[0]);
+		exit(-1);
+	}
+	else {
+		if(command -> isBackground){
+			background_pid = child;
+			printf("Background child %d created\n", background_pid);
+			backgroundedProcesses = g_list_append(backgroundedProcesses, GINT_TO_POINTER(child));
+		}
+		else{
+			waitpid(child, &cStatus, 0);
+			cmd_exit_status = WEXITSTATUS(cStatus);	
+		}
+	}
+}
+
+void executeWait(Builtin* command){
+	int pid = atoi(command->values[1]);
+	printf("pid is: %d\n", pid);
+	
+	/* Wait for anything to complete */
+	if(pid == -1){
+		int originalLength = g_list_length(backgroundedProcesses);
+			while((g_list_length(backgroundedProcesses)==originalLength) && (g_list_length(backgroundedProcesses) != 0)){
+				sleep(10);
+			}
+	} 
+	
+	/* Wait for ALL to complete */
+	else if (pid == 0){
+		while(g_list_length(backgroundedProcesses)!=0){
+				sleep(10);
+			}
+	} 
+	
+	/* Wait for a specific process to complete */
+	else {
+		while(g_list_find(backgroundedProcesses, GINT_TO_POINTER(pid)) != NULL){
+				sleep(10);
+		}
+	}
+}
+
+void executeSet(Builtin* command){
+	/* test all environment variables conditions*/
+	/* So the basic structure is here to accomplish set and unset.
+		The problem arrises because you need to check the argument in values[1]
+		but cannot include the $ sign.  I will think about this more.
+	*/
+	if(checkEnvVarAttribs(command->values[1]) == 1){
+		printf("Variable correctly set\n");
+		if(command->n == 1) {
+			printf("Assign %s as nothing.\n", command->values[1]);
+			setenv(command->values[1], "", 1);
+		}
+		else {
+			printf("Assign %s as %s.\n", command->values[0], command->values[1]);
+			setenv(command->values[1], command->values[2], 1);
+		}
+	} else{
+		if (command->n == 1) {
+			printf("Display currently set variables...\n");
+		} else {
+			printf("Variable not set! Variable must start with a letter and needs to only contain letters,numbers, or underscores\n");
+		}
+	} 
+}
+
+int checkEnvVarAttribs(char* arg){
+	if(arg[0] != '$') {return 0;}
+	if(!('A' <= toupper(arg[1]) && toupper(arg[1]) <='Z')){
+		printf("First letter fail\n");
+		return 0;
+	}
+	
+	/* Check first character for [A-Z], not begin with [0-9_] */
+	if(!('A' <= (var[0]) && (var[0]) <='Z')){
+		printf("First character %c is not valid\n", var[0]);
+		return 0;
+	}
+	
+	/* Check all subsequent characters for [A-Z0-9_] */
+	int checkChar = 1;
+	while(arg[checkChar] != '\0'){
+		if(!(('A' <= toupper(atoi(arg)) && toupper(atoi(arg)) <='Z') || !(arg[checkChar] == '_') || 
+				!('0' <= arg[checkChar] && arg[checkChar] <= '9'))){
+					printf("Internal character fail\n");
+					return 0;
+				}
+		checkChar++;
+	}
+	return 1;
+}
+
+void executeUnset(Builtin* command){
+	int i;
+	/* Loop through all potential environment variables to unset */
+	for(i = 1; i <  command -> n; i++){
+		char* env = command -> values[i];
+		char* variable = &(env[1]);
+		/* Check to make sure it is an env variable */
+		if(checkEnvVarAttribs(variable)){
+			printf("Unsetting %s\n", variable);
+			/* Check to make sure unset succeeded */
+			if(unsetenv(variable)==-1){
+				printf("Variable %s unset failed\n",variable);
+			}
+		}
+	}
+}
+
+void debugCMD(Builtin* command){
+	if(debug_level != 0){
+   int i;
+	printf("Debugging level %d\n", debug_level);
+	printf("Expression: %i\n", command -> cmd);
+	printf("Input file: %s\n", command -> inFile);
+	printf("Output file: %s\n", command -> outFile);
+	printf("Number of arguments: %d\n", command -> n);
+	printf("Arguments: \n");
+	for(i = 0; i < command -> n; i++){
+		printf("Argument[%d] = %s\n", i, command -> values[i]);
+		}
+	}
+}

@@ -1,0 +1,20 @@
+NAME
+	wait
+
+SYNOPSIS
+	wait pid 
+
+DESCRIPTION
+	Wait for the child process pid to complete.
+	If pid is -1, wait for any child process to complete.
+	If pid is 0, wait for all child processes to complete.
+	If xssh has not spawned a background process with PID pid or that process has already completed, return immediately.
+	Note that xssh is only responsible for waiting on its own children; it does not have to implement wait for arbitrary PIDs.
+
+RETURN VALUE
+
+BUGS
+
+SEE ALSO
+
+Manual Page for wait.  Press 'q' to quit

@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/repos/csse332-201220-xssh-23l/!svn/ver/46/xssh/src
+END
+executor.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/csse332-201220-xssh-23l/!svn/ver/46/xssh/src/executor.c
+END
+test
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/repos/csse332-201220-xssh-23l/!svn/ver/19/xssh/src/test
+END
+wait.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/csse332-201220-xssh-23l/!svn/ver/42/xssh/src/wait.txt
+END
+evaluator.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repos/csse332-201220-xssh-23l/!svn/ver/46/xssh/src/evaluator.c
+END
+executor.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/csse332-201220-xssh-23l/!svn/ver/42/xssh/src/executor.h
+END
+why.txt
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/repos/csse332-201220-xssh-23l/!svn/ver/43/xssh/src/why.txt
+END
+Evaluator.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/csse332-201220-xssh-23l/!svn/ver/8/xssh/src/Evaluator.h
+END
+evaluator.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repos/csse332-201220-xssh-23l/!svn/ver/41/xssh/src/evaluator.h
+END
+echo.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/csse332-201220-xssh-23l/!svn/ver/42/xssh/src/echo.txt
+END
+manual.c
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/csse332-201220-xssh-23l/!svn/ver/46/xssh/src/manual.c
+END
+quit.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/csse332-201220-xssh-23l/!svn/ver/42/xssh/src/quit.txt
+END
+exec.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/csse332-201220-xssh-23l/!svn/ver/42/xssh/src/exec.txt
+END
+xssh.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/csse332-201220-xssh-23l/!svn/ver/42/xssh/src/xssh.txt
+END
+cd.txt
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/csse332-201220-xssh-23l/!svn/ver/42/xssh/src/cd.txt
+END
+xssh.c
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/csse332-201220-xssh-23l/!svn/ver/42/xssh/src/xssh.c
+END
+help.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/csse332-201220-xssh-23l/!svn/ver/43/xssh/src/help.txt
+END
+chdir.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/repos/csse332-201220-xssh-23l/!svn/ver/42/xssh/src/chdir.txt
+END
+pwd.txt
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/repos/csse332-201220-xssh-23l/!svn/ver/42/xssh/src/pwd.txt
+END
+commtest.txt
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/repos/csse332-201220-xssh-23l/!svn/ver/19/xssh/src/commtest.txt
+END
+set.txt
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/repos/csse332-201220-xssh-23l/!svn/ver/42/xssh/src/set.txt
+END
+helloWorld
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/csse332-201220-xssh-23l/!svn/ver/15/xssh/src/helloWorld
+END
+xssh.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/csse332-201220-xssh-23l/!svn/ver/42/xssh/src/xssh.h
+END
+unset.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/repos/csse332-201220-xssh-23l/!svn/ver/42/xssh/src/unset.txt
+END
+hellWorld.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repos/csse332-201220-xssh-23l/!svn/ver/15/xssh/src/hellWorld.c
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/csse332-201220-xssh-23l/!svn/ver/44/xssh/src/Makefile
+END
+manual
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/csse332-201220-xssh-23l/!svn/ver/44/xssh/src/manual
+END

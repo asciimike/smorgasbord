@@ -1,0 +1,89 @@
+#ifndef XSSH_H
+#define XSSH_H
+
+#include <glib.h>
+#include <ctype.h>
+/* exit status of shell (quit arg) */
+int exit_status;    
+
+/* exit status of last forgound command ($?) */
+int cmd_exit_status;
+
+/* PID of last background command ($!) */
+int background_pid;
+
+/* Flag to make the shell die */
+char exit_shell;
+
+/* Display command lines after variable substitution */
+int show_cmds;
+
+/* Check debug level */
+int debug_level;
+
+#define MAX_SIZE 100
+#define MAX_ARGUMENTS 50
+#define FILE_SIZE 100
+#define MAX_IN 150
+
+char currentCMD[MAX_SIZE];
+
+typedef enum 
+  {
+	NONE,
+	ECHO,
+	QUIT,
+	SET,
+	UNSET,
+	WAIT,
+	CD,
+	CHDIR,
+	EXEC,
+	COMMENT,
+	PWD,
+	MANUAL,
+	WHY
+  }CMD;
+  
+typedef struct {
+	char* name;
+	int n;
+	char* values[MAX_ARGUMENTS];
+	int isFile;
+}External;
+  
+typedef struct {
+  CMD cmd;  /*Command */
+  int n;  /*Number of arguments*/
+  char* values[MAX_ARGUMENTS];  /*Value of arguments*/
+  char inFile[FILE_SIZE]; /*Input file*/
+  char outFile[FILE_SIZE];  /*Output file*/
+  int isBackground;   /* Backgrounded process */
+}Builtin;
+
+static struct cmdLookup{
+  char *command;
+  int code;
+} table[] = {
+  {"echo", ECHO},
+  {"exec", EXEC},
+  {"quit", QUIT},	/* workaround */
+  {"set", SET},
+  {"unset", UNSET},
+  {"wait", WAIT},
+  {"cd", CD},
+  {"chdir", CHDIR},
+  {"manual", MANUAL},
+  {"why", WHY}
+};
+
+GList * backgroundedProcesses;
+char* positionals[10]; 
+
+int code(char *string);
+void runFile(External * ext);
+void processManagementCreator();
+void * manager (void * args);
+
+
+#endif

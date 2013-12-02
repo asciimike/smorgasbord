@@ -1,0 +1,23 @@
+Enter your status report for this milestone in this document. You should include the actual time that you spent on each user story and the total time spent on this milestone.  Be sure to note what you completed and what you still need to work on.
+
+User will be able to create and destroy variables (prefixed by the $, followed by a character, etc).
+This took several hours, due in part to an error (single = rather than ==) that was causing some serious consternation.  Currently this function works really well, typing $VARIABLE returns that variable.  The only thing yet to be used is doing things like set $E echo and then doing $E hello.
+
+User will be able to prompt $$, $?, and $! to return special values.
+This took 15 minutes or so, and was added straight to the beginning of executeCommand.  Anything starting with $ immediately gets checked for $$, $!, $?.  Positionals are still not done.
+
+User will be able to use the -x postfix (xssh -x) to display the command line after environment variables are subbed in. ($a = hello $b = world, echo $a $b -> echo hello world).
+This took roughly an hour.  A function was used to substitute variables.  Note that for the set and unset commands, the variables don't exist to be substituted, so the empty string "" is inserted as a placeholder.  
+
+User will be able to use the set command to set environment variables.  User can "set $a hello" and then "echo $a" and the command will be evaluated as "echo hello."
+This was easier than anticipated, once variables could be created.  The setenv() command was very helpful.  Also, using system calls and the "printenv" command was nice to print the entire environment.
+This took probably about two or three hours, but it currently isn't done yet.  We still have to do positional variables and make sure that variables acting as placeholders for commands get executed.
+
+User will be able to use the unset command to unset the environment variables.
+This took about 10 seconds to implement, as it was incredibly easy using the unsetenv() command.  Additional functionality was added to unset multiple variables at a time.
+
+Total time on this milestone: around 10.  There's still an hour or two of work left.
+
+TO DO:
+Positionals (parsing at the command line maybe?)
+Variables standing in for commands

@@ -1,0 +1,14 @@
+#test cases for XSSH
+#seriously?
+echo test cases for final project
+#no really
+echo blank line
+
+set $H hello
+set $W world
+echo $H $W
+#really?
+unset $H
+unset $W
+echo <intest.txt
+echo output test >outtest.txt

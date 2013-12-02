@@ -1,0 +1,18 @@
+NAME
+	quit
+
+SYNOPSIS
+	quit [status] 
+
+DESCRIPTION
+    Quit the shell with the given exit status.
+    If status is not given, or is not a valid exit status, quit with the exit status of the last command that returned.
+    XSSH is not required to wait for running background processes before terminating.
+
+RETURN VALUE
+
+BUGS
+
+SEE ALSO
+
+Manual Page for quit.  Press 'q' to quit

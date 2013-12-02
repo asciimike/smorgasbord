@@ -1,0 +1,36 @@
+XSSH Help Page!
+
+XSSH is a product of hours of hard work by:
+
+Mike McDonald
+Jake Schuenke
+Jake Sheets
+Matt Spurr 
+
+They have designed a lightweight tch/bash like shell for CSSE 332.
+
+Latest revision: 2/15/2012
+
+This shell implements many features found in higher performance shells.
+However, it only implements certain features, with the emphasis on learning rather than performance.
+
+Use other manual pages for exact command syntax and bug reports.
+
+A full list of builtin commands is as follows:
+
+echo [word ...] 
+quit [status] 
+set [variable [value]] 
+unset [variable ...] 
+wait pid 
+cd [path]
+chdir [path] 
+pwd
+why [question...]
+manual command
+
+External commands can also be used and are explained in further detail under the exec manual page.
+
+Additional features about XSSH can be discovered by reading the xssh manual page.
+
+Press 'q' to quit
