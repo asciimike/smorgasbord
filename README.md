@@ -1,5 +1,5 @@
 Mike McDonald's Code Samples
-===========
+============================
 
 Here are some various code samples from projects that I've worked on during my time in college. For students who may be taking these classes now or in the future, feel free to use my code as reference, but make sure that you 1) don't copy it verbatim and 2) cite it as a reference.
 
@@ -7,7 +7,8 @@ Here is a listing of the current directories:
 1. Crypto
 2. Embedded
 3. Mobile
-4. Parallel
+4. OS
+5. Parallel
 
 ## Crypto
 Crypto contains DES and SHA-1 implementations in C++, as well as some Java code for some simple substitution ciphers.
@@ -17,6 +18,9 @@ Embedded contains some hardware (an 8x8 RGB LED Matrix Coffee Table controller b
 
 ## Mobile
 Mobile contains my first "project" in Android development, which needs some serious UI love. Hopefully I'll get some iOS source as well.
+
+## OS
+Contains a simple shell (XSSH) in C that performs basic shell functions and can be used as a prototype for other projects relating to that.
 
 ## Parallel
 Parallel contains C++ w/MPI and CUDA code for doing various cool things, including a full linear solver in parallel!
