@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHOHomeViewController">
             <connections>
-                <outlet property="nearImageView" destination="2nb-YC-35s" id="jZl-A7-2HP"/>
+                <outlet property="nearButton" destination="SdY-QO-9ke" id="EL7-Eb-ywz"/>
                 <outlet property="nearLabel" destination="FBX-ra-9Be" id="hZ6-S2-biw"/>
                 <outlet property="searchGoButton" destination="rUU-Yd-Mmf" id="8hd-z8-B3x"/>
                 <outlet property="searchLabel" destination="Oc1-YI-ySE" id="Ubg-WK-yUg"/>
@@ -39,10 +39,6 @@
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NearButton.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2nb-YC-35s">
-                    <rect key="frame" x="96" y="188" width="128" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City or Zip Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A7V-ji-FWc">
                     <rect key="frame" x="57" y="390" width="168" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -73,6 +69,16 @@
                         <action selector="signInButtonPressed:" destination="-1" eventType="touchUpInside" id="hrI-Mq-RJ2"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SdY-QO-9ke">
+                    <rect key="frame" x="96" y="188" width="128" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Arrow Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="nearButtonPressed:" destination="-1" eventType="touchUpInside" id="7Wa-bB-Lb0"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -82,7 +88,4 @@
             </connections>
         </view>
     </objects>
-    <resources>
-        <image name="NearButton.jpg" width="640" height="640"/>
-    </resources>
 </document>

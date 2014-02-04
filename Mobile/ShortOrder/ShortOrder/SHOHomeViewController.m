@@ -31,6 +31,8 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self.navigationController setToolbarHidden:YES];
     
+    [self.nearButton setImage:[UIImage imageNamed:@"NearButton.jpg"] forState:UIControlStateNormal];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -48,23 +50,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)searchGoButtonPressed:(id)sender {
-    // Go to the restaurant list view
-//    SHORestaurantTableViewController *restaurantTableViewController = [[SHORestaurantTableViewController alloc] initWithNibName:@"SHORestaurantTableViewController" bundle:[NSBundle mainBundle]];
-    SHORestaurantTableViewControllerWithTabs *restaurantTableViewController = [[SHORestaurantTableViewControllerWithTabs alloc] initWithNibName:@"SHORestaurantTableViewControllerWithTabs" bundle:[NSBundle mainBundle]];
-    NSString *textBoxInput = self.searchTextField.text;
-    if ([textBoxInput isEqualToString:@""]) {
-        // Must input valid things! Check here for validity...
-    } else {
-        NSString *locationString = [NSString stringWithFormat: @"Restaurants Near %@", textBoxInput];
-        restaurantTableViewController.title = locationString;
-        [self.navigationController pushViewController:restaurantTableViewController animated:YES];
-    }
-}
-
 - (IBAction)signInButtonPressed:(id)sender;
 {
-    // Present a custom alert that asks the user to sign in
+    #warning Use Firebase simple login (facebook) to log users in
+    // Present a custom alert that asks the user to sign in (firebase simple login)
 }
 
 - (IBAction)searchFieldPressedEnter:(id)sender;
@@ -75,5 +64,29 @@
 - (IBAction)backgroundTap:(id)sender;
 {
     [self.searchTextField resignFirstResponder];
+}
+
+- (IBAction)searchGoButtonPressed:(id)sender {
+    // Get user input to find out where we should be searching
+    NSString *textBoxInput = self.searchTextField.text;
+    [self switchToRestaurantListNearLocation:textBoxInput];
+}
+
+- (IBAction)nearButtonPressed:(id)sender {
+    // Use gelocation to find out the area code near me
+    [self switchToRestaurantListNearLocation:@"47803"];
+}
+
+- (void)switchToRestaurantListNearLocation:(NSString *)location;
+{
+    SHORestaurantTableViewControllerWithTabs *restaurantTableViewController = [[SHORestaurantTableViewControllerWithTabs alloc] initWithNibName:@"SHORestaurantTableViewControllerWithTabs" bundle:[NSBundle mainBundle]];
+    
+    if ([location isEqualToString:@""]) {
+        // Must input valid things! Check here for validity...
+    } else {
+        NSString *locationString = [NSString stringWithFormat: @"Restaurants Near %@", location];
+        restaurantTableViewController.title = locationString;
+        [self.navigationController pushViewController:restaurantTableViewController animated:YES];
+    }
 }
 @end

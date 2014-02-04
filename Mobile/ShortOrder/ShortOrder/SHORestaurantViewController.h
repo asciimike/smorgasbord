@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SHORestaurantViewController : UIViewController
+@interface SHORestaurantViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UILabel *waitTimeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *worthItLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *noThanksLabel;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

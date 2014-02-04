@@ -10,15 +10,16 @@
 
 @interface SHOHomeViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UILabel *nearLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *nearImageView;
+@property (strong, nonatomic) IBOutlet UIButton *nearButton;
 @property (strong, nonatomic) IBOutlet UILabel *searchLabel;
 @property (strong, nonatomic) IBOutlet UITextField *searchTextField;
 @property (strong, nonatomic) IBOutlet UIButton *searchGoButton;
 @property (strong, nonatomic) IBOutlet UIButton *signInButton;
 
-- (IBAction)searchGoButtonPressed:(id)sender;
 - (IBAction)signInButtonPressed:(id)sender;
 - (IBAction)searchFieldPressedEnter:(id)sender;
 - (IBAction)backgroundTap:(id)sender;
+- (IBAction)searchGoButtonPressed:(id)sender;
+- (IBAction)nearButtonPressed:(id)sender;
 
 @end

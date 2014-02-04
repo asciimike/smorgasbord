@@ -10,4 +10,10 @@
 
 @interface SHORestaurantCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UIImageView *restaurantImageView;
+@property (strong, nonatomic) IBOutlet UILabel *restaurantNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *currentWaitLabel;
+
+- (void)setWaitTime:(NSInteger)waitTime;
+
 @end

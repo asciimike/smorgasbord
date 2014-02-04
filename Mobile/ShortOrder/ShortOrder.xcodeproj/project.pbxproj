@@ -30,6 +30,8 @@
 		4CBA064E18A0A6180036A3DF /* SHORestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA064C18A0A6180036A3DF /* SHORestaurantViewController.xib */; };
 		4CBA065218A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA065018A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.m */; };
 		4CBA065318A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA065118A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.xib */; };
+		4CBA065618A0CDD10036A3DF /* SHOReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA065518A0CDD10036A3DF /* SHOReviewCell.m */; };
+		4CBA065818A0CDF10036A3DF /* SHOReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA065718A0CDF10036A3DF /* SHOReviewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,9 @@
 		4CBA064F18A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHORestaurantTableViewControllerWithTabs.h; sourceTree = "<group>"; };
 		4CBA065018A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHORestaurantTableViewControllerWithTabs.m; sourceTree = "<group>"; };
 		4CBA065118A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHORestaurantTableViewControllerWithTabs.xib; sourceTree = "<group>"; };
+		4CBA065418A0CDD10036A3DF /* SHOReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOReviewCell.h; sourceTree = "<group>"; };
+		4CBA065518A0CDD10036A3DF /* SHOReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHOReviewCell.m; sourceTree = "<group>"; };
+		4CBA065718A0CDF10036A3DF /* SHOReviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHOReviewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +150,9 @@
 				4CBA064318A070780036A3DF /* SHORestaurantCell.h */,
 				4CBA064418A070780036A3DF /* SHORestaurantCell.m */,
 				4CBA064618A071420036A3DF /* SHORestaurantCell.xib */,
+				4CBA065418A0CDD10036A3DF /* SHOReviewCell.h */,
+				4CBA065518A0CDD10036A3DF /* SHOReviewCell.m */,
+				4CBA065718A0CDF10036A3DF /* SHOReviewCell.xib */,
 				4CBA064A18A0A6180036A3DF /* SHORestaurantViewController.h */,
 				4CBA064B18A0A6180036A3DF /* SHORestaurantViewController.m */,
 				4CBA064C18A0A6180036A3DF /* SHORestaurantViewController.xib */,
@@ -276,6 +284,7 @@
 				4CBA064E18A0A6180036A3DF /* SHORestaurantViewController.xib in Resources */,
 				4CBA063818A035E20036A3DF /* SHOHomeViewController.xib in Resources */,
 				4CBA065318A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.xib in Resources */,
+				4CBA065818A0CDF10036A3DF /* SHOReviewCell.xib in Resources */,
 				4CBA061018A032730036A3DF /* InfoPlist.strings in Resources */,
 				4CBA061818A032730036A3DF /* Images.xcassets in Resources */,
 				4CBA063D18A0401C0036A3DF /* NearButton.jpg in Resources */,
@@ -303,6 +312,7 @@
 				4CBA061218A032730036A3DF /* main.m in Sources */,
 				4CBA063718A035E20036A3DF /* SHOHomeViewController.m in Sources */,
 				4CBA061618A032730036A3DF /* SHOAppDelegate.m in Sources */,
+				4CBA065618A0CDD10036A3DF /* SHOReviewCell.m in Sources */,
 				4CBA064118A048CA0036A3DF /* SHORestaurantTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

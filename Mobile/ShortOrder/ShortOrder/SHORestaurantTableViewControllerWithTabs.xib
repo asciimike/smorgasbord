@@ -20,6 +20,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="KHR-Ua-lf7"/>
                         <outlet property="delegate" destination="-1" id="7UG-f2-Oqq"/>
@@ -30,9 +31,9 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <items>
-                        <tabBarItem title="Sort Attribute" id="Fg9-sV-fom"/>
-                        <tabBarItem title="Favorites" id="ifg-r3-MVt"/>
-                        <tabBarItem title="Recents" id="De6-R7-3hS"/>
+                        <tabBarItem systemItem="mostViewed" id="Fg9-sV-fom"/>
+                        <tabBarItem tag="1" systemItem="favorites" id="ifg-r3-MVt"/>
+                        <tabBarItem tag="2" systemItem="recents" id="De6-R7-3hS"/>
                     </items>
                     <connections>
                         <outlet property="delegate" destination="-1" id="jbv-L5-IQE"/>
