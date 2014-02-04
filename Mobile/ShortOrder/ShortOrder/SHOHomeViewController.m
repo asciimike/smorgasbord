@@ -8,6 +8,7 @@
 
 #import "SHOHomeViewController.h"
 #import "SHORestaurantTableViewController.h"
+#import "SHORestaurantTableViewControllerWithTabs.h"
 
 @interface SHOHomeViewController ()
 
@@ -27,7 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setToolbarHidden:YES];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -48,7 +50,8 @@
 
 - (IBAction)searchGoButtonPressed:(id)sender {
     // Go to the restaurant list view
-    SHORestaurantTableViewController *restaurantTableViewController = [[SHORestaurantTableViewController alloc] initWithNibName:@"SHORestaurantTableViewController" bundle:[NSBundle mainBundle]];
+//    SHORestaurantTableViewController *restaurantTableViewController = [[SHORestaurantTableViewController alloc] initWithNibName:@"SHORestaurantTableViewController" bundle:[NSBundle mainBundle]];
+    SHORestaurantTableViewControllerWithTabs *restaurantTableViewController = [[SHORestaurantTableViewControllerWithTabs alloc] initWithNibName:@"SHORestaurantTableViewControllerWithTabs" bundle:[NSBundle mainBundle]];
     NSString *textBoxInput = self.searchTextField.text;
     if ([textBoxInput isEqualToString:@""]) {
         // Must input valid things! Check here for validity...

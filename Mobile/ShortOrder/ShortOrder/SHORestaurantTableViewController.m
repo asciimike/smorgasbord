@@ -8,12 +8,17 @@
 
 #import "SHOHomeViewController.h"
 #import "SHORestaurantTableViewController.h"
+#import "SHORestaurantCell.h"
+
+
 
 @interface SHORestaurantTableViewController ()
 
 @end
 
 @implementation SHORestaurantTableViewController
+
+static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,12 +37,23 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:nil];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"SHORestaurantCell" bundle:nil] forCellReuseIdentifier:RestaurantCellIdentifier];
+    //[self.tableView registerClass:[SHORestaurantCell class] forCellReuseIdentifier:RestaurantCellIdentifier];
+    UIBarButtonItem *flexibleSpaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    UIBarButtonItem *sortOrderItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:nil];
+    sortOrderItem.title = @"Sort Order";
+    UIBarButtonItem *favoritesItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:nil];
+    favoritesItem.title = @"Favorites";
+    NSArray *barButtonItems = [NSArray arrayWithObjects:flexibleSpaceItem, sortOrderItem, flexibleSpaceItem, favoritesItem, flexibleSpaceItem, nil];
+    self.toolbarItems = barButtonItems;
 }
 
 - (void)viewWillAppear:(BOOL)animated;
 {
-    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setToolbarHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,19 +75,12 @@
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 3;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-    // Configure the cell...
-    cell.textLabel.text = @"Testing...";
+    SHORestaurantCell *cell = [self.tableView dequeueReusableCellWithIdentifier:RestaurantCellIdentifier];
     
     return cell;
 }
