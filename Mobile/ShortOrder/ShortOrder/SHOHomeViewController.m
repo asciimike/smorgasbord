@@ -7,6 +7,7 @@
 //
 
 #import "SHOHomeViewController.h"
+#import "SHORestaurantTableViewController.h"
 
 @interface SHOHomeViewController ()
 
@@ -26,7 +27,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated;
+{
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    self.title = @"Home";
+    self.searchTextField.text = @"";
+    self.searchTextField.placeholder = @"City or Zip Code";
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,9 +48,29 @@
 
 - (IBAction)searchGoButtonPressed:(id)sender {
     // Go to the restaurant list view
+    SHORestaurantTableViewController *restaurantTableViewController = [[SHORestaurantTableViewController alloc] initWithNibName:@"SHORestaurantTableViewController" bundle:[NSBundle mainBundle]];
+    NSString *textBoxInput = self.searchTextField.text;
+    if ([textBoxInput isEqualToString:@""]) {
+        // Must input valid things! Check here for validity...
+    } else {
+        NSString *locationString = [NSString stringWithFormat: @"Restaurants Near %@", textBoxInput];
+        restaurantTableViewController.title = locationString;
+        [self.navigationController pushViewController:restaurantTableViewController animated:YES];
+    }
 }
 
-- (IBAction)signInButtonPressed:(id)sender {
+- (IBAction)signInButtonPressed:(id)sender;
+{
     // Present a custom alert that asks the user to sign in
+}
+
+- (IBAction)searchFieldPressedEnter:(id)sender;
+{
+    [sender resignFirstResponder];
+}
+
+- (IBAction)backgroundTap:(id)sender;
+{
+    [self.searchTextField resignFirstResponder];
 }
 @end

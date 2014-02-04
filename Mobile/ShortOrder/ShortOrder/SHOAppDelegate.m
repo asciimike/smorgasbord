@@ -15,8 +15,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    SHOHomeViewController *HomeViewController = [[SHOHomeViewController alloc] init];
-    self.window.rootViewController = HomeViewController;
+    SHOHomeViewController *homeViewController = [[SHOHomeViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
+    self.window.rootViewController = navController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

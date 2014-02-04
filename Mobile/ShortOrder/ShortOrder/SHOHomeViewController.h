@@ -18,5 +18,7 @@
 
 - (IBAction)searchGoButtonPressed:(id)sender;
 - (IBAction)signInButtonPressed:(id)sender;
+- (IBAction)searchFieldPressedEnter:(id)sender;
+- (IBAction)backgroundTap:(id)sender;
 
 @end
