@@ -9,6 +9,7 @@
 #import "SHOHomeViewController.h"
 #import "SHORestaurantTableViewController.h"
 #import "SHORestaurantTableViewControllerWithTabs.h"
+#import "SHOLoginViewController.h"
 
 @interface SHOHomeViewController ()
 
@@ -31,8 +32,6 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self.navigationController setToolbarHidden:YES];
     
-    [self.nearButton setImage:[UIImage imageNamed:@"NearButton.jpg"] forState:UIControlStateNormal];
-    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -42,6 +41,15 @@
     self.title = @"Home";
     self.searchTextField.text = @"";
     self.searchTextField.placeholder = @"City or Zip Code";
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated;
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,11 +62,25 @@
 {
     #warning Use Firebase simple login (facebook) to log users in
     // Present a custom alert that asks the user to sign in (firebase simple login)
+    
+    SHOLoginViewController *loginController = [[SHOLoginViewController alloc] init];
+    loginController.modalPresentationStyle = UIModalPresentationFullScreen;
+    loginController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:loginController animated:YES completion:nil];
+     
+    
+//    UIView *loginView = [[[NSBundle mainBundle] loadNibNamed:@"SHOLoginViewController" owner:self options:nil] objectAtIndex:0];
+//    
+//    [self.view addSubview:loginView];
+    
+    //Animate frame on screen
+    
 }
 
 - (IBAction)searchFieldPressedEnter:(id)sender;
 {
-    [sender resignFirstResponder];
+//    [sender resignFirstResponder];
+    [self searchGoButtonPressed:self];
 }
 
 - (IBAction)backgroundTap:(id)sender;
@@ -79,6 +101,11 @@
 
 - (void)switchToRestaurantListNearLocation:(NSString *)location;
 {
+    // Hide the keyboard if it's present
+    if (self.searchTextField.isFirstResponder) {
+        [self.searchTextField resignFirstResponder];
+    }
+    
     SHORestaurantTableViewControllerWithTabs *restaurantTableViewController = [[SHORestaurantTableViewControllerWithTabs alloc] initWithNibName:@"SHORestaurantTableViewControllerWithTabs" bundle:[NSBundle mainBundle]];
     
     if ([location isEqualToString:@""]) {
@@ -89,4 +116,22 @@
         [self.navigationController pushViewController:restaurantTableViewController animated:YES];
     }
 }
+
+// TODO eliminate the magic numbers here (especially for iPhone 4's vs 5's
+// Use the notification dicationary
+# pragma mark - Keyboard will show/hide notifications to scroll the view properly
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    [UIView animateWithDuration:0.3f animations:^{
+        [self.view setFrame:CGRectMake(0,-120,320,460)];
+    }];
+}
+
+-(void)keyboardWillHide:(NSNotification *)notification
+{
+    [UIView animateWithDuration:0.3f animations:^{
+        [self.view setFrame:CGRectMake(0,0,320,460)];
+    }];
+}
+
 @end

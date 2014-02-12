@@ -29,6 +29,7 @@
     // Configure the view for the selected state
 }
 
+//TODO: Refactor to pull colors out to a plist (or at the very least a header file)
 - (void)setWaitTime:(NSInteger)waitTime;
 {
     self.currentWaitLabel.text = [NSString stringWithFormat:@"%d min", waitTime];

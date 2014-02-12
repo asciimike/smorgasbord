@@ -21,7 +21,6 @@
 		4CBA062B18A032730036A3DF /* ShortOrderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA062A18A032730036A3DF /* ShortOrderTests.m */; };
 		4CBA063718A035E20036A3DF /* SHOHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA063518A035E20036A3DF /* SHOHomeViewController.m */; };
 		4CBA063818A035E20036A3DF /* SHOHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA063618A035E20036A3DF /* SHOHomeViewController.xib */; };
-		4CBA063D18A0401C0036A3DF /* NearButton.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA063C18A0401C0036A3DF /* NearButton.jpg */; };
 		4CBA064118A048CA0036A3DF /* SHORestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA063F18A048CA0036A3DF /* SHORestaurantTableViewController.m */; };
 		4CBA064218A048CA0036A3DF /* SHORestaurantTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA064018A048CA0036A3DF /* SHORestaurantTableViewController.xib */; };
 		4CBA064518A070780036A3DF /* SHORestaurantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA064418A070780036A3DF /* SHORestaurantCell.m */; };
@@ -32,6 +31,9 @@
 		4CBA065318A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA065118A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.xib */; };
 		4CBA065618A0CDD10036A3DF /* SHOReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA065518A0CDD10036A3DF /* SHOReviewCell.m */; };
 		4CBA065818A0CDF10036A3DF /* SHOReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA065718A0CDF10036A3DF /* SHOReviewCell.xib */; };
+		4CBA065C18AAC85C0036A3DF /* SHOLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA065A18AAC85C0036A3DF /* SHOLoginViewController.m */; };
+		4CBA065D18AAC85C0036A3DF /* SHOLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA065B18AAC85C0036A3DF /* SHOLoginViewController.xib */; };
+		4CBA065F18AACD760036A3DF /* NearButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA065E18AACD760036A3DF /* NearButton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +66,6 @@
 		4CBA063418A035E20036A3DF /* SHOHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOHomeViewController.h; sourceTree = "<group>"; };
 		4CBA063518A035E20036A3DF /* SHOHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHOHomeViewController.m; sourceTree = "<group>"; };
 		4CBA063618A035E20036A3DF /* SHOHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHOHomeViewController.xib; sourceTree = "<group>"; };
-		4CBA063C18A0401C0036A3DF /* NearButton.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = NearButton.jpg; sourceTree = "<group>"; };
 		4CBA063E18A048CA0036A3DF /* SHORestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHORestaurantTableViewController.h; sourceTree = "<group>"; };
 		4CBA063F18A048CA0036A3DF /* SHORestaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHORestaurantTableViewController.m; sourceTree = "<group>"; };
 		4CBA064018A048CA0036A3DF /* SHORestaurantTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHORestaurantTableViewController.xib; sourceTree = "<group>"; };
@@ -80,6 +81,10 @@
 		4CBA065418A0CDD10036A3DF /* SHOReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOReviewCell.h; sourceTree = "<group>"; };
 		4CBA065518A0CDD10036A3DF /* SHOReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHOReviewCell.m; sourceTree = "<group>"; };
 		4CBA065718A0CDF10036A3DF /* SHOReviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHOReviewCell.xib; sourceTree = "<group>"; };
+		4CBA065918AAC85C0036A3DF /* SHOLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOLoginViewController.h; sourceTree = "<group>"; };
+		4CBA065A18AAC85C0036A3DF /* SHOLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHOLoginViewController.m; sourceTree = "<group>"; };
+		4CBA065B18AAC85C0036A3DF /* SHOLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHOLoginViewController.xib; sourceTree = "<group>"; };
+		4CBA065E18AACD760036A3DF /* NearButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NearButton.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +144,9 @@
 		4CBA060B18A032730036A3DF /* ShortOrder */ = {
 			isa = PBXGroup;
 			children = (
+				4CBA065918AAC85C0036A3DF /* SHOLoginViewController.h */,
+				4CBA065A18AAC85C0036A3DF /* SHOLoginViewController.m */,
+				4CBA065B18AAC85C0036A3DF /* SHOLoginViewController.xib */,
 				4CBA061418A032730036A3DF /* SHOAppDelegate.h */,
 				4CBA061518A032730036A3DF /* SHOAppDelegate.m */,
 				4CBA063418A035E20036A3DF /* SHOHomeViewController.h */,
@@ -198,7 +206,7 @@
 		4CBA063B18A03F910036A3DF /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				4CBA063C18A0401C0036A3DF /* NearButton.jpg */,
+				4CBA065E18AACD760036A3DF /* NearButton.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -280,14 +288,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CBA064218A048CA0036A3DF /* SHORestaurantTableViewController.xib in Resources */,
+				4CBA065F18AACD760036A3DF /* NearButton.png in Resources */,
 				4CBA064718A071420036A3DF /* SHORestaurantCell.xib in Resources */,
 				4CBA064E18A0A6180036A3DF /* SHORestaurantViewController.xib in Resources */,
 				4CBA063818A035E20036A3DF /* SHOHomeViewController.xib in Resources */,
 				4CBA065318A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.xib in Resources */,
+				4CBA065D18AAC85C0036A3DF /* SHOLoginViewController.xib in Resources */,
 				4CBA065818A0CDF10036A3DF /* SHOReviewCell.xib in Resources */,
 				4CBA061018A032730036A3DF /* InfoPlist.strings in Resources */,
 				4CBA061818A032730036A3DF /* Images.xcassets in Resources */,
-				4CBA063D18A0401C0036A3DF /* NearButton.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +322,7 @@
 				4CBA063718A035E20036A3DF /* SHOHomeViewController.m in Sources */,
 				4CBA061618A032730036A3DF /* SHOAppDelegate.m in Sources */,
 				4CBA065618A0CDD10036A3DF /* SHOReviewCell.m in Sources */,
+				4CBA065C18AAC85C0036A3DF /* SHOLoginViewController.m in Sources */,
 				4CBA064118A048CA0036A3DF /* SHORestaurantTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
