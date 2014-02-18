@@ -13,4 +13,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UITabBar *tabBar;
 
+@property (strong, nonatomic) NSMutableArray *restaurantList;
+@property enum tabState currentTabState;
+
 @end

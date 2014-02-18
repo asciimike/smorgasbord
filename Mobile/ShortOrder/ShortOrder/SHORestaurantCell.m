@@ -30,17 +30,22 @@
 }
 
 //TODO: Refactor to pull colors out to a plist (or at the very least a header file)
-- (void)setWaitTime:(NSInteger)waitTime;
+- (void)setWaitTimeInMinutes:(NSInteger)waitTimeMinutes Hours:(NSInteger)waitTimeHours;
 {
-    self.currentWaitLabel.text = [NSString stringWithFormat:@"%d min", waitTime];
-    if (waitTime <= SHORT_WAIT_TIME) {
-        self.currentWaitLabel.textColor = [UIColor colorWithRed:0.0902 green:0.6431 blue:0.1020 alpha:1.0];
-    } else if (waitTime <= MEDIUM_WAIT_TIME) {
-        self.currentWaitLabel.textColor = [UIColor colorWithRed:0.9922 green:0.7020 blue:0.1686 alpha:1.0];
-    } else if (waitTime <= LONG_WAIT_TIME) {
-        self.currentWaitLabel.textColor = [UIColor colorWithRed:0.9882 green:0.3882 blue:0.1255 alpha:1.0];
-    } else if (waitTime > LONG_WAIT_TIME) {
+    if (waitTimeHours > 0) {
+        self.currentWaitLabel.text = [NSString stringWithFormat:@"%d hr %d min", waitTimeHours, waitTimeMinutes];
         self.currentWaitLabel.textColor = [UIColor colorWithRed:0.8353 green:0.1294 blue:0.0863 alpha:1.0];
+    } else {
+        self.currentWaitLabel.text = [NSString stringWithFormat:@"%d min", waitTimeMinutes];
+        if (waitTimeMinutes <= SHORT_WAIT_TIME) {
+            self.currentWaitLabel.textColor = [UIColor colorWithRed:0.0902 green:0.6431 blue:0.1020 alpha:1.0];
+        } else if (waitTimeMinutes <= MEDIUM_WAIT_TIME) {
+            self.currentWaitLabel.textColor = [UIColor colorWithRed:0.9922 green:0.7020 blue:0.1686 alpha:1.0];
+        } else if (waitTimeMinutes <= LONG_WAIT_TIME) {
+            self.currentWaitLabel.textColor = [UIColor colorWithRed:0.9882 green:0.3882 blue:0.1255 alpha:1.0];
+        } else if (waitTimeMinutes > LONG_WAIT_TIME) {
+            self.currentWaitLabel.textColor = [UIColor colorWithRed:0.8353 green:0.1294 blue:0.0863 alpha:1.0];
+        }
     }
 }
 

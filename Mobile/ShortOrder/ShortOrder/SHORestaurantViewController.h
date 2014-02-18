@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SHORestaurant.h"
 
 @interface SHORestaurantViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -15,5 +16,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *noThanksLabel;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) SHORestaurant *restaurant;
 
 @end

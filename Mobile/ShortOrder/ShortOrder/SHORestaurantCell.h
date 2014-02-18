@@ -14,6 +14,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *restaurantNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *currentWaitLabel;
 
-- (void)setWaitTime:(NSInteger)waitTime;
+- (void)setWaitTimeInMinutes:(NSInteger)waitTimeMinutes Hours:(NSInteger)waitTimeHours;
 
 @end

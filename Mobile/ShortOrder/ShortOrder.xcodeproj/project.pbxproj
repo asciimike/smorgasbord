@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CAB945C18B326970031E4BC /* SHORestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB945B18B326970031E4BC /* SHORestaurant.m */; };
+		4CAB946418B3462B0031E4BC /* SHOReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB946318B3462B0031E4BC /* SHOReview.m */; };
 		4CBA060618A032730036A3DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBA060518A032730036A3DF /* Foundation.framework */; };
 		4CBA060818A032730036A3DF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBA060718A032730036A3DF /* CoreGraphics.framework */; };
 		4CBA060A18A032730036A3DF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBA060918A032730036A3DF /* UIKit.framework */; };
@@ -47,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4CAB945A18B326970031E4BC /* SHORestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHORestaurant.h; sourceTree = "<group>"; };
+		4CAB945B18B326970031E4BC /* SHORestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHORestaurant.m; sourceTree = "<group>"; };
+		4CAB946218B3462B0031E4BC /* SHOReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOReview.h; sourceTree = "<group>"; };
+		4CAB946318B3462B0031E4BC /* SHOReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHOReview.m; sourceTree = "<group>"; };
 		4CBA060218A032730036A3DF /* ShortOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShortOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBA060518A032730036A3DF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4CBA060718A032730036A3DF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -111,6 +117,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4CAB945D18B33F180031E4BC /* Data Objects */ = {
+			isa = PBXGroup;
+			children = (
+				4CAB945A18B326970031E4BC /* SHORestaurant.h */,
+				4CAB945B18B326970031E4BC /* SHORestaurant.m */,
+				4CAB946218B3462B0031E4BC /* SHOReview.h */,
+				4CAB946318B3462B0031E4BC /* SHOReview.m */,
+			);
+			name = "Data Objects";
+			sourceTree = "<group>";
+		};
+		4CAB945E18B33F2D0031E4BC /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4CBA065918AAC85C0036A3DF /* SHOLoginViewController.h */,
+				4CBA065A18AAC85C0036A3DF /* SHOLoginViewController.m */,
+				4CBA065B18AAC85C0036A3DF /* SHOLoginViewController.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		4CAB945F18B33F3A0031E4BC /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				4CBA063E18A048CA0036A3DF /* SHORestaurantTableViewController.h */,
+				4CBA063F18A048CA0036A3DF /* SHORestaurantTableViewController.m */,
+				4CBA064018A048CA0036A3DF /* SHORestaurantTableViewController.xib */,
+			);
+			name = Old;
+			sourceTree = "<group>";
+		};
+		4CAB946018B33F4C0031E4BC /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4CBA064318A070780036A3DF /* SHORestaurantCell.h */,
+				4CBA064418A070780036A3DF /* SHORestaurantCell.m */,
+				4CBA064618A071420036A3DF /* SHORestaurantCell.xib */,
+				4CBA065418A0CDD10036A3DF /* SHOReviewCell.h */,
+				4CBA065518A0CDD10036A3DF /* SHOReviewCell.m */,
+				4CBA065718A0CDF10036A3DF /* SHOReviewCell.xib */,
+			);
+			name = "Table View Cells";
+			sourceTree = "<group>";
+		};
 		4CBA05F918A032730036A3DF = {
 			isa = PBXGroup;
 			children = (
@@ -144,23 +194,15 @@
 		4CBA060B18A032730036A3DF /* ShortOrder */ = {
 			isa = PBXGroup;
 			children = (
-				4CBA065918AAC85C0036A3DF /* SHOLoginViewController.h */,
-				4CBA065A18AAC85C0036A3DF /* SHOLoginViewController.m */,
-				4CBA065B18AAC85C0036A3DF /* SHOLoginViewController.xib */,
+				4CAB946018B33F4C0031E4BC /* Table View Cells */,
+				4CAB945F18B33F3A0031E4BC /* Old */,
+				4CAB945E18B33F2D0031E4BC /* Login */,
+				4CAB945D18B33F180031E4BC /* Data Objects */,
 				4CBA061418A032730036A3DF /* SHOAppDelegate.h */,
 				4CBA061518A032730036A3DF /* SHOAppDelegate.m */,
 				4CBA063418A035E20036A3DF /* SHOHomeViewController.h */,
 				4CBA063518A035E20036A3DF /* SHOHomeViewController.m */,
 				4CBA063618A035E20036A3DF /* SHOHomeViewController.xib */,
-				4CBA063E18A048CA0036A3DF /* SHORestaurantTableViewController.h */,
-				4CBA063F18A048CA0036A3DF /* SHORestaurantTableViewController.m */,
-				4CBA064018A048CA0036A3DF /* SHORestaurantTableViewController.xib */,
-				4CBA064318A070780036A3DF /* SHORestaurantCell.h */,
-				4CBA064418A070780036A3DF /* SHORestaurantCell.m */,
-				4CBA064618A071420036A3DF /* SHORestaurantCell.xib */,
-				4CBA065418A0CDD10036A3DF /* SHOReviewCell.h */,
-				4CBA065518A0CDD10036A3DF /* SHOReviewCell.m */,
-				4CBA065718A0CDF10036A3DF /* SHOReviewCell.xib */,
 				4CBA064A18A0A6180036A3DF /* SHORestaurantViewController.h */,
 				4CBA064B18A0A6180036A3DF /* SHORestaurantViewController.m */,
 				4CBA064C18A0A6180036A3DF /* SHORestaurantViewController.xib */,
@@ -315,11 +357,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CAB946418B3462B0031E4BC /* SHOReview.m in Sources */,
 				4CBA065218A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.m in Sources */,
 				4CBA064D18A0A6180036A3DF /* SHORestaurantViewController.m in Sources */,
 				4CBA064518A070780036A3DF /* SHORestaurantCell.m in Sources */,
 				4CBA061218A032730036A3DF /* main.m in Sources */,
 				4CBA063718A035E20036A3DF /* SHOHomeViewController.m in Sources */,
+				4CAB945C18B326970031E4BC /* SHORestaurant.m in Sources */,
 				4CBA061618A032730036A3DF /* SHOAppDelegate.m in Sources */,
 				4CBA065618A0CDD10036A3DF /* SHOReviewCell.m in Sources */,
 				4CBA065C18AAC85C0036A3DF /* SHOLoginViewController.m in Sources */,
