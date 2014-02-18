@@ -26,4 +26,20 @@
     // Configure the view for the selected state
 }
 
+- (void)setReview:(SHOReview *)newReview;
+{
+    _review = newReview;
+    self.waitTimeLabel.text = [self formatWaitTimeMinutes:self.review.waitTimeMinutes andHours:self.review.waitTimeHours];
+//    self.ratingImage.image = self.review.wasWorthIt ? : ;
+}
+
+- (NSString *)formatWaitTimeMinutes:(NSInteger)minutes andHours:(NSInteger)hours;
+{
+    if (hours > 0) {
+        return [NSString stringWithFormat:@"%d hr %d min", hours, minutes];
+    }
+    
+    return [NSString stringWithFormat:@"%d min", minutes];
+}
+
 @end

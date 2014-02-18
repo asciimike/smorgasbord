@@ -37,7 +37,7 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"SHORestaurantCell" bundle:nil] forCellReuseIdentifier:RestaurantCellIdentifier];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:nil];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addRestaurant)];
     
     // TODO (UX): create the tab bar items for the actual values
 
@@ -94,8 +94,7 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
 {
     SHORestaurantViewController *restaurantViewController = [[SHORestaurantViewController alloc] initWithNibName:@"SHORestaurantViewController" bundle:nil];
     restaurantViewController.restaurant = [self.restaurantList objectAtIndex:indexPath.row];
-    restaurantViewController.restaurant.reviewList = [[NSMutableArray alloc] initWithObjects:[[SHOReview alloc] initWithWaitTimeMinutes:10 andHours:0 wasWorthIt:YES atDate:[NSDate date]],
-                                                      [[SHOReview alloc] initWithWaitTimeMinutes:5 andHours:0 wasWorthIt:YES atDate:[NSDate date]], nil];
+//    restaurantViewController.restaurant.reviewList = 
     
     [self.navigationController pushViewController:restaurantViewController animated:YES];
     
@@ -163,6 +162,28 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
     [[SHORestaurant alloc] initWithName:@"Taj Mahal" waitInMinutes:14 andHours:0 isFavorite:YES],
     [[SHORestaurant alloc] initWithName:@"TGI Friday's" waitInMinutes:42 andHours:0 isFavorite:NO],
     nil];
+    
+    for (SHORestaurant *restaurant in self.restaurantList) {
+        restaurant.reviewList = [[NSMutableArray alloc] initWithObjects:
+                                [[SHOReview alloc] initWithWaitTimeMinutes:10 andHours:0 wasWorthIt:NO atDate:[NSDate date]],
+                                [[SHOReview alloc] initWithWaitTimeMinutes:5 andHours:0 wasWorthIt:YES atDate:[NSDate date]],
+                                [[SHOReview alloc] initWithWaitTimeMinutes:23 andHours:0 wasWorthIt:NO atDate:[NSDate date]],
+                                [[SHOReview alloc] initWithWaitTimeMinutes:14 andHours:0 wasWorthIt:NO atDate:[NSDate date]],
+                                [[SHOReview alloc] initWithWaitTimeMinutes:7 andHours:0 wasWorthIt:NO atDate:[NSDate date]],
+                                [[SHOReview alloc] initWithWaitTimeMinutes:15 andHours:1 wasWorthIt:YES atDate:[NSDate date]],
+                                 nil];
+    }
+}
+
+- (void)addRestaurant;
+{
+    NSLog(@"Adding a new restaurant");
+    
+    // Pop up a box for the restaurant name
+    
+    // Take a picture
+    
+    // Go to the restaurant view
 }
 
 

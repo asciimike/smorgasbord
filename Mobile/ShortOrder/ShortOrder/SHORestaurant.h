@@ -20,4 +20,8 @@
 
 - (id)initWithName:(NSString *)restaurantName waitInMinutes:(NSInteger)minutes andHours:(NSInteger)hours isFavorite:(BOOL)favorite;
 
+- (NSInteger)predictWaitTimeFromReviewsByAveraging;
+- (NSInteger)calculateWasWorthItPercent;
+- (NSInteger)calculateWasNotWorthItPercent;
+
 @end

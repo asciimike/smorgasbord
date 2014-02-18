@@ -39,6 +39,10 @@ static NSString *ReviewCellIdentifier = @"ReviewCellIdentifier";
     
     [self setWaitTimeInMinutes:self.restaurant.waitTimeMinutes Hours:self.restaurant.waitTimeHours];
     
+    self.worthItLabel.text = [NSString stringWithFormat:@"%d%%",[self.restaurant calculateWasWorthItPercent]];
+    
+    self.noThanksLabel.text = [NSString stringWithFormat:@"%d%%",[self.restaurant calculateWasNotWorthItPercent]];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"SHOReviewCell" bundle:nil] forCellReuseIdentifier:ReviewCellIdentifier];
 }
 
@@ -68,9 +72,7 @@ static NSString *ReviewCellIdentifier = @"ReviewCellIdentifier";
 {
     SHOReviewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:ReviewCellIdentifier];
     
-    SHOReview *currentReview = [self.restaurant.reviewList objectAtIndex:indexPath.row];
-    
-    cell.waitTimeLabel.text = [self formatWaitTimeMinutes:currentReview.waitTimeMinutes andHours:currentReview.waitTimeHours];
+    cell.review = [self.restaurant.reviewList objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -93,15 +95,6 @@ static NSString *ReviewCellIdentifier = @"ReviewCellIdentifier";
             self.waitTimeLabel.textColor = [UIColor colorWithRed:0.8353 green:0.1294 blue:0.0863 alpha:1.0];
         }
     }
-}
-
-- (NSString *)formatWaitTimeMinutes:(NSInteger)minutes andHours:(NSInteger)hours;
-{
-    if (hours > 0) {
-        return [NSString stringWithFormat:@"%d hr %d min", hours, minutes];
-    }
-    
-    return [NSString stringWithFormat:@"%d min", minutes];
 }
 
 @end

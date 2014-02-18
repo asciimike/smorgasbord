@@ -32,6 +32,12 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self.navigationController setToolbarHidden:YES];
     
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    
+    [self.locationManager startUpdatingLocation];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -96,7 +102,13 @@
 
 - (IBAction)nearButtonPressed:(id)sender {
     // Use gelocation to find out the area code near me
-    [self switchToRestaurantListNearLocation:@"47803"];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:self.currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error == nil && [placemarks count] > 0) {
+            CLPlacemark *currentPlace = [placemarks lastObject];
+            [self switchToRestaurantListNearLocation:[NSString stringWithFormat:@"%@",currentPlace.postalCode]];
+        }
+    }];
 }
 
 - (void)switchToRestaurantListNearLocation:(NSString *)location;
@@ -132,6 +144,21 @@
     [UIView animateWithDuration:0.3f animations:^{
         [self.view setFrame:CGRectMake(0,0,320,460)];
     }];
+}
+
+#pragma mark - CLLocationManager Delegate Methods
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
+{
+    self.currentLocation = [locations lastObject];
+    NSLog(@"Lat: %.8f, Lon: %.8f",self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude);
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Location Failure" message:@"Location failed to find" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    
+    [alertView show];
 }
 
 @end
