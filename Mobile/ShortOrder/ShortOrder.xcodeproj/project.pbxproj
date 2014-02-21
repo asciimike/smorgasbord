@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C18015C18B6DD4700DA6415 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C18015B18B6DD4700DA6415 /* SystemConfiguration.framework */; };
+		4C18016318B6E75A00DA6415 /* NotWorthItButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18016118B6E75A00DA6415 /* NotWorthItButton.png */; };
+		4C18016418B6E75A00DA6415 /* WorthItButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18016218B6E75A00DA6415 /* WorthItButton.png */; };
+		4C18016718B6EB0300DA6415 /* SHORestaurantTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C18016618B6EB0300DA6415 /* SHORestaurantTableViewHeader.xib */; };
+		4C18016B18B6F8F800DA6415 /* SpinnerBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18016A18B6F8F800DA6415 /* SpinnerBackground.png */; };
+		4C18016D18B6FA3E00DA6415 /* SpinnerBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18016C18B6FA3E00DA6415 /* SpinnerBackground@2x.png */; };
+		4C18017018B6FB3000DA6415 /* NotWorthItButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18016E18B6FB3000DA6415 /* NotWorthItButton@2x.png */; };
+		4C18017118B6FB3000DA6415 /* WorthItButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18016F18B6FB3000DA6415 /* WorthItButton@2x.png */; };
+		4C18017318B6FBD300DA6415 /* NearButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18017218B6FBD300DA6415 /* NearButton@2x.png */; };
+		4C18017918B6FDC000DA6415 /* SHOReviewPickerModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C18017718B6FDC000DA6415 /* SHOReviewPickerModalViewController.m */; };
+		4C18017A18B6FDC000DA6415 /* SHOReviewPickerModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C18017818B6FDC000DA6415 /* SHOReviewPickerModalViewController.xib */; };
+		4C18017C18B712CD00DA6415 /* Separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18017B18B712CD00DA6415 /* Separator@2x.png */; };
 		4CAB945C18B326970031E4BC /* SHORestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB945B18B326970031E4BC /* SHORestaurant.m */; };
 		4CAB946418B3462B0031E4BC /* SHOReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB946318B3462B0031E4BC /* SHOReview.m */; };
 		4CAB946818B409A40031E4BC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB946718B409A40031E4BC /* CoreLocation.framework */; };
@@ -37,6 +49,7 @@
 		4CBA065C18AAC85C0036A3DF /* SHOLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA065A18AAC85C0036A3DF /* SHOLoginViewController.m */; };
 		4CBA065D18AAC85C0036A3DF /* SHOLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA065B18AAC85C0036A3DF /* SHOLoginViewController.xib */; };
 		4CBA065F18AACD760036A3DF /* NearButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA065E18AACD760036A3DF /* NearButton.png */; };
+		6D5FD9C4603040D69E92F9E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A652BCE7934EB0A7E0D443 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +63,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22A652BCE7934EB0A7E0D443 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C18015B18B6DD4700DA6415 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4C18016118B6E75A00DA6415 /* NotWorthItButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NotWorthItButton.png; path = ../../ShortOrderResources/NotWorthItButton.png; sourceTree = "<group>"; };
+		4C18016218B6E75A00DA6415 /* WorthItButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WorthItButton.png; path = ../../ShortOrderResources/WorthItButton.png; sourceTree = "<group>"; };
+		4C18016618B6EB0300DA6415 /* SHORestaurantTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHORestaurantTableViewHeader.xib; sourceTree = "<group>"; };
+		4C18016A18B6F8F800DA6415 /* SpinnerBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SpinnerBackground.png; path = ../../ShortOrderResources/SpinnerBackground.png; sourceTree = "<group>"; };
+		4C18016C18B6FA3E00DA6415 /* SpinnerBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SpinnerBackground@2x.png"; path = "../../ShortOrderResources/SpinnerBackground@2x.png"; sourceTree = "<group>"; };
+		4C18016E18B6FB3000DA6415 /* NotWorthItButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NotWorthItButton@2x.png"; path = "../../ShortOrderResources/NotWorthItButton@2x.png"; sourceTree = "<group>"; };
+		4C18016F18B6FB3000DA6415 /* WorthItButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "WorthItButton@2x.png"; path = "../../ShortOrderResources/WorthItButton@2x.png"; sourceTree = "<group>"; };
+		4C18017218B6FBD300DA6415 /* NearButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NearButton@2x.png"; path = "../../ShortOrderResources/NearButton@2x.png"; sourceTree = "<group>"; };
+		4C18017618B6FDC000DA6415 /* SHOReviewPickerModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOReviewPickerModalViewController.h; sourceTree = "<group>"; };
+		4C18017718B6FDC000DA6415 /* SHOReviewPickerModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHOReviewPickerModalViewController.m; sourceTree = "<group>"; };
+		4C18017818B6FDC000DA6415 /* SHOReviewPickerModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHOReviewPickerModalViewController.xib; sourceTree = "<group>"; };
+		4C18017B18B712CD00DA6415 /* Separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Separator@2x.png"; path = "../../ShortOrderResources/Separator@2x.png"; sourceTree = "<group>"; };
 		4CAB945A18B326970031E4BC /* SHORestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHORestaurant.h; sourceTree = "<group>"; };
 		4CAB945B18B326970031E4BC /* SHORestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHORestaurant.m; sourceTree = "<group>"; };
 		4CAB946218B3462B0031E4BC /* SHOReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOReview.h; sourceTree = "<group>"; };
@@ -93,6 +120,7 @@
 		4CBA065A18AAC85C0036A3DF /* SHOLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHOLoginViewController.m; sourceTree = "<group>"; };
 		4CBA065B18AAC85C0036A3DF /* SHOLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHOLoginViewController.xib; sourceTree = "<group>"; };
 		4CBA065E18AACD760036A3DF /* NearButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NearButton.png; sourceTree = "<group>"; };
+		5CAB79723BCA4507A5FB4FC8 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,10 +128,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C18015C18B6DD4700DA6415 /* SystemConfiguration.framework in Frameworks */,
 				4CAB946818B409A40031E4BC /* CoreLocation.framework in Frameworks */,
 				4CBA060818A032730036A3DF /* CoreGraphics.framework in Frameworks */,
 				4CBA060A18A032730036A3DF /* UIKit.framework in Frameworks */,
 				4CBA060618A032730036A3DF /* Foundation.framework in Frameworks */,
+				6D5FD9C4603040D69E92F9E7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +150,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C18016518B6EAE500DA6415 /* Restaurant View */ = {
+			isa = PBXGroup;
+			children = (
+				4CBA064A18A0A6180036A3DF /* SHORestaurantViewController.h */,
+				4CBA064B18A0A6180036A3DF /* SHORestaurantViewController.m */,
+				4CBA064C18A0A6180036A3DF /* SHORestaurantViewController.xib */,
+				4C18016618B6EB0300DA6415 /* SHORestaurantTableViewHeader.xib */,
+				4C18017618B6FDC000DA6415 /* SHOReviewPickerModalViewController.h */,
+				4C18017718B6FDC000DA6415 /* SHOReviewPickerModalViewController.m */,
+				4C18017818B6FDC000DA6415 /* SHOReviewPickerModalViewController.xib */,
+			);
+			name = "Restaurant View";
+			sourceTree = "<group>";
+		};
 		4CAB945D18B33F180031E4BC /* Data Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +215,7 @@
 				4CBA062418A032730036A3DF /* ShortOrderTests */,
 				4CBA060418A032730036A3DF /* Frameworks */,
 				4CBA060318A032730036A3DF /* Products */,
+				5CAB79723BCA4507A5FB4FC8 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -186,11 +231,13 @@
 		4CBA060418A032730036A3DF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C18015B18B6DD4700DA6415 /* SystemConfiguration.framework */,
 				4CAB946718B409A40031E4BC /* CoreLocation.framework */,
 				4CBA060518A032730036A3DF /* Foundation.framework */,
 				4CBA060718A032730036A3DF /* CoreGraphics.framework */,
 				4CBA060918A032730036A3DF /* UIKit.framework */,
 				4CBA061E18A032730036A3DF /* XCTest.framework */,
+				22A652BCE7934EB0A7E0D443 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -198,6 +245,7 @@
 		4CBA060B18A032730036A3DF /* ShortOrder */ = {
 			isa = PBXGroup;
 			children = (
+				4C18016518B6EAE500DA6415 /* Restaurant View */,
 				4CAB946018B33F4C0031E4BC /* Table View Cells */,
 				4CAB945F18B33F3A0031E4BC /* Old */,
 				4CAB945E18B33F2D0031E4BC /* Login */,
@@ -207,9 +255,6 @@
 				4CBA063418A035E20036A3DF /* SHOHomeViewController.h */,
 				4CBA063518A035E20036A3DF /* SHOHomeViewController.m */,
 				4CBA063618A035E20036A3DF /* SHOHomeViewController.xib */,
-				4CBA064A18A0A6180036A3DF /* SHORestaurantViewController.h */,
-				4CBA064B18A0A6180036A3DF /* SHORestaurantViewController.m */,
-				4CBA064C18A0A6180036A3DF /* SHORestaurantViewController.xib */,
 				4CBA064F18A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.h */,
 				4CBA065018A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.m */,
 				4CBA065118A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.xib */,
@@ -252,6 +297,14 @@
 		4CBA063B18A03F910036A3DF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4C18017B18B712CD00DA6415 /* Separator@2x.png */,
+				4C18017218B6FBD300DA6415 /* NearButton@2x.png */,
+				4C18016E18B6FB3000DA6415 /* NotWorthItButton@2x.png */,
+				4C18016F18B6FB3000DA6415 /* WorthItButton@2x.png */,
+				4C18016C18B6FA3E00DA6415 /* SpinnerBackground@2x.png */,
+				4C18016A18B6F8F800DA6415 /* SpinnerBackground.png */,
+				4C18016118B6E75A00DA6415 /* NotWorthItButton.png */,
+				4C18016218B6E75A00DA6415 /* WorthItButton.png */,
 				4CBA065E18AACD760036A3DF /* NearButton.png */,
 			);
 			name = Images;
@@ -264,9 +317,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4CBA062E18A032730036A3DF /* Build configuration list for PBXNativeTarget "ShortOrder" */;
 			buildPhases = (
+				FB4A8EC8E5EC45F589BE927C /* Check Pods Manifest.lock */,
 				4CBA05FE18A032730036A3DF /* Sources */,
 				4CBA05FF18A032730036A3DF /* Frameworks */,
 				4CBA060018A032730036A3DF /* Resources */,
+				C3B2D85DE38E422E9B98B266 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -333,15 +388,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C18017118B6FB3000DA6415 /* WorthItButton@2x.png in Resources */,
+				4C18017A18B6FDC000DA6415 /* SHOReviewPickerModalViewController.xib in Resources */,
 				4CBA064218A048CA0036A3DF /* SHORestaurantTableViewController.xib in Resources */,
 				4CBA065F18AACD760036A3DF /* NearButton.png in Resources */,
 				4CBA064718A071420036A3DF /* SHORestaurantCell.xib in Resources */,
+				4C18017318B6FBD300DA6415 /* NearButton@2x.png in Resources */,
+				4C18017018B6FB3000DA6415 /* NotWorthItButton@2x.png in Resources */,
+				4C18016D18B6FA3E00DA6415 /* SpinnerBackground@2x.png in Resources */,
 				4CBA064E18A0A6180036A3DF /* SHORestaurantViewController.xib in Resources */,
+				4C18016B18B6F8F800DA6415 /* SpinnerBackground.png in Resources */,
 				4CBA063818A035E20036A3DF /* SHOHomeViewController.xib in Resources */,
 				4CBA065318A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.xib in Resources */,
 				4CBA065D18AAC85C0036A3DF /* SHOLoginViewController.xib in Resources */,
 				4CBA065818A0CDF10036A3DF /* SHOReviewCell.xib in Resources */,
+				4C18017C18B712CD00DA6415 /* Separator@2x.png in Resources */,
+				4C18016718B6EB0300DA6415 /* SHORestaurantTableViewHeader.xib in Resources */,
 				4CBA061018A032730036A3DF /* InfoPlist.strings in Resources */,
+				4C18016418B6E75A00DA6415 /* WorthItButton.png in Resources */,
+				4C18016318B6E75A00DA6415 /* NotWorthItButton.png in Resources */,
 				4CBA061818A032730036A3DF /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,12 +421,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C3B2D85DE38E422E9B98B266 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB4A8EC8E5EC45F589BE927C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4CBA05FE18A032730036A3DF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4CAB946418B3462B0031E4BC /* SHOReview.m in Sources */,
+				4C18017918B6FDC000DA6415 /* SHOReviewPickerModalViewController.m in Sources */,
 				4CBA065218A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.m in Sources */,
 				4CBA064D18A0A6180036A3DF /* SHORestaurantViewController.m in Sources */,
 				4CBA064518A070780036A3DF /* SHORestaurantCell.m in Sources */,
@@ -487,6 +586,7 @@
 		};
 		4CBA062F18A032730036A3DF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CAB79723BCA4507A5FB4FC8 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -500,6 +600,7 @@
 		};
 		4CBA063018A032730036A3DF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CAB79723BCA4507A5FB4FC8 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

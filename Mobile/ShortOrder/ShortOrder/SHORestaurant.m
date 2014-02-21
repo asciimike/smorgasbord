@@ -83,12 +83,18 @@
 - (void)setReviewList:(NSMutableArray *)reviewList;
 {
     _reviewList = reviewList;
+    [self refreshData];
+}
+
+- (void)refreshData;
+{
+    NSSortDescriptor *hoursDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:NO];
+    _reviewList = [[_reviewList sortedArrayUsingDescriptors:@[hoursDescriptor]] mutableCopy];
     NSInteger totalMinutes = [self predictWaitTimeFromReviewsByAveraging];
     NSInteger hours = totalMinutes / MINUTES_PER_HOUR;
     NSInteger minutes = totalMinutes % MINUTES_PER_HOUR;
     self.waitTimeHours = hours;
     self.waitTimeMinutes = minutes;
-    
 }
 
 @end

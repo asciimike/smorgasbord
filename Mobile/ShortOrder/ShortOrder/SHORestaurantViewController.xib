@@ -6,10 +6,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHORestaurantViewController">
             <connections>
+                <outlet property="noThanksButton" destination="hob-aW-brG" id="NLU-ma-FiF"/>
                 <outlet property="noThanksLabel" destination="DZu-fc-jCi" id="6QQ-BH-aAH"/>
                 <outlet property="tableView" destination="E1z-af-jXu" id="F0a-2u-qY4"/>
                 <outlet property="view" destination="1" id="3"/>
                 <outlet property="waitTimeLabel" destination="8bk-W1-k29" id="RyC-vz-txc"/>
+                <outlet property="worthItButton" destination="6gN-aQ-2xY" id="HJk-F6-RrE"/>
                 <outlet property="worthItLabel" destination="BH3-61-Soi" id="UZd-qw-4KR"/>
             </connections>
         </placeholder>
@@ -32,21 +34,27 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gN-aQ-2xY">
-                    <rect key="frame" x="25" y="274" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gN-aQ-2xY">
+                    <rect key="frame" x="22" y="274" width="36" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
-                    <state key="normal" title="+">
+                    <state key="normal" image="WorthItButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="worthItButtonPressed:" destination="-1" eventType="touchUpInside" id="Jf4-F4-bza"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hob-aW-brG">
-                    <rect key="frame" x="265" y="274" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hob-aW-brG">
+                    <rect key="frame" x="262" y="275" width="36" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
-                    <state key="normal" title="–">
+                    <state key="normal" image="NotWorthItButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="noThanksButtonPressed:" destination="-1" eventType="touchUpInside" id="ZEe-lB-kAb"/>
+                    </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10 min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bk-W1-k29">
                     <rect key="frame" x="93" y="254" width="135" height="70"/>
@@ -58,7 +66,7 @@
                     <rect key="frame" x="80" y="86" width="160" height="160"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="E1z-af-jXu">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="E1z-af-jXu">
                     <rect key="frame" x="0.0" y="348" width="320" height="220"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -68,6 +76,17 @@
                         <outlet property="delegate" destination="-1" id="smW-4T-Cyb"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="recent reviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bm-TJ-aMb">
+                    <rect key="frame" x="108" y="329" width="104" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Separator.png" translatesAutoresizingMaskIntoConstraints="NO" id="mhU-Vu-h2C">
+                    <rect key="frame" x="0.0" y="348" width="320" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -75,4 +94,9 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="NotWorthItButton.png" width="36" height="36"/>
+        <image name="Separator.png" width="320" height="5"/>
+        <image name="WorthItButton.png" width="36" height="36"/>
+    </resources>
 </document>

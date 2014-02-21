@@ -73,11 +73,6 @@
     loginController.modalPresentationStyle = UIModalPresentationFullScreen;
     loginController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentViewController:loginController animated:YES completion:nil];
-     
-    
-//    UIView *loginView = [[[NSBundle mainBundle] loadNibNamed:@"SHOLoginViewController" owner:self options:nil] objectAtIndex:0];
-//    
-//    [self.view addSubview:loginView];
     
     //Animate frame on screen
     
@@ -151,6 +146,7 @@
 {
     self.currentLocation = [locations lastObject];
     NSLog(@"Lat: %.8f, Lon: %.8f",self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude);
+    [self.locationManager stopUpdatingLocation];
     
 }
 

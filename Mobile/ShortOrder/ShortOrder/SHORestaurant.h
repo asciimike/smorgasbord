@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface SHORestaurant : NSObject
 
 @property (strong, nonatomic) NSString *restaurantName;
+@property (strong, nonatomic) CLLocation *location;
 @property (nonatomic) NSInteger waitTimeMinutes;
 @property (nonatomic) NSInteger waitTimeHours;
 @property BOOL isFavorite;
@@ -23,5 +25,7 @@
 - (NSInteger)predictWaitTimeFromReviewsByAveraging;
 - (NSInteger)calculateWasWorthItPercent;
 - (NSInteger)calculateWasNotWorthItPercent;
+
+- (void)refreshData;
 
 @end

@@ -9,6 +9,7 @@
 #import "SHORestaurantViewController.h"
 #import "SHOReviewCell.h"
 #import "SHOReview.h"
+#import "SHOReviewPickerModalViewController.h"
 
 #define SHORT_WAIT_TIME 5
 #define MEDIUM_WAIT_TIME 10
@@ -37,13 +38,11 @@ static NSString *ReviewCellIdentifier = @"ReviewCellIdentifier";
     
     self.title = self.restaurant.restaurantName;
     
-    [self setWaitTimeInMinutes:self.restaurant.waitTimeMinutes Hours:self.restaurant.waitTimeHours];
-    
-    self.worthItLabel.text = [NSString stringWithFormat:@"%d%%",[self.restaurant calculateWasWorthItPercent]];
-    
-    self.noThanksLabel.text = [NSString stringWithFormat:@"%d%%",[self.restaurant calculateWasNotWorthItPercent]];
+    self.tableView.tableHeaderView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Separator.png"]];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"SHOReviewCell" bundle:nil] forCellReuseIdentifier:ReviewCellIdentifier];
+    
+    [self refreshData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -96,5 +95,62 @@ static NSString *ReviewCellIdentifier = @"ReviewCellIdentifier";
         }
     }
 }
+
+- (IBAction)worthItButtonPressed:(id)sender {
+    [self launchReviewViewWasWorthIt:YES];
+}
+
+- (IBAction)noThanksButtonPressed:(id)sender {
+    [self launchReviewViewWasWorthIt:NO];
+}
+
+- (void) launchReviewViewWasWorthIt:(BOOL)worthIt;
+{
+    // The much better modal view solution: looks and feels native
+    SHOReviewPickerModalViewController *pickerController = [[SHOReviewPickerModalViewController alloc] init];
+    pickerController.wasWorthIt = worthIt;
+    pickerController.restaurant = self.restaurant;
+    pickerController.modalPresentationStyle = UIModalPresentationFullScreen;
+    pickerController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:pickerController animated:YES completion:nil];
+    
+    /*
+    // If you really want to run this code with my super shitty totally not native UI components (thanks OmniGraffle, no thanks CS degree)
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    UIView *coverView = [[UIView alloc] initWithFrame:screenRect];
+    coverView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
+    [self.view addSubview:coverView];
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        UIView *latestView = [[self.view subviews] lastObject];
+        latestView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+    }];
+    
+    
+    UIView *reviewView = [[[NSBundle mainBundle] loadNibNamed:@"RestaurantReviewPickerView" owner:self options:nil] lastObject];
+    reviewView.frame = CGRectMake(self.view.frame.size.width/2.0 - reviewView.frame.size.width/2.0, self.view.frame.size.height/2.0 - reviewView.frame.size.height/2.0, reviewView.frame.size.width, reviewView.frame.size.height);
+    reviewView.alpha = 0;
+    [self.view addSubview:reviewView];
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        UIView *latestView = [[self.view subviews] lastObject];
+        latestView.alpha = 1.0;
+    }];
+     */
+}
+
+- (void) refreshData;
+{
+    [self.restaurant refreshData];
+    
+    [self setWaitTimeInMinutes:self.restaurant.waitTimeMinutes Hours:self.restaurant.waitTimeHours];
+    
+    self.worthItLabel.text = [NSString stringWithFormat:@"%d%%",[self.restaurant calculateWasWorthItPercent]];
+    
+    self.noThanksLabel.text = [NSString stringWithFormat:@"%d%%",[self.restaurant calculateWasNotWorthItPercent]];
+    
+    [self.tableView reloadData];
+}
+
 
 @end
