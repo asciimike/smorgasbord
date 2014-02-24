@@ -29,6 +29,13 @@
     // Configure the view for the selected state
 }
 
+- (void)setRestaurant:(SHORestaurant *)restaurant;
+{
+    _restaurant = restaurant;
+    self.restaurantNameLabel.text = _restaurant.restaurantName;
+    [self setWaitTimeInMinutes:_restaurant.waitTimeMinutes Hours:_restaurant.waitTimeHours];
+}
+
 //TODO: Refactor to pull colors out to a plist (or at the very least a header file)
 - (void)setWaitTimeInMinutes:(NSInteger)waitTimeMinutes Hours:(NSInteger)waitTimeHours;
 {

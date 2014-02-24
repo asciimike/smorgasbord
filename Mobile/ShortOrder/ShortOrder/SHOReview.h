@@ -10,13 +10,14 @@
 
 @interface SHOReview : NSObject
 
+@property NSString *reviewID;
 @property NSInteger waitTimeMinutes;
 @property NSInteger waitTimeHours;
 @property BOOL wasWorthIt;
 @property (strong, nonatomic) NSDate *timestamp;
 
 //TODO associate with UserID
-
+- (id)initWithDictionary:(NSDictionary *)dict;
 - (id)initWithWaitTimeMinutes:(NSInteger)minutes andHours:(NSInteger)hours wasWorthIt:(BOOL)worthIt atDate:(NSDate *)date;
-
+- (NSDictionary *)toDictionary;
 @end

@@ -9,6 +9,7 @@
 #import "SHOReviewPickerModalViewController.h"
 #import "SHORestaurantViewController.h"
 #import "SHOReview.h"
+#import <Firebase/Firebase.h>
 
 @interface SHOReviewPickerModalViewController ()
 
@@ -39,16 +40,27 @@
 }
 
 - (IBAction)submitButtonPressed:(id)sender {
+    //Create Firebase instance
+    NSString *reviewURL = [NSString stringWithFormat:@"https://shortorder.firebaseio.com/restaurants/%@/reviewList",self.restaurant.restaurantID];
+    Firebase *reviewBase = [[[Firebase alloc] initWithUrl:reviewURL] childByAutoId];
+    
     // Create a new review and add it to the previous restaurant
     NSInteger totalTimeInSeconds = self.waitTimePicker.countDownDuration;
     NSInteger totalTimeInMinutes = totalTimeInSeconds / 60;
     NSInteger waitTimeHours = totalTimeInMinutes / 60;
     NSInteger waitTimeMinutes = totalTimeInMinutes % 60;
     SHOReview *newReview = [[SHOReview alloc] initWithWaitTimeMinutes:waitTimeMinutes andHours:waitTimeHours wasWorthIt:self.wasWorthIt atDate:[NSDate date]];
+//    [self.restaurant.reviewList insertObject:newReview atIndex:0];
     [self.restaurant.reviewList addObject:newReview];
     
-    SHORestaurantViewController *restaurantViewController = (SHORestaurantViewController *)[[(UINavigationController *)self.presentingViewController viewControllers] lastObject];
-    [restaurantViewController refreshData];
+//    NSMutableArray *reviewArray = [[NSMutableArray alloc] init];
+//    for (SHOReview *review in self.restaurant.reviewList) {
+//        [reviewArray addObject:[review toDictionary]];
+//    }
+    [reviewBase setValue:[newReview toDictionary]];
+    
+//    SHORestaurantViewController *restaurantViewController = (SHORestaurantViewController *)[[(UINavigationController *)self.presentingViewController viewControllers] lastObject];
+//    [restaurantViewController refreshData];
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }

@@ -11,6 +11,7 @@
 
 @interface SHORestaurant : NSObject
 
+@property (strong, nonatomic) NSString *restaurantID;
 @property (strong, nonatomic) NSString *restaurantName;
 @property (strong, nonatomic) CLLocation *location;
 @property (nonatomic) NSInteger waitTimeMinutes;
@@ -20,6 +21,8 @@
 
 // add in info on location
 
+- (id)initWithDictionary:(NSDictionary *)dict;
+- (id)initWithName:(NSString *)restaurantName isFavorite:(BOOL)favorite;
 - (id)initWithName:(NSString *)restaurantName waitInMinutes:(NSInteger)minutes andHours:(NSInteger)hours isFavorite:(BOOL)favorite;
 
 - (NSInteger)predictWaitTimeFromReviewsByAveraging;
@@ -27,5 +30,6 @@
 - (NSInteger)calculateWasNotWorthItPercent;
 
 - (void)refreshData;
+- (NSDictionary *)toDictionary;
 
 @end

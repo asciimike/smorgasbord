@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Firebase/Firebase.h>
+
 
 @interface SHORestaurantTableViewControllerWithTabs : UIViewController <UITableViewDelegate, UITableViewDataSource, UITabBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UITabBar *tabBar;
-
 @property (strong, nonatomic) NSMutableArray *restaurantList;
 @property enum tabState currentTabState;
 

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShortOrder/SHORestaurantCell.m"
-            timestampString = "414395715.592473"
+            timestampString = "414879602.44931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "-setWaitTimeInMinutes:Hours:"
             landmarkType = "5">
          </BreakpointContent>

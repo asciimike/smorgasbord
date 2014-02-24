@@ -19,6 +19,8 @@
 		4C18017918B6FDC000DA6415 /* SHOReviewPickerModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C18017718B6FDC000DA6415 /* SHOReviewPickerModalViewController.m */; };
 		4C18017A18B6FDC000DA6415 /* SHOReviewPickerModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C18017818B6FDC000DA6415 /* SHOReviewPickerModalViewController.xib */; };
 		4C18017C18B712CD00DA6415 /* Separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18017B18B712CD00DA6415 /* Separator@2x.png */; };
+		4C18018218BACF4E00DA6415 /* SHOAddRestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C18018018BACF4E00DA6415 /* SHOAddRestaurantViewController.m */; };
+		4C18018318BACF4E00DA6415 /* SHOAddRestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C18018118BACF4E00DA6415 /* SHOAddRestaurantViewController.xib */; };
 		4CAB945C18B326970031E4BC /* SHORestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB945B18B326970031E4BC /* SHORestaurant.m */; };
 		4CAB946418B3462B0031E4BC /* SHOReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB946318B3462B0031E4BC /* SHOReview.m */; };
 		4CAB946818B409A40031E4BC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB946718B409A40031E4BC /* CoreLocation.framework */; };
@@ -77,6 +79,9 @@
 		4C18017718B6FDC000DA6415 /* SHOReviewPickerModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHOReviewPickerModalViewController.m; sourceTree = "<group>"; };
 		4C18017818B6FDC000DA6415 /* SHOReviewPickerModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHOReviewPickerModalViewController.xib; sourceTree = "<group>"; };
 		4C18017B18B712CD00DA6415 /* Separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Separator@2x.png"; path = "../../ShortOrderResources/Separator@2x.png"; sourceTree = "<group>"; };
+		4C18017F18BACF4E00DA6415 /* SHOAddRestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOAddRestaurantViewController.h; sourceTree = "<group>"; };
+		4C18018018BACF4E00DA6415 /* SHOAddRestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHOAddRestaurantViewController.m; sourceTree = "<group>"; };
+		4C18018118BACF4E00DA6415 /* SHOAddRestaurantViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHOAddRestaurantViewController.xib; sourceTree = "<group>"; };
 		4CAB945A18B326970031E4BC /* SHORestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHORestaurant.h; sourceTree = "<group>"; };
 		4CAB945B18B326970031E4BC /* SHORestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHORestaurant.m; sourceTree = "<group>"; };
 		4CAB946218B3462B0031E4BC /* SHOReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOReview.h; sourceTree = "<group>"; };
@@ -164,6 +169,31 @@
 			name = "Restaurant View";
 			sourceTree = "<group>";
 		};
+		4C18017D18BACEDD00DA6415 /* Restaurant List View */ = {
+			isa = PBXGroup;
+			children = (
+				4CBA064F18A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.h */,
+				4CBA065018A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.m */,
+				4CBA065118A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.xib */,
+				4C18017F18BACF4E00DA6415 /* SHOAddRestaurantViewController.h */,
+				4C18018018BACF4E00DA6415 /* SHOAddRestaurantViewController.m */,
+				4C18018118BACF4E00DA6415 /* SHOAddRestaurantViewController.xib */,
+			);
+			name = "Restaurant List View";
+			sourceTree = "<group>";
+		};
+		4C18017E18BACEF700DA6415 /* Home Screen */ = {
+			isa = PBXGroup;
+			children = (
+				4CBA061418A032730036A3DF /* SHOAppDelegate.h */,
+				4CBA061518A032730036A3DF /* SHOAppDelegate.m */,
+				4CBA063418A035E20036A3DF /* SHOHomeViewController.h */,
+				4CBA063518A035E20036A3DF /* SHOHomeViewController.m */,
+				4CBA063618A035E20036A3DF /* SHOHomeViewController.xib */,
+			);
+			name = "Home Screen";
+			sourceTree = "<group>";
+		};
 		4CAB945D18B33F180031E4BC /* Data Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,19 +275,13 @@
 		4CBA060B18A032730036A3DF /* ShortOrder */ = {
 			isa = PBXGroup;
 			children = (
-				4C18016518B6EAE500DA6415 /* Restaurant View */,
-				4CAB946018B33F4C0031E4BC /* Table View Cells */,
 				4CAB945F18B33F3A0031E4BC /* Old */,
+				4C18017E18BACEF700DA6415 /* Home Screen */,
+				4C18016518B6EAE500DA6415 /* Restaurant View */,
+				4C18017D18BACEDD00DA6415 /* Restaurant List View */,
+				4CAB946018B33F4C0031E4BC /* Table View Cells */,
 				4CAB945E18B33F2D0031E4BC /* Login */,
 				4CAB945D18B33F180031E4BC /* Data Objects */,
-				4CBA061418A032730036A3DF /* SHOAppDelegate.h */,
-				4CBA061518A032730036A3DF /* SHOAppDelegate.m */,
-				4CBA063418A035E20036A3DF /* SHOHomeViewController.h */,
-				4CBA063518A035E20036A3DF /* SHOHomeViewController.m */,
-				4CBA063618A035E20036A3DF /* SHOHomeViewController.xib */,
-				4CBA064F18A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.h */,
-				4CBA065018A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.m */,
-				4CBA065118A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.xib */,
 				4CBA061718A032730036A3DF /* Images.xcassets */,
 				4CBA063B18A03F910036A3DF /* Images */,
 				4CBA060C18A032730036A3DF /* Supporting Files */,
@@ -401,6 +425,7 @@
 				4CBA063818A035E20036A3DF /* SHOHomeViewController.xib in Resources */,
 				4CBA065318A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.xib in Resources */,
 				4CBA065D18AAC85C0036A3DF /* SHOLoginViewController.xib in Resources */,
+				4C18018318BACF4E00DA6415 /* SHOAddRestaurantViewController.xib in Resources */,
 				4CBA065818A0CDF10036A3DF /* SHOReviewCell.xib in Resources */,
 				4C18017C18B712CD00DA6415 /* Separator@2x.png in Resources */,
 				4C18016718B6EB0300DA6415 /* SHORestaurantTableViewHeader.xib in Resources */,
@@ -469,6 +494,7 @@
 				4CAB945C18B326970031E4BC /* SHORestaurant.m in Sources */,
 				4CBA061618A032730036A3DF /* SHOAppDelegate.m in Sources */,
 				4CBA065618A0CDD10036A3DF /* SHOReviewCell.m in Sources */,
+				4C18018218BACF4E00DA6415 /* SHOAddRestaurantViewController.m in Sources */,
 				4CBA065C18AAC85C0036A3DF /* SHOLoginViewController.m in Sources */,
 				4CBA064118A048CA0036A3DF /* SHORestaurantTableViewController.m in Sources */,
 			);

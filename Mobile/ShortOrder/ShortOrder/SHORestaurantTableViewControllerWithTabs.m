@@ -27,6 +27,7 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.restaurantList = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -43,7 +44,45 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
 
     // Do any additional setup after loading the view from its nib.
     
-    [self setRestaurants];
+//    [self setRestaurants];
+    
+    Firebase *restaurantBase = [[Firebase alloc] initWithUrl:@"https://shortorder.firebaseio.com/restaurants/"];
+    
+    [restaurantBase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+        NSDictionary *msgData = snapshot.value;
+        SHORestaurant *currentRestaurant = [[SHORestaurant alloc] initWithDictionary:msgData];
+        currentRestaurant.restaurantID = snapshot.name;
+        [self.restaurantList addObject:currentRestaurant];
+        [self.tableView reloadData];
+    }];
+    
+    [restaurantBase observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
+        NSDictionary *msgData = snapshot.value;
+        SHORestaurant *currentRestaurant = [[SHORestaurant alloc] initWithDictionary:msgData];
+        currentRestaurant.restaurantID = snapshot.name;
+        for (SHORestaurant *restaurant in self.restaurantList) {
+            if ([currentRestaurant isEqual:restaurant]) {
+                NSInteger location = [self.restaurantList indexOfObject:restaurant];
+                [self.restaurantList replaceObjectAtIndex:location withObject:currentRestaurant];
+                break;
+            }
+        }
+        [self.tableView reloadData];
+    }];
+    
+    [restaurantBase observeEventType:FEventTypeChildRemoved withBlock:^(FDataSnapshot *snapshot) {
+        NSDictionary *msgData = snapshot.value;
+        SHORestaurant *currentRestaurant = [[SHORestaurant alloc] initWithDictionary:msgData];
+        currentRestaurant.restaurantID = snapshot.name;
+        for (SHORestaurant *restaurant in self.restaurantList) {
+            if ([currentRestaurant isEqual:restaurant]) {
+                [self.restaurantList removeObject:restaurant];
+                break;
+            }
+        }
+        [self.tableView reloadData];
+    }];
+    
     
     // Ensure that the tab bar is set up properly when entering the app
     UITabBarItem *firstItem = [[self.tabBar items] objectAtIndex:0];
@@ -55,6 +94,11 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
 - (void)viewWillAppear:(BOOL)animated;
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated;
+{
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,9 +126,10 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
     SHORestaurantCell *cell = [self.tableView dequeueReusableCellWithIdentifier:RestaurantCellIdentifier];
     
     SHORestaurant *currentRestaurant = [self.restaurantList objectAtIndex:indexPath.row];
+    cell.restaurant = currentRestaurant;
     
-    cell.restaurantNameLabel.text = currentRestaurant.restaurantName;
-    [cell setWaitTimeInMinutes:currentRestaurant.waitTimeMinutes Hours:currentRestaurant.waitTimeHours];
+    //cell.restaurantNameLabel.text = currentRestaurant.restaurantName;
+    //[cell setWaitTimeInMinutes:currentRestaurant.waitTimeMinutes Hours:currentRestaurant.waitTimeHours];
     
     return cell;
 }
@@ -94,7 +139,6 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
 {
     SHORestaurantViewController *restaurantViewController = [[SHORestaurantViewController alloc] initWithNibName:@"SHORestaurantViewController" bundle:nil];
     restaurantViewController.restaurant = [self.restaurantList objectAtIndex:indexPath.row];
-//    restaurantViewController.restaurant.reviewList = 
     
     [self.navigationController pushViewController:restaurantViewController animated:YES];
     
@@ -105,7 +149,9 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item;
 {
     // Reset restaurants (for testing)
-    [self setRestaurants];
+    //[self setRestaurants];
+    
+    
     
     switch (item.tag) {
         case WAIT_TIME_TAB:
@@ -144,40 +190,13 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
     [self.tableView reloadData];
 }
 
-- (void) setRestaurants;
-{
-    // Here is where we would create a firebase reference, pull in the dictionary, parse into restaurant objects, then create the mutable array, all on a background thread
-    self.restaurantList = [[NSMutableArray alloc] initWithObjects:
-    [[SHORestaurant alloc] initWithName:@"Chavas" waitInMinutes:5 andHours:0 isFavorite:YES],
-    [[SHORestaurant alloc] initWithName:@"Royal Mandarin" waitInMinutes:10 andHours:0 isFavorite:NO],
-    [[SHORestaurant alloc] initWithName:@"Real Hacienda" waitInMinutes:17 andHours:0 isFavorite:NO],
-    [[SHORestaurant alloc] initWithName:@"Moggers" waitInMinutes:20 andHours:0 isFavorite:YES],
-    [[SHORestaurant alloc] initWithName:@"Stables" waitInMinutes:5 andHours:1 isFavorite:YES],
-    [[SHORestaurant alloc] initWithName:@"IHOP" waitInMinutes:3 andHours:0 isFavorite:NO],
-    [[SHORestaurant alloc] initWithName:@"Outback Steakhouse" waitInMinutes:34 andHours:0 isFavorite:NO],
-    [[SHORestaurant alloc] initWithName:@"Buffalo Wild Wings" waitInMinutes:10 andHours:0 isFavorite:NO],
-    [[SHORestaurant alloc] initWithName:@"Magdy's" waitInMinutes:2 andHours:0 isFavorite:YES],
-    [[SHORestaurant alloc] initWithName:@"Chez Panise" waitInMinutes:10 andHours:2 isFavorite:YES],
-    [[SHORestaurant alloc] initWithName:@"Venizie" waitInMinutes:27 andHours:0 isFavorite:NO],
-    [[SHORestaurant alloc] initWithName:@"Taj Mahal" waitInMinutes:14 andHours:0 isFavorite:YES],
-    [[SHORestaurant alloc] initWithName:@"TGI Friday's" waitInMinutes:42 andHours:0 isFavorite:NO],
-    nil];
-    
-    for (SHORestaurant *restaurant in self.restaurantList) {
-        restaurant.reviewList = [[NSMutableArray alloc] initWithObjects:
-                                [[SHOReview alloc] initWithWaitTimeMinutes:10 andHours:0 wasWorthIt:NO atDate:[NSDate date]],
-                                [[SHOReview alloc] initWithWaitTimeMinutes:5 andHours:0 wasWorthIt:YES atDate:[NSDate date]],
-                                [[SHOReview alloc] initWithWaitTimeMinutes:23 andHours:0 wasWorthIt:NO atDate:[NSDate date]],
-                                [[SHOReview alloc] initWithWaitTimeMinutes:14 andHours:0 wasWorthIt:NO atDate:[NSDate date]],
-                                [[SHOReview alloc] initWithWaitTimeMinutes:7 andHours:0 wasWorthIt:NO atDate:[NSDate date]],
-                                [[SHOReview alloc] initWithWaitTimeMinutes:15 andHours:1 wasWorthIt:YES atDate:[NSDate date]],
-                                 nil];
-    }
-}
-
 - (void)addRestaurant;
 {
     NSLog(@"Adding a new restaurant");
+    Firebase *restaurantPushRef = [[[Firebase alloc] initWithUrl:@"https://shortorder.firebaseio.com/restaurants/"] childByAutoId];
+    SHORestaurant *currentRestaurant = [self.restaurantList objectAtIndex:0];
+    NSDictionary *currentDict = [currentRestaurant toDictionary];
+    [restaurantPushRef setValue:currentDict];
     
     // Pop up a box for the restaurant name
     

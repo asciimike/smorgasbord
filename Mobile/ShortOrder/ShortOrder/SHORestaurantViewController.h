@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *noThanksButton;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) SHORestaurant *restaurant;
+@property (strong, nonatomic) NSMutableArray *reviews;
 
 - (IBAction)worthItButtonPressed:(id)sender;
 - (IBAction)noThanksButtonPressed:(id)sender;

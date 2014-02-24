@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SHORestaurant.h"
 
 @interface SHORestaurantCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UIImageView *restaurantImageView;
 @property (strong, nonatomic) IBOutlet UILabel *restaurantNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *currentWaitLabel;
+
+@property (strong, nonatomic) SHORestaurant *restaurant;
 
 - (void)setWaitTimeInMinutes:(NSInteger)waitTimeMinutes Hours:(NSInteger)waitTimeHours;
 

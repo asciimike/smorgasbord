@@ -18,7 +18,24 @@
     return [self initWithName:@"Restaurant" waitInMinutes:0 andHours:0 isFavorite:NO];
 }
 
-- (id) initWithName:(NSString *)restaurantName isFavorite:(BOOL)favorite;
+- (id)initWithDictionary:(NSDictionary *)dict;
+{
+    NSString *name = [dict objectForKey:@"restaurantName"];
+    NSInteger minutes = [[dict objectForKey:@"waitTimeMinutes"] integerValue];
+    NSInteger hours = [[dict objectForKey:@"waitTimeHours"] integerValue];
+    BOOL favorite = [[dict objectForKey:@"isFavorite"] boolValue];
+//    NSArray *reviews = [dict objectForKey:@"reviewList"];
+//    NSMutableArray *mutableReviews = [[NSMutableArray alloc] init];
+//    for (NSDictionary *dict in reviews) {
+//        SHOReview *currentReview = [[SHOReview alloc] initWithDictionary:dict];
+//        [mutableReviews addObject:currentReview];
+//    }
+//    self.reviewList = mutableReviews;
+    //return [self initWithName:name isFavorite:favorite];
+    return [self initWithName:name waitInMinutes:minutes andHours:hours isFavorite:favorite];
+}
+
+- (id)initWithName:(NSString *)restaurantName isFavorite:(BOOL)favorite;
 {
     NSInteger totalMinutes = [self predictWaitTimeFromReviewsByAveraging];
     NSInteger hours = totalMinutes / MINUTES_PER_HOUR;
@@ -95,6 +112,37 @@
     NSInteger minutes = totalMinutes % MINUTES_PER_HOUR;
     self.waitTimeHours = hours;
     self.waitTimeMinutes = minutes;
+}
+
+- (NSDictionary *)toDictionary;
+{
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setObject:self.restaurantName forKey:@"restaurantName"];
+    [dict setObject:[NSNumber numberWithInteger:self.waitTimeMinutes] forKey:@"waitTimeMinutes"];
+    [dict setObject:[NSNumber numberWithInteger:self.waitTimeHours] forKey:@"waitTimeHours"];
+    [dict setObject:[NSNumber numberWithBool:self.isFavorite] forKey:@"isFavorite"];
+//    NSMutableArray *reviewArray = [[NSMutableArray alloc] init];
+//    for (SHOReview *review in self.reviewList) {
+//        [reviewArray addObject:[review toDictionary]];
+//    }
+//    [dict setObject:reviewArray forKey:@"reviewList"];
+    return dict;
+}
+
+- (BOOL)isEqual:(id)other {
+    if (other == self)
+        return YES;
+    if (!other || ![other isKindOfClass:[self class]])
+        return NO;
+    return [self isEqualToRestaurant:other];
+}
+
+- (BOOL)isEqualToRestaurant:(SHORestaurant *)restaurant {
+    if (self == restaurant)
+        return YES;
+    if (!([self.restaurantID isEqualToString:restaurant.restaurantID]))
+        return NO;
+    return YES;
 }
 
 @end

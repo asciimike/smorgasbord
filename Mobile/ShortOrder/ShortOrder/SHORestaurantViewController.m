@@ -10,6 +10,7 @@
 #import "SHOReviewCell.h"
 #import "SHOReview.h"
 #import "SHOReviewPickerModalViewController.h"
+#import <Firebase/Firebase.h>
 
 #define SHORT_WAIT_TIME 5
 #define MEDIUM_WAIT_TIME 10
@@ -28,6 +29,7 @@ static NSString *ReviewCellIdentifier = @"ReviewCellIdentifier";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.reviews = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -41,6 +43,40 @@ static NSString *ReviewCellIdentifier = @"ReviewCellIdentifier";
     self.tableView.tableHeaderView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Separator.png"]];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"SHOReviewCell" bundle:nil] forCellReuseIdentifier:ReviewCellIdentifier];
+    
+    NSString *reviewURL = [NSString stringWithFormat:@"https://shortorder.firebaseio.com/restaurants/%@/reviewList",self.restaurant.restaurantID];
+    Firebase *reviewBase = [[Firebase alloc] initWithUrl:reviewURL];
+    
+    [reviewBase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+        NSDictionary *msgData = snapshot.value;
+        SHOReview *addedReview = [[SHOReview alloc] initWithDictionary:msgData];
+        [self.reviews addObject:addedReview];
+        addedReview.reviewID = snapshot.name;
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
+        self.reviews = [[self.reviews sortedArrayUsingDescriptors:@[sortDescriptor]] mutableCopy];
+        self.restaurant.reviewList = self.reviews;
+        [self refreshData];
+    }];
+    
+    /*
+    [reviewBase observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
+        NSDictionary *msgData = snapshot.value;
+        SHOReview *reviewToRemove = [[SHOReview alloc] initWithDictionary:msgData];
+        reviewToRemove.reviewID = snapshot.name;
+        [self.reviews removeObject:reviewToRemove];
+        [self.restaurant.reviewList removeObject:reviewToRemove];
+        [self refreshData];
+    }];
+     */
+    
+    [reviewBase observeEventType:FEventTypeChildRemoved withBlock:^(FDataSnapshot *snapshot) {
+        NSDictionary *msgData = snapshot.value;
+        SHOReview *reviewToRemove = [[SHOReview alloc] initWithDictionary:msgData];
+        reviewToRemove.reviewID = snapshot.name;
+        [self.reviews removeObject:reviewToRemove];
+        [self.restaurant.reviewList removeObject:reviewToRemove];
+        [self refreshData];
+    }];
     
     [self refreshData];
 }
@@ -64,14 +100,14 @@ static NSString *ReviewCellIdentifier = @"ReviewCellIdentifier";
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [self.restaurant.reviewList count];
+    return [self.reviews count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SHOReviewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:ReviewCellIdentifier];
     
-    cell.review = [self.restaurant.reviewList objectAtIndex:indexPath.row];
+    cell.review = [self.reviews objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -141,9 +177,14 @@ static NSString *ReviewCellIdentifier = @"ReviewCellIdentifier";
 
 - (void) refreshData;
 {
+    NSString *minutesURL = [NSString stringWithFormat:@"https://shortorder.firebaseio.com/restaurants/%@/waitTimeMinutes",self.restaurant.restaurantID];
+    Firebase *firebase = [[Firebase alloc] initWithUrl:minutesURL];
+    
     [self.restaurant refreshData];
     
     [self setWaitTimeInMinutes:self.restaurant.waitTimeMinutes Hours:self.restaurant.waitTimeHours];
+    
+    [firebase setValue:[NSNumber numberWithInteger:self.restaurant.waitTimeMinutes]];
     
     self.worthItLabel.text = [NSString stringWithFormat:@"%d%%",[self.restaurant calculateWasWorthItPercent]];
     
