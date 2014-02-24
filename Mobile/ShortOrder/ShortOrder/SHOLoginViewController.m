@@ -7,6 +7,8 @@
 //
 
 #import "SHOLoginViewController.h"
+#import <Firebase/Firebase.h>
+#import <FirebaseSimpleLogin/FirebaseSimpleLogin.h>
 
 @interface SHOLoginViewController ()
 
@@ -52,6 +54,22 @@
     [self.usernameTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
     [self.loginActivityIndicator startAnimating];
+    Firebase *authRef = [[Firebase alloc] initWithUrl:@"https://shortorder.firebaseio.com"];
+    FirebaseSimpleLogin *authClient = [[FirebaseSimpleLogin alloc] initWithRef:authRef];
+    [authClient loginWithEmail:self.usernameTextField.text andPassword:self.passwordTextField.text withCompletionBlock:^(NSError *error, FAUser *user) {
+        if (error != nil) {
+            // There was an error creating the account
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Failed!" message:@"Please check your email and password, and try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            [self.loginActivityIndicator stopAnimating];
+        } else {
+            // We created a new user account
+            NSLog(@"User %@ logged in", user);
+            [self.loginActivityIndicator stopAnimating];
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        }
+
+    }];
 }
 
 - (IBAction)cancelButtonPressed:(id)sender;
@@ -61,7 +79,23 @@
 
 - (IBAction)registerButtonPressed:(id)sender;
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.firebase.com"]]];
+    // Please, for the love of god, add some validity checking to these (at least the email address)
+    Firebase *authRef = [[Firebase alloc] initWithUrl:@"https://shortorder.firebaseio.com"];
+    FirebaseSimpleLogin *authClient = [[FirebaseSimpleLogin alloc] initWithRef:authRef];
+    [authClient createUserWithEmail:self.usernameTextField.text password:self.passwordTextField.text
+                 andCompletionBlock:^(NSError* error, FAUser* user) {
+                     
+                     if (error != nil) {
+                         // There was an error creating the account
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration Failed!" message:@"Please check your email and password, and try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                         [alert show];
+                     } else {
+                         // We created a new user account
+                         NSLog(@"New user %@ created", user);
+                     }
+                 }];
+    
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.firebase.com"]]];
 }
 
 - (IBAction)backgroundTap:(id)sender;

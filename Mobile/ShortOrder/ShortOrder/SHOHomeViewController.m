@@ -10,6 +10,8 @@
 #import "SHORestaurantTableViewController.h"
 #import "SHORestaurantTableViewControllerWithTabs.h"
 #import "SHOLoginViewController.h"
+#import <Firebase/Firebase.h>
+#import <FirebaseSimpleLogin/FirebaseSimpleLogin.h>
 
 @interface SHOHomeViewController ()
 
@@ -48,6 +50,20 @@
     self.searchTextField.text = @"";
     self.searchTextField.placeholder = @"City or Zip Code";
     
+    Firebase *authRef = [[Firebase alloc] initWithUrl:@"https://shortorder.firebaseio.com"];
+    FirebaseSimpleLogin *authClient = [[FirebaseSimpleLogin alloc] initWithRef:authRef];
+    
+    [authClient checkAuthStatusWithBlock:^(NSError *error, FAUser *user) {
+        if (error != nil) {
+            // Uh oh...
+        } else if (user == nil) {
+            self.signInButton.titleLabel.text = @"Sign In";
+        } else {
+            self.signInButton.titleLabel.text = @"Sign Out";
+        }
+    }];
+
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
@@ -66,16 +82,23 @@
 
 - (IBAction)signInButtonPressed:(id)sender;
 {
-    #warning Use Firebase simple login (facebook) to log users in
-    // Present a custom alert that asks the user to sign in (firebase simple login)
+    Firebase *authRef = [[Firebase alloc] initWithUrl:@"https://shortorder.firebaseio.com"];
+    FirebaseSimpleLogin *authClient = [[FirebaseSimpleLogin alloc] initWithRef:authRef];
     
-    SHOLoginViewController *loginController = [[SHOLoginViewController alloc] init];
-    loginController.modalPresentationStyle = UIModalPresentationFullScreen;
-    loginController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentViewController:loginController animated:YES completion:nil];
-    
-    //Animate frame on screen
-    
+    [authClient checkAuthStatusWithBlock:^(NSError *error, FAUser *user) {
+        if (error != nil) {
+            // Uh oh...
+        } else if (user == nil) {
+            SHOLoginViewController *loginController = [[SHOLoginViewController alloc] init];
+            loginController.modalPresentationStyle = UIModalPresentationFullScreen;
+            loginController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            [self presentViewController:loginController animated:YES completion:nil];
+        } else {
+            [authClient logout];
+            NSLog(@"User %@ logged out",user);
+            self.signInButton.titleLabel.text = @"Sign In";
+        }
+    }];
 }
 
 - (IBAction)searchFieldPressedEnter:(id)sender;

@@ -21,6 +21,9 @@
 		4C18017C18B712CD00DA6415 /* Separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18017B18B712CD00DA6415 /* Separator@2x.png */; };
 		4C18018218BACF4E00DA6415 /* SHOAddRestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C18018018BACF4E00DA6415 /* SHOAddRestaurantViewController.m */; };
 		4C18018318BACF4E00DA6415 /* SHOAddRestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C18018118BACF4E00DA6415 /* SHOAddRestaurantViewController.xib */; };
+		4C18018518BB0B4E00DA6415 /* FirebaseSimpleLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C18018418BB0B4E00DA6415 /* FirebaseSimpleLogin.framework */; };
+		4C18018718BB0B6500DA6415 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C18018618BB0B6500DA6415 /* Accounts.framework */; };
+		4C18018918BB0B6C00DA6415 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C18018818BB0B6C00DA6415 /* Social.framework */; };
 		4CAB945C18B326970031E4BC /* SHORestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB945B18B326970031E4BC /* SHORestaurant.m */; };
 		4CAB946418B3462B0031E4BC /* SHOReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB946318B3462B0031E4BC /* SHOReview.m */; };
 		4CAB946818B409A40031E4BC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB946718B409A40031E4BC /* CoreLocation.framework */; };
@@ -82,6 +85,9 @@
 		4C18017F18BACF4E00DA6415 /* SHOAddRestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOAddRestaurantViewController.h; sourceTree = "<group>"; };
 		4C18018018BACF4E00DA6415 /* SHOAddRestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHOAddRestaurantViewController.m; sourceTree = "<group>"; };
 		4C18018118BACF4E00DA6415 /* SHOAddRestaurantViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHOAddRestaurantViewController.xib; sourceTree = "<group>"; };
+		4C18018418BB0B4E00DA6415 /* FirebaseSimpleLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseSimpleLogin.framework; sourceTree = "<group>"; };
+		4C18018618BB0B6500DA6415 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		4C18018818BB0B6C00DA6415 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		4CAB945A18B326970031E4BC /* SHORestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHORestaurant.h; sourceTree = "<group>"; };
 		4CAB945B18B326970031E4BC /* SHORestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHORestaurant.m; sourceTree = "<group>"; };
 		4CAB946218B3462B0031E4BC /* SHOReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOReview.h; sourceTree = "<group>"; };
@@ -133,9 +139,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C18018918BB0B6C00DA6415 /* Social.framework in Frameworks */,
+				4C18018718BB0B6500DA6415 /* Accounts.framework in Frameworks */,
 				4C18015C18B6DD4700DA6415 /* SystemConfiguration.framework in Frameworks */,
 				4CAB946818B409A40031E4BC /* CoreLocation.framework in Frameworks */,
 				4CBA060818A032730036A3DF /* CoreGraphics.framework in Frameworks */,
+				4C18018518BB0B4E00DA6415 /* FirebaseSimpleLogin.framework in Frameworks */,
 				4CBA060A18A032730036A3DF /* UIKit.framework in Frameworks */,
 				4CBA060618A032730036A3DF /* Foundation.framework in Frameworks */,
 				6D5FD9C4603040D69E92F9E7 /* libPods.a in Frameworks */,
@@ -261,6 +270,9 @@
 		4CBA060418A032730036A3DF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C18018818BB0B6C00DA6415 /* Social.framework */,
+				4C18018618BB0B6500DA6415 /* Accounts.framework */,
+				4C18018418BB0B4E00DA6415 /* FirebaseSimpleLogin.framework */,
 				4C18015B18B6DD4700DA6415 /* SystemConfiguration.framework */,
 				4CAB946718B409A40031E4BC /* CoreLocation.framework */,
 				4CBA060518A032730036A3DF /* Foundation.framework */,
@@ -616,6 +628,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/michael/Documents/Development/smorgasbord/Mobile/ShortOrder,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShortOrder/ShortOrder-Prefix.pch";
 				INFOPLIST_FILE = "ShortOrder/ShortOrder-Info.plist";
@@ -630,6 +646,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/michael/Documents/Development/smorgasbord/Mobile/ShortOrder,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShortOrder/ShortOrder-Prefix.pch";
 				INFOPLIST_FILE = "ShortOrder/ShortOrder-Info.plist";
