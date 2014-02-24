@@ -11,6 +11,7 @@
 #import "SHORestaurantViewController.h"
 #import "SHORestaurant.h"
 #import "SHOReview.h"
+#import "SHOAddRestaurantViewController.h"
 
 enum tabState {WAIT_TIME_TAB, FAVORITES_TAB, RECENTS_TAB};
 
@@ -40,14 +41,17 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addRestaurant)];
     
+    self.title = [NSString stringWithFormat:@"Restaurants near %@", self.locationString];
+    
     // TODO (UX): create the tab bar items for the actual values
 
     // Do any additional setup after loading the view from its nib.
     
 //    [self setRestaurants];
     
-    Firebase *restaurantBase = [[Firebase alloc] initWithUrl:@"https://shortorder.firebaseio.com/restaurants/"];
-    
+    NSString *referenceURL = [NSString stringWithFormat:@"https://shortorder.firebaseio.com/restaurants/%@",self.locationString];
+    Firebase *restaurantBase = [[Firebase alloc] initWithUrl:referenceURL];
+        
     [restaurantBase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         NSDictionary *msgData = snapshot.value;
         SHORestaurant *currentRestaurant = [[SHORestaurant alloc] initWithDictionary:msgData];
@@ -148,11 +152,6 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
 # pragma mark - UITabBarDelegate
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item;
 {
-    // Reset restaurants (for testing)
-    //[self setRestaurants];
-    
-    
-    
     switch (item.tag) {
         case WAIT_TIME_TAB:
         {
@@ -192,11 +191,17 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
 
 - (void)addRestaurant;
 {
+    SHOAddRestaurantViewController *addRestaurantController = [[SHOAddRestaurantViewController alloc] init];
+    addRestaurantController.modalPresentationStyle = UIModalPresentationFullScreen;
+    addRestaurantController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:addRestaurantController animated:YES completion:nil];
+    /*
     NSLog(@"Adding a new restaurant");
     Firebase *restaurantPushRef = [[[Firebase alloc] initWithUrl:@"https://shortorder.firebaseio.com/restaurants/"] childByAutoId];
     SHORestaurant *currentRestaurant = [self.restaurantList objectAtIndex:0];
     NSDictionary *currentDict = [currentRestaurant toDictionary];
     [restaurantPushRef setValue:currentDict];
+     */
     
     // Pop up a box for the restaurant name
     

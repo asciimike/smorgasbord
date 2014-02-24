@@ -12,6 +12,7 @@
 @interface SHORestaurant : NSObject
 
 @property (strong, nonatomic) NSString *restaurantID;
+@property (strong, nonatomic) NSString *postalCode;
 @property (strong, nonatomic) NSString *restaurantName;
 @property (strong, nonatomic) CLLocation *location;
 @property (nonatomic) NSInteger waitTimeMinutes;

@@ -10,6 +10,7 @@
 #import "SHORestaurantViewController.h"
 #import "SHOReview.h"
 #import <Firebase/Firebase.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface SHOReviewPickerModalViewController ()
 
@@ -41,7 +42,7 @@
 
 - (IBAction)submitButtonPressed:(id)sender {
     //Create Firebase instance
-    NSString *reviewURL = [NSString stringWithFormat:@"https://shortorder.firebaseio.com/restaurants/%@/reviewList",self.restaurant.restaurantID];
+    NSString *reviewURL = [NSString stringWithFormat:@"https://shortorder.firebaseio.com/restaurants/%@/%@/reviewList",self.restaurant.postalCode, self.restaurant.restaurantID];
     Firebase *reviewBase = [[[Firebase alloc] initWithUrl:reviewURL] childByAutoId];
     
     // Create a new review and add it to the previous restaurant

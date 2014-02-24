@@ -109,17 +109,14 @@
 - (void)switchToRestaurantListNearLocation:(NSString *)location;
 {
     // Hide the keyboard if it's present
-    if (self.searchTextField.isFirstResponder) {
-        [self.searchTextField resignFirstResponder];
-    }
+    [self.searchTextField resignFirstResponder];
     
     SHORestaurantTableViewControllerWithTabs *restaurantTableViewController = [[SHORestaurantTableViewControllerWithTabs alloc] initWithNibName:@"SHORestaurantTableViewControllerWithTabs" bundle:[NSBundle mainBundle]];
     
     if ([location isEqualToString:@""]) {
         // Must input valid things! Check here for validity...
     } else {
-        NSString *locationString = [NSString stringWithFormat: @"Restaurants Near %@", location];
-        restaurantTableViewController.title = locationString;
+        restaurantTableViewController.locationString = location;
         [self.navigationController pushViewController:restaurantTableViewController animated:YES];
     }
 }

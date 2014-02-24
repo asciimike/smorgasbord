@@ -24,6 +24,7 @@
     NSInteger minutes = [[dict objectForKey:@"waitTimeMinutes"] integerValue];
     NSInteger hours = [[dict objectForKey:@"waitTimeHours"] integerValue];
     BOOL favorite = [[dict objectForKey:@"isFavorite"] boolValue];
+    self.location = [[CLLocation alloc] initWithLatitude:[[dict objectForKey:@"latitude"] doubleValue] longitude:[[dict objectForKey:@"longitude"] doubleValue]];
 //    NSArray *reviews = [dict objectForKey:@"reviewList"];
 //    NSMutableArray *mutableReviews = [[NSMutableArray alloc] init];
 //    for (NSDictionary *dict in reviews) {
@@ -32,6 +33,7 @@
 //    }
 //    self.reviewList = mutableReviews;
     //return [self initWithName:name isFavorite:favorite];
+    self.postalCode = [dict objectForKey:@"postalCode"];
     return [self initWithName:name waitInMinutes:minutes andHours:hours isFavorite:favorite];
 }
 
@@ -121,6 +123,9 @@
     [dict setObject:[NSNumber numberWithInteger:self.waitTimeMinutes] forKey:@"waitTimeMinutes"];
     [dict setObject:[NSNumber numberWithInteger:self.waitTimeHours] forKey:@"waitTimeHours"];
     [dict setObject:[NSNumber numberWithBool:self.isFavorite] forKey:@"isFavorite"];
+    [dict setObject:[NSNumber numberWithDouble:self.location.coordinate.latitude] forKey:@"latitude"];
+    [dict setObject:[NSNumber numberWithDouble:self.location.coordinate.longitude] forKey:@"longitude"];
+    [dict setObject:self.postalCode forKey:@"postalCode"];
 //    NSMutableArray *reviewArray = [[NSMutableArray alloc] init];
 //    for (SHOReview *review in self.reviewList) {
 //        [reviewArray addObject:[review toDictionary]];

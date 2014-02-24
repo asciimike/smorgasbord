@@ -44,7 +44,7 @@ static NSString *ReviewCellIdentifier = @"ReviewCellIdentifier";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"SHOReviewCell" bundle:nil] forCellReuseIdentifier:ReviewCellIdentifier];
     
-    NSString *reviewURL = [NSString stringWithFormat:@"https://shortorder.firebaseio.com/restaurants/%@/reviewList",self.restaurant.restaurantID];
+    NSString *reviewURL = [NSString stringWithFormat:@"https://shortorder.firebaseio.com/restaurants/%@/%@/reviewList",self.restaurant.postalCode, self.restaurant.restaurantID];
     Firebase *reviewBase = [[Firebase alloc] initWithUrl:reviewURL];
     
     [reviewBase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
@@ -177,7 +177,7 @@ static NSString *ReviewCellIdentifier = @"ReviewCellIdentifier";
 
 - (void) refreshData;
 {
-    NSString *minutesURL = [NSString stringWithFormat:@"https://shortorder.firebaseio.com/restaurants/%@/waitTimeMinutes",self.restaurant.restaurantID];
+    NSString *minutesURL = [NSString stringWithFormat:@"https://shortorder.firebaseio.com/restaurants/%@/%@/waitTimeMinutes",self.restaurant.postalCode,self.restaurant.restaurantID];
     Firebase *firebase = [[Firebase alloc] initWithUrl:minutesURL];
     
     [self.restaurant refreshData];
