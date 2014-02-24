@@ -57,6 +57,7 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
         SHORestaurant *currentRestaurant = [[SHORestaurant alloc] initWithDictionary:msgData];
         currentRestaurant.restaurantID = snapshot.name;
         [self.restaurantList addObject:currentRestaurant];
+        self.displayArray = self.restaurantList;
         [self.tableView reloadData];
     }];
     
@@ -71,6 +72,7 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
                 break;
             }
         }
+        self.displayArray = self.restaurantList;
         [self.tableView reloadData];
     }];
     
@@ -84,20 +86,18 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
                 break;
             }
         }
+        self.displayArray = self.restaurantList;
         [self.tableView reloadData];
     }];
-    
-    
-    // Ensure that the tab bar is set up properly when entering the app
-    UITabBarItem *firstItem = [[self.tabBar items] objectAtIndex:0];
-    [self.tabBar.delegate tabBar:self.tabBar didSelectItem:firstItem];
-    [self.tabBar setSelectedItem:firstItem];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated;
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    // Ensure that the tab bar is set up properly when entering the app
+    UITabBarItem *firstItem = [[self.tabBar items] objectAtIndex:0];
+    [self.tabBar.delegate tabBar:self.tabBar didSelectItem:firstItem];
+    [self.tabBar setSelectedItem:firstItem];
 }
 
 -(void)viewWillDisappear:(BOOL)animated;
@@ -122,14 +122,14 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.restaurantList count];
+    return [self.displayArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SHORestaurantCell *cell = [self.tableView dequeueReusableCellWithIdentifier:RestaurantCellIdentifier];
     
-    SHORestaurant *currentRestaurant = [self.restaurantList objectAtIndex:indexPath.row];
+    SHORestaurant *currentRestaurant = [self.displayArray objectAtIndex:indexPath.row];
     cell.restaurant = currentRestaurant;
     
     //cell.restaurantNameLabel.text = currentRestaurant.restaurantName;
@@ -142,7 +142,7 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SHORestaurantViewController *restaurantViewController = [[SHORestaurantViewController alloc] initWithNibName:@"SHORestaurantViewController" bundle:nil];
-    restaurantViewController.restaurant = [self.restaurantList objectAtIndex:indexPath.row];
+    restaurantViewController.restaurant = [self.displayArray objectAtIndex:indexPath.row];
     
     [self.navigationController pushViewController:restaurantViewController animated:YES];
     
@@ -152,13 +152,14 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
 # pragma mark - UITabBarDelegate
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item;
 {
+    self.displayArray = self.restaurantList;
     switch (item.tag) {
         case WAIT_TIME_TAB:
         {
             self.currentTabState = WAIT_TIME_TAB;
             NSSortDescriptor *hoursDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"waitTimeHours" ascending:YES];
             NSSortDescriptor *minutesDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"waitTimeMinutes" ascending:YES];
-            self.restaurantList = [[self.restaurantList sortedArrayUsingDescriptors:@[hoursDescriptor,minutesDescriptor]] mutableCopy];
+            self.displayArray = [[self.displayArray sortedArrayUsingDescriptors:@[hoursDescriptor,minutesDescriptor]] mutableCopy];
         }
             break;
         
@@ -167,8 +168,8 @@ static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
             self.currentTabState = FAVORITES_TAB;
             NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"restaurantName" ascending:YES];
             NSPredicate *isFavoritePredicate = [NSPredicate predicateWithFormat:@"isFavorite == 1"];
-            self.restaurantList = [[self.restaurantList filteredArrayUsingPredicate:isFavoritePredicate] mutableCopy];
-            self.restaurantList = [[self.restaurantList sortedArrayUsingDescriptors:@[nameDescriptor]] mutableCopy];
+            self.displayArray = [[self.displayArray filteredArrayUsingPredicate:isFavoritePredicate] mutableCopy];
+            self.displayArray = [[self.displayArray sortedArrayUsingDescriptors:@[nameDescriptor]] mutableCopy];
         }
             break;
         
