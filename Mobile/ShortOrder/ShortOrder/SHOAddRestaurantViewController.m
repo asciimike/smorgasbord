@@ -65,9 +65,10 @@
         NSDictionary *currentDict = [currentRestaurant toDictionary];
         [restaurantPushRef setValue:currentDict];
         [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+            // This completion block doesn't work... don't use it (we need a better way... delegate method likely)
             SHORestaurantViewController *restaurantViewController = [[SHORestaurantViewController alloc] init];
             restaurantViewController.restaurant = currentRestaurant;
-            [self.presentingViewController.navigationController pushViewController:restaurantViewController animated:YES];
+            [(UINavigationController *)self.presentingViewController pushViewController:restaurantViewController animated:YES];
         }];
     }
     [self.restaurantNameTextField resignFirstResponder];

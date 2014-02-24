@@ -24,6 +24,11 @@
 		4C18018518BB0B4E00DA6415 /* FirebaseSimpleLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C18018418BB0B4E00DA6415 /* FirebaseSimpleLogin.framework */; };
 		4C18018718BB0B6500DA6415 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C18018618BB0B6500DA6415 /* Accounts.framework */; };
 		4C18018918BB0B6C00DA6415 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C18018818BB0B6C00DA6415 /* Social.framework */; };
+		4C18018C18BB154D00DA6415 /* FilledStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18018A18BB154D00DA6415 /* FilledStar@2x.png */; };
+		4C18018D18BB154D00DA6415 /* UnfilledStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18018B18BB154D00DA6415 /* UnfilledStar@2x.png */; };
+		4C18019118BB1C1F00DA6415 /* Globe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18019018BB1C1F00DA6415 /* Globe@2x.png */; };
+		4C18019518BB21B300DA6415 /* UnfilledArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18019418BB21B300DA6415 /* UnfilledArrow@2x.png */; };
+		4C18019718BB22D100DA6415 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C18019618BB22D100DA6415 /* MapKit.framework */; };
 		4CAB945C18B326970031E4BC /* SHORestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB945B18B326970031E4BC /* SHORestaurant.m */; };
 		4CAB946418B3462B0031E4BC /* SHOReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB946318B3462B0031E4BC /* SHOReview.m */; };
 		4CAB946818B409A40031E4BC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB946718B409A40031E4BC /* CoreLocation.framework */; };
@@ -88,6 +93,11 @@
 		4C18018418BB0B4E00DA6415 /* FirebaseSimpleLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseSimpleLogin.framework; sourceTree = "<group>"; };
 		4C18018618BB0B6500DA6415 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		4C18018818BB0B6C00DA6415 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		4C18018A18BB154D00DA6415 /* FilledStar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FilledStar@2x.png"; path = "../../ShortOrderResources/FilledStar@2x.png"; sourceTree = "<group>"; };
+		4C18018B18BB154D00DA6415 /* UnfilledStar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnfilledStar@2x.png"; path = "../../ShortOrderResources/UnfilledStar@2x.png"; sourceTree = "<group>"; };
+		4C18019018BB1C1F00DA6415 /* Globe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Globe@2x.png"; path = "../../ShortOrderResources/Globe@2x.png"; sourceTree = "<group>"; };
+		4C18019418BB21B300DA6415 /* UnfilledArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnfilledArrow@2x.png"; path = "../../ShortOrderResources/UnfilledArrow@2x.png"; sourceTree = "<group>"; };
+		4C18019618BB22D100DA6415 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4CAB945A18B326970031E4BC /* SHORestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHORestaurant.h; sourceTree = "<group>"; };
 		4CAB945B18B326970031E4BC /* SHORestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHORestaurant.m; sourceTree = "<group>"; };
 		4CAB946218B3462B0031E4BC /* SHOReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOReview.h; sourceTree = "<group>"; };
@@ -139,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C18019718BB22D100DA6415 /* MapKit.framework in Frameworks */,
 				4C18018918BB0B6C00DA6415 /* Social.framework in Frameworks */,
 				4C18018718BB0B6500DA6415 /* Accounts.framework in Frameworks */,
 				4C18015C18B6DD4700DA6415 /* SystemConfiguration.framework in Frameworks */,
@@ -270,6 +281,7 @@
 		4CBA060418A032730036A3DF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C18019618BB22D100DA6415 /* MapKit.framework */,
 				4C18018818BB0B6C00DA6415 /* Social.framework */,
 				4C18018618BB0B6500DA6415 /* Accounts.framework */,
 				4C18018418BB0B4E00DA6415 /* FirebaseSimpleLogin.framework */,
@@ -333,6 +345,10 @@
 		4CBA063B18A03F910036A3DF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4C18019418BB21B300DA6415 /* UnfilledArrow@2x.png */,
+				4C18019018BB1C1F00DA6415 /* Globe@2x.png */,
+				4C18018A18BB154D00DA6415 /* FilledStar@2x.png */,
+				4C18018B18BB154D00DA6415 /* UnfilledStar@2x.png */,
 				4C18017B18B712CD00DA6415 /* Separator@2x.png */,
 				4C18017218B6FBD300DA6415 /* NearButton@2x.png */,
 				4C18016E18B6FB3000DA6415 /* NotWorthItButton@2x.png */,
@@ -426,13 +442,16 @@
 			files = (
 				4C18017118B6FB3000DA6415 /* WorthItButton@2x.png in Resources */,
 				4C18017A18B6FDC000DA6415 /* SHOReviewPickerModalViewController.xib in Resources */,
+				4C18019118BB1C1F00DA6415 /* Globe@2x.png in Resources */,
 				4CBA064218A048CA0036A3DF /* SHORestaurantTableViewController.xib in Resources */,
 				4CBA065F18AACD760036A3DF /* NearButton.png in Resources */,
 				4CBA064718A071420036A3DF /* SHORestaurantCell.xib in Resources */,
 				4C18017318B6FBD300DA6415 /* NearButton@2x.png in Resources */,
 				4C18017018B6FB3000DA6415 /* NotWorthItButton@2x.png in Resources */,
 				4C18016D18B6FA3E00DA6415 /* SpinnerBackground@2x.png in Resources */,
+				4C18019518BB21B300DA6415 /* UnfilledArrow@2x.png in Resources */,
 				4CBA064E18A0A6180036A3DF /* SHORestaurantViewController.xib in Resources */,
+				4C18018D18BB154D00DA6415 /* UnfilledStar@2x.png in Resources */,
 				4C18016B18B6F8F800DA6415 /* SpinnerBackground.png in Resources */,
 				4CBA063818A035E20036A3DF /* SHOHomeViewController.xib in Resources */,
 				4CBA065318A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.xib in Resources */,
@@ -442,6 +461,7 @@
 				4C18017C18B712CD00DA6415 /* Separator@2x.png in Resources */,
 				4C18016718B6EB0300DA6415 /* SHORestaurantTableViewHeader.xib in Resources */,
 				4CBA061018A032730036A3DF /* InfoPlist.strings in Resources */,
+				4C18018C18BB154D00DA6415 /* FilledStar@2x.png in Resources */,
 				4C18016418B6E75A00DA6415 /* WorthItButton.png in Resources */,
 				4C18016318B6E75A00DA6415 /* NotWorthItButton.png in Resources */,
 				4CBA061818A032730036A3DF /* Images.xcassets in Resources */,

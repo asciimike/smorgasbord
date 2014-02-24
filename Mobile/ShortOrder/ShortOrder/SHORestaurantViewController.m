@@ -11,6 +11,8 @@
 #import "SHOReview.h"
 #import "SHOReviewPickerModalViewController.h"
 #import <Firebase/Firebase.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
 #define SHORT_WAIT_TIME 5
 #define MEDIUM_WAIT_TIME 10
@@ -39,6 +41,12 @@ static NSString *ReviewCellIdentifier = @"ReviewCellIdentifier";
     [super viewDidLoad];
     
     self.title = self.restaurant.restaurantName;
+    
+    if ([self.restaurant isFavorite]) {
+        self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UnfilledArrow"] style:UIBarButtonItemStylePlain target:self action:@selector(goToMaps)],[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FilledStar"] style:UIBarButtonItemStylePlain target:self action:@selector(markAsNotFavorite)]];
+    } else {
+        self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UnfilledArrow"] style:UIBarButtonItemStylePlain target:self action:@selector(goToMaps)],[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UnfilledStar"] style:UIBarButtonItemStylePlain target:self action:@selector(markAsFavorite)]];
+    }
     
     self.tableView.tableHeaderView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Separator.png"]];
     
@@ -79,6 +87,37 @@ static NSString *ReviewCellIdentifier = @"ReviewCellIdentifier";
     }];
     
     [self refreshData];
+}
+
+- (void)markAsFavorite;
+{
+    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UnfilledArrow"] style:UIBarButtonItemStylePlain target:self action:@selector(goToMaps)],[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FilledStar"] style:UIBarButtonItemStylePlain target:self action:@selector(markAsNotFavorite)]];
+    NSString *refURL = [NSString stringWithFormat:@"https://shortorder.firebaseio.com/restaurants/%@/%@/isFavorite/",self.restaurant.postalCode,self.restaurant.restaurantID];
+    Firebase *ref = [[Firebase alloc] initWithUrl:refURL];
+    [ref setValue:[NSNumber numberWithBool:YES]];
+}
+
+- (void)markAsNotFavorite;
+{
+    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UnfilledArrow"] style:UIBarButtonItemStylePlain target:self action:@selector(goToMaps)],[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UnfilledStar"] style:UIBarButtonItemStylePlain target:self action:@selector(markAsFavorite)]];
+    NSString *refURL = [NSString stringWithFormat:@"https://shortorder.firebaseio.com/restaurants/%@/%@/isFavorite/",self.restaurant.postalCode,self.restaurant.restaurantID];
+    Firebase *ref = [[Firebase alloc] initWithUrl:refURL];
+    [ref setValue:[NSNumber numberWithBool:NO]];
+}
+
+- (void)goToMaps;
+{
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:self.restaurant.location completionHandler:^(NSArray *placemarks, NSError *error) {
+        CLPlacemark *placemark = [placemarks lastObject];
+        MKPlacemark *mapPlacemark = [[MKPlacemark alloc] initWithPlacemark:placemark];
+        MKMapItem *endingItem = [[MKMapItem alloc] initWithPlacemark:mapPlacemark];
+        
+        NSMutableDictionary *launchOptions = [[NSMutableDictionary alloc] init];
+        [launchOptions setObject:MKLaunchOptionsDirectionsModeDriving forKey:MKLaunchOptionsDirectionsModeKey];
+        
+        [endingItem openInMapsWithLaunchOptions:launchOptions];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
