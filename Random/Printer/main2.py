@@ -3,7 +3,7 @@ from weather import *
 from printer import *
 
 def main():
-	sched = Scheduler()
+	sched = Scheduler(standalone=True)
 	@sched.interval_schedule(seconds=60)
 	def updateWeather():
 		ipList = ['192.168.1.21','192.168.1.20']
@@ -15,8 +15,6 @@ def main():
 			p = Printer(ip)
 			p.setReadyMessage(w.getMessage())
 	sched.start()
-	while True:
-		pass
 	
     
 if __name__ == "__main__":
