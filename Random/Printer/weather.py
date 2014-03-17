@@ -15,7 +15,7 @@ class Weather:
 		self.currentWeather = ''
 
 	def __repr__(self):
-		return "Current weather is: " + self.currentWeather + "\n" + "Current Temp: " + str(self.currentTemperature) + " F\n" + "Current Pressure: " + str(self.pressure) + " hPa\n" + "Current Humidity: " + str(self.humidity) + "%\n" + "Wind Speed: " + str(self.windSpeed) + " mph\n" + "Wind Direction: " + str(self.windDirection) + " deg"
+		return "Current weather is: " + self.currentWeather + "\n" + "Current Temp: " + str(self.currentTemperature) + " F\n" + "Current Pressure: " + str(self.pressure/10.0) + " kPa\n" + "Current Humidity: " + str(self.humidity) + "%\n" + "Wind Speed: " + str(self.windSpeed) + " mph\n" + "Wind Direction: " + str(self.windDirection) + " deg"
 
 	# TODO: clean up some of the cludge code here... especially for lengths
 	def getMessage(self):
@@ -25,7 +25,7 @@ class Weather:
 			line1 += ' '
 		if (len(line1) > 20):
 			line1 = line1[:20]
-		line2 = ((14 - len(str(self.currentTemperature)) - len(str(self.pressure)))/2)*' ' + str(self.currentTemperature) + 'F ' + str(self.pressure) + 'hPa ' + ((14 - len(str(self.currentTemperature)) - len(str(self.pressure)))/2)*' '
+		line2 = ((14 - len(str(self.currentTemperature)) - len(str(self.pressure)))/2)*' ' + str(self.currentTemperature) + 'F ' + str(self.pressure/10.0) + 'kPa ' + ((14 - len(str(self.currentTemperature)) - len(str(self.pressure)))/2)*' '
 		while (len(line2) < 20):
 			line2 += ' '
 		line3 = ((10 - len(str(self.humidity)) - len(str(self.windSpeed)) - len(self.windCode))/2)*' ' + str(self.humidity) + '% RH ' + str(self.windSpeed) + ' mph ' + self.windCode + ((10 - len(str(self.humidity)) - len(str(self.windSpeed)) - len(self.windCode))/2)*' '
