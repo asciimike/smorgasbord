@@ -6,11 +6,13 @@
 //  Copyright (c) 2014 Michael McDonald. All rights reserved.
 //
 
+#import "SHOUser.h"
 #import <Foundation/Foundation.h>
 
 @interface SHOReview : NSObject
 
-@property NSString *reviewID;
+@property (strong, nonatomic) SHOUser *user;
+@property (strong, nonatomic) NSString *reviewID;
 @property NSInteger waitTimeMinutes;
 @property NSInteger waitTimeHours;
 @property BOOL wasWorthIt;

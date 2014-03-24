@@ -21,7 +21,6 @@
 		4C18017C18B712CD00DA6415 /* Separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18017B18B712CD00DA6415 /* Separator@2x.png */; };
 		4C18018218BACF4E00DA6415 /* SHOAddRestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C18018018BACF4E00DA6415 /* SHOAddRestaurantViewController.m */; };
 		4C18018318BACF4E00DA6415 /* SHOAddRestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C18018118BACF4E00DA6415 /* SHOAddRestaurantViewController.xib */; };
-		4C18018518BB0B4E00DA6415 /* FirebaseSimpleLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C18018418BB0B4E00DA6415 /* FirebaseSimpleLogin.framework */; };
 		4C18018718BB0B6500DA6415 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C18018618BB0B6500DA6415 /* Accounts.framework */; };
 		4C18018918BB0B6C00DA6415 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C18018818BB0B6C00DA6415 /* Social.framework */; };
 		4C18018C18BB154D00DA6415 /* FilledStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18018A18BB154D00DA6415 /* FilledStar@2x.png */; };
@@ -29,6 +28,7 @@
 		4C18019118BB1C1F00DA6415 /* Globe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18019018BB1C1F00DA6415 /* Globe@2x.png */; };
 		4C18019518BB21B300DA6415 /* UnfilledArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C18019418BB21B300DA6415 /* UnfilledArrow@2x.png */; };
 		4C18019718BB22D100DA6415 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C18019618BB22D100DA6415 /* MapKit.framework */; };
+		4C67139518E083D900753049 /* SHOUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C67139418E083D900753049 /* SHOUser.m */; };
 		4CAB945C18B326970031E4BC /* SHORestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB945B18B326970031E4BC /* SHORestaurant.m */; };
 		4CAB946418B3462B0031E4BC /* SHOReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB946318B3462B0031E4BC /* SHOReview.m */; };
 		4CAB946818B409A40031E4BC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAB946718B409A40031E4BC /* CoreLocation.framework */; };
@@ -59,6 +59,7 @@
 		4CBA065C18AAC85C0036A3DF /* SHOLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA065A18AAC85C0036A3DF /* SHOLoginViewController.m */; };
 		4CBA065D18AAC85C0036A3DF /* SHOLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA065B18AAC85C0036A3DF /* SHOLoginViewController.xib */; };
 		4CBA065F18AACD760036A3DF /* NearButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA065E18AACD760036A3DF /* NearButton.png */; };
+		4CE42B1318E0B49300261A01 /* FirebaseSimpleLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C67139618E0B2FA00753049 /* FirebaseSimpleLogin.framework */; };
 		6D5FD9C4603040D69E92F9E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A652BCE7934EB0A7E0D443 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +99,9 @@
 		4C18019018BB1C1F00DA6415 /* Globe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Globe@2x.png"; path = "../../ShortOrderResources/Globe@2x.png"; sourceTree = "<group>"; };
 		4C18019418BB21B300DA6415 /* UnfilledArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnfilledArrow@2x.png"; path = "../../ShortOrderResources/UnfilledArrow@2x.png"; sourceTree = "<group>"; };
 		4C18019618BB22D100DA6415 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4C67139318E083D900753049 /* SHOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOUser.h; sourceTree = "<group>"; };
+		4C67139418E083D900753049 /* SHOUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHOUser.m; sourceTree = "<group>"; };
+		4C67139618E0B2FA00753049 /* FirebaseSimpleLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseSimpleLogin.framework; path = ../ShortOrderResources/FirebaseSimpleLogin.framework; sourceTree = "<group>"; };
 		4CAB945A18B326970031E4BC /* SHORestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHORestaurant.h; sourceTree = "<group>"; };
 		4CAB945B18B326970031E4BC /* SHORestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHORestaurant.m; sourceTree = "<group>"; };
 		4CAB946218B3462B0031E4BC /* SHOReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOReview.h; sourceTree = "<group>"; };
@@ -149,15 +153,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CE42B1318E0B49300261A01 /* FirebaseSimpleLogin.framework in Frameworks */,
+				4CBA060618A032730036A3DF /* Foundation.framework in Frameworks */,
+				4CBA060A18A032730036A3DF /* UIKit.framework in Frameworks */,
+				4CAB946818B409A40031E4BC /* CoreLocation.framework in Frameworks */,
 				4C18019718BB22D100DA6415 /* MapKit.framework in Frameworks */,
+				4CBA060818A032730036A3DF /* CoreGraphics.framework in Frameworks */,
 				4C18018918BB0B6C00DA6415 /* Social.framework in Frameworks */,
 				4C18018718BB0B6500DA6415 /* Accounts.framework in Frameworks */,
 				4C18015C18B6DD4700DA6415 /* SystemConfiguration.framework in Frameworks */,
-				4CAB946818B409A40031E4BC /* CoreLocation.framework in Frameworks */,
-				4CBA060818A032730036A3DF /* CoreGraphics.framework in Frameworks */,
-				4C18018518BB0B4E00DA6415 /* FirebaseSimpleLogin.framework in Frameworks */,
-				4CBA060A18A032730036A3DF /* UIKit.framework in Frameworks */,
-				4CBA060618A032730036A3DF /* Foundation.framework in Frameworks */,
 				6D5FD9C4603040D69E92F9E7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +225,8 @@
 				4CAB945B18B326970031E4BC /* SHORestaurant.m */,
 				4CAB946218B3462B0031E4BC /* SHOReview.h */,
 				4CAB946318B3462B0031E4BC /* SHOReview.m */,
+				4C67139318E083D900753049 /* SHOUser.h */,
+				4C67139418E083D900753049 /* SHOUser.m */,
 			);
 			name = "Data Objects";
 			sourceTree = "<group>";
@@ -281,6 +287,7 @@
 		4CBA060418A032730036A3DF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C67139618E0B2FA00753049 /* FirebaseSimpleLogin.framework */,
 				4C18019618BB22D100DA6415 /* MapKit.framework */,
 				4C18018818BB0B6C00DA6415 /* Social.framework */,
 				4C18018618BB0B6500DA6415 /* Accounts.framework */,
@@ -521,6 +528,7 @@
 				4CBA065218A0AB030036A3DF /* SHORestaurantTableViewControllerWithTabs.m in Sources */,
 				4CBA064D18A0A6180036A3DF /* SHORestaurantViewController.m in Sources */,
 				4CBA064518A070780036A3DF /* SHORestaurantCell.m in Sources */,
+				4C67139518E083D900753049 /* SHOUser.m in Sources */,
 				4CBA061218A032730036A3DF /* main.m in Sources */,
 				4CBA063718A035E20036A3DF /* SHOHomeViewController.m in Sources */,
 				4CAB945C18B326970031E4BC /* SHORestaurant.m in Sources */,
@@ -651,6 +659,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/michael/Documents/Development/smorgasbord/Mobile/ShortOrder,
+					/Users/michael/Documents/Development/smorgasbord/Mobile/ShortOrderResources,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShortOrder/ShortOrder-Prefix.pch";
@@ -669,6 +678,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/michael/Documents/Development/smorgasbord/Mobile/ShortOrder,
+					/Users/michael/Documents/Development/smorgasbord/Mobile/ShortOrderResources,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShortOrder/ShortOrder-Prefix.pch";

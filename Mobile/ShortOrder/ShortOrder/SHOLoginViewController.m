@@ -7,6 +7,7 @@
 //
 
 #import "SHOLoginViewController.h"
+#import "SHOUser.h"
 #import <Firebase/Firebase.h>
 #import <FirebaseSimpleLogin/FirebaseSimpleLogin.h>
 
@@ -68,7 +69,6 @@
             [self.loginActivityIndicator stopAnimating];
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         }
-
     }];
 }
 
@@ -81,6 +81,7 @@
 {
     // Please, for the love of god, add some validity checking to these (at least the email address)
     Firebase *authRef = [[Firebase alloc] initWithUrl:@"https://shortorder.firebaseio.com"];
+    Firebase *userRef = [authRef childByAppendingPath:@"users"];
     FirebaseSimpleLogin *authClient = [[FirebaseSimpleLogin alloc] initWithRef:authRef];
     [authClient createUserWithEmail:self.usernameTextField.text password:self.passwordTextField.text
                  andCompletionBlock:^(NSError* error, FAUser* user) {
@@ -92,10 +93,11 @@
                      } else {
                          // We created a new user account
                          NSLog(@"New user %@ created", user);
-                     }
+                         SHOUser *newUser = [[SHOUser alloc] initWithUsername:self.usernameTextField.text];
+                         Firebase *newUserRef = [userRef childByAutoId];
+                         [newUserRef setValue:[newUser toDictionary]];
+                    }
                  }];
-    
-    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.firebase.com"]]];
 }
 
 - (IBAction)backgroundTap:(id)sender;

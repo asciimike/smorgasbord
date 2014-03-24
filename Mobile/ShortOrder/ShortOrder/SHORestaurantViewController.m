@@ -11,6 +11,7 @@
 #import "SHOReview.h"
 #import "SHOReviewPickerModalViewController.h"
 #import <Firebase/Firebase.h>
+#import <FirebaseSimpleLogin/FirebaseSimpleLogin.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
@@ -91,15 +92,37 @@ static NSString *ReviewCellIdentifier = @"ReviewCellIdentifier";
 
 - (void)markAsFavorite;
 {
-    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UnfilledArrow"] style:UIBarButtonItemStylePlain target:self action:@selector(goToMaps)],[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FilledStar"] style:UIBarButtonItemStylePlain target:self action:@selector(markAsNotFavorite)]];
-    NSString *refURL = [NSString stringWithFormat:@"https://shortorder.firebaseio.com/restaurants/%@/%@/isFavorite/",self.restaurant.postalCode,self.restaurant.restaurantID];
-    Firebase *ref = [[Firebase alloc] initWithUrl:refURL];
-    [ref setValue:[NSNumber numberWithBool:YES]];
+    
+    
+    Firebase *baseRef = [[Firebase alloc] initWithUrl:@"shortorder.firebaseio.com"];
+    FirebaseSimpleLogin *authClient = [[FirebaseSimpleLogin alloc] initWithRef:baseRef];
+    [authClient checkAuthStatusWithBlock:^(NSError *error, FAUser *user) {
+        if (error != nil) {
+            // Oh no! There was an error performing the check
+        } else if (user == nil) {
+            // No user is logged in, pop up an alert
+        } else {
+            self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UnfilledArrow"] style:UIBarButtonItemStylePlain target:self action:@selector(goToMaps)],[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FilledStar"] style:UIBarButtonItemStylePlain target:self action:@selector(markAsNotFavorite)]];
+            
+            NSString *refURL = [NSString stringWithFormat:@"shortorder.firebaseio.com/users/%@", user.userId];
+            Firebase *ref = [[Firebase alloc] initWithUrl:refURL];
+        }
+    }];
+    
+    
+    
+    
+//    NSString *refURL = [NSString stringWithFormat:@"https://shortorder.firebaseio.com/restaurants/%@/%@/isFavorite/",self.restaurant.postalCode,self.restaurant.restaurantID];
+//    Firebase *ref = [[Firebase alloc] initWithUrl:refURL];
+//    [ref setValue:[NSNumber numberWithBool:YES]];
 }
 
 - (void)markAsNotFavorite;
 {
     self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UnfilledArrow"] style:UIBarButtonItemStylePlain target:self action:@selector(goToMaps)],[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UnfilledStar"] style:UIBarButtonItemStylePlain target:self action:@selector(markAsFavorite)]];
+    
+    
+    
     NSString *refURL = [NSString stringWithFormat:@"https://shortorder.firebaseio.com/restaurants/%@/%@/isFavorite/",self.restaurant.postalCode,self.restaurant.restaurantID];
     Firebase *ref = [[Firebase alloc] initWithUrl:refURL];
     [ref setValue:[NSNumber numberWithBool:NO]];

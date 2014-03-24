@@ -12,7 +12,7 @@
 
 - (id)init
 {
-    return [self initWithWaitTimeMinutes:0 andHours:0 wasWorthIt:NO atDate:[NSDate date]];
+    return [self initWithWaitTimeMinutes:0 andHours:0 wasWorthIt:NO atDate:[NSDate date] byUser:nil];
 }
 
 - (id)initWithDictionary:(NSDictionary *)dict;
@@ -22,10 +22,17 @@
     BOOL worthIt = [[dict objectForKey:@"reviewWasWorthIt"] integerValue];
     NSTimeInterval timeInterval = [(NSNumber *)[dict objectForKey:@"timestamp"] doubleValue];
     NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:timeInterval];
-    return [self initWithWaitTimeMinutes:minutes andHours:hours wasWorthIt:worthIt atDate:date];
+    //pull user out
+    SHOUser *user = [[SHOUser alloc] initWithDictionary:nil];
+    return [self initWithWaitTimeMinutes:minutes andHours:hours wasWorthIt:worthIt atDate:date byUser:user];
 }
 
 - (id)initWithWaitTimeMinutes:(NSInteger)minutes andHours:(NSInteger)hours wasWorthIt:(BOOL)worthIt atDate:(NSDate *)date;
+{
+    return [self initWithWaitTimeMinutes:minutes andHours:hours wasWorthIt:worthIt atDate:date byUser:nil];
+}
+
+- (id)initWithWaitTimeMinutes:(NSInteger)minutes andHours:(NSInteger)hours wasWorthIt:(BOOL)worthIt atDate:(NSDate *)date byUser:(SHOUser *)user;
 {
     self = [super init];
     if (self) {
@@ -33,6 +40,7 @@
         self.waitTimeHours = hours;
         self.wasWorthIt = worthIt;
         self.timestamp = date;
+        self.user = user;
     }
     return self;
 }
@@ -44,6 +52,7 @@
     [dict setValue:[NSNumber numberWithInteger:self.waitTimeHours] forKey:@"reviewWaitTimeHours"];
     [dict setValue:[NSNumber numberWithBool:self.wasWorthIt] forKey:@"reviewWasWorthIt"];
     [dict setValue:[NSNumber numberWithDouble:[self.timestamp timeIntervalSinceReferenceDate]] forKey:@"timestamp"];
+    // Add user ID
     return dict;
 }
 
