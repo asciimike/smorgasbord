@@ -1,0 +1,13 @@
+[Unit]
+Description=HP Printer Weather Display Service
+
+[Service]
+WorkingDirectory=/home/root/smorgasbord/Random/Printer
+ExecStart=/usr/bin/python main2.py &
+SyslogIdentifier=weatherprinter
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
