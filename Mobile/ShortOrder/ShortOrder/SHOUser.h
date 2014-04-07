@@ -7,9 +7,10 @@
 //
 
 #import "SHORestaurant.h"
+#import "FirebaseProtocol.h"
 #import <Foundation/Foundation.h>
 
-@interface SHOUser : NSObject
+@interface SHOUser : NSObject <FirebaseProtocol>
 
 @property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) NSString *username;

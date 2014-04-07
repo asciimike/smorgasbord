@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "FirebaseProtocol.h"
 
-@interface SHORestaurant : NSObject
+@interface SHORestaurant : NSObject <FirebaseProtocol>
 
 @property (strong, nonatomic) NSString *restaurantID;
 @property (strong, nonatomic) NSString *postalCode;

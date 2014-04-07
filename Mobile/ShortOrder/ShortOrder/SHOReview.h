@@ -7,9 +7,10 @@
 //
 
 #import "SHOUser.h"
+#import "FirebaseProtocol.h"
 #import <Foundation/Foundation.h>
 
-@interface SHOReview : NSObject
+@interface SHOReview : NSObject <FirebaseProtocol>
 
 @property (strong, nonatomic) SHOUser *user;
 @property (strong, nonatomic) NSString *reviewID;
