@@ -121,7 +121,7 @@
                   symbolName = "-[SHOAddRestaurantViewController keyboardWillShow:]"
                   moduleName = "ShortOrder"
                   urlString = "file:///Users/michael/Documents/Development/smorgasbord/Mobile/ShortOrder/ShortOrder/SHOAddRestaurantViewController.m"
-                  timestampString = "417381189.220042"
+                  timestampString = "418598673.338109"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "88"
@@ -135,7 +135,7 @@
                   symbolName = "__51-[SHOAddRestaurantViewController keyboardWillShow:]_block_invoke"
                   moduleName = "ShortOrder"
                   urlString = "file:///Users/michael/Documents/Development/smorgasbord/Mobile/ShortOrder/ShortOrder/SHOAddRestaurantViewController.m"
-                  timestampString = "417381189.220157"
+                  timestampString = "418598673.338338"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "88"
@@ -191,6 +191,52 @@
             endingLineNumber = "68"
             landmarkName = "-signInButtonPressed:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShortOrder/SHORestaurant.h"
+            timestampString = "418599640.910958"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "@interface SHORestaurant"
+            landmarkType = "2">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SHORestaurant restaurantID]"
+                  moduleName = "ShortOrder"
+                  urlString = "file:///Users/michael/Documents/Development/smorgasbord/Mobile/ShortOrder/ShortOrder/SHORestaurant.h"
+                  timestampString = "418599640.916434"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SHORestaurant setRestaurantID:]"
+                  moduleName = "ShortOrder"
+                  urlString = "file:///Users/michael/Documents/Development/smorgasbord/Mobile/ShortOrder/ShortOrder/SHORestaurant.h"
+                  timestampString = "418599640.916595"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

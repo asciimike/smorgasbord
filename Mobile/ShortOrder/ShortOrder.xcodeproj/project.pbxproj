@@ -145,6 +145,7 @@
 		4CBA065A18AAC85C0036A3DF /* SHOLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHOLoginViewController.m; sourceTree = "<group>"; };
 		4CBA065B18AAC85C0036A3DF /* SHOLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHOLoginViewController.xib; sourceTree = "<group>"; };
 		4CBA065E18AACD760036A3DF /* NearButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NearButton.png; sourceTree = "<group>"; };
+		4CD70BF618F352BB00FCDB7F /* FirebaseProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirebaseProtocol.h; sourceTree = "<group>"; };
 		5CAB79723BCA4507A5FB4FC8 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,6 +228,7 @@
 				4CAB946318B3462B0031E4BC /* SHOReview.m */,
 				4C67139318E083D900753049 /* SHOUser.h */,
 				4C67139418E083D900753049 /* SHOUser.m */,
+				4CD70BF618F352BB00FCDB7F /* FirebaseProtocol.h */,
 			);
 			name = "Data Objects";
 			sourceTree = "<group>";
