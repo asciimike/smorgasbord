@@ -57,7 +57,7 @@ Short Order! is a crowdsourced restaurant wait time app developed as a product f
 ![Wait Time](https://raw.githubusercontent.com/mcdonamp/smorgasbord/master/Mobile/ShortOrderImages/WaitTimeSim.png)
 
 ## License (MIT) ##
-Copyright (c) 2004 Michael McDonald
+Copyright (c) 2014 Michael McDonald
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
