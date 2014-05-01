@@ -20,7 +20,7 @@ class ContentWeather (Content):
 
 	# TODO: clean up some of the cludge code here... especially for lengths
 	def getContent(self):
-		line0 = '  CURRENT WEATHER:  '
+		line0 = '  CURRENT  WEATHER  '
 		line1 = ((20 - len(self.currentWeather))/2)*' ' + self.currentWeather + ((20 - len(self.currentWeather))/2)*' '
 		while (len(line1) < 20):
 			line1 += ' '
