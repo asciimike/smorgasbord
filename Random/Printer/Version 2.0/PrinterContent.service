@@ -1,10 +1,10 @@
 [Unit]
-Description=HP Printer Weather Display Service
+Description=HP Printer Content Display Service
 
 [Service]
-WorkingDirectory=/home/root/smorgasbord/Random/Printer
-ExecStart=/usr/bin/python main2.py &
-SyslogIdentifier=weatherprinter
+WorkingDirectory=/home/root/smorgasbord/Random/Printer/Version 2.0
+ExecStart=/usr/bin/python Main.py &
+SyslogIdentifier=printercontentprovider
 
 [Service]
 Restart=always
