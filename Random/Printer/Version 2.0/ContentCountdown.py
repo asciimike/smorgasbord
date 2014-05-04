@@ -1,4 +1,5 @@
-import datetime
+from datetime import datetime
+from pytz import timezone
 
 # This class uses imperial units for all values
 
@@ -8,7 +9,6 @@ class ContentCountdown:
 		self.daysLeft = 0
 		self.hoursLeft = 0
 		self.minutesLeft = 0
-		self.secondsLeft = 0
 		self.date = dt(year, month, day, hour, minute)
 
 	def __repr__(self):
@@ -32,10 +32,9 @@ class ContentCountdown:
 		return line0 + line1 + line2 + line3
 
 	def updateContent(self):
-		dt = datetime.datetime
-		now = dt.now()
+		dt = datetime
+		now = dt.now(tz=timezone('US/Eastern'))
 		delta = self.date - dt(year = now.year, month = now.month, day = now.day, hour = now.hour, minute = now.minute)
 		self.daysLeft = delta.days
 		self.hoursLeft = delta.seconds/3600
 		self.minutesLeft = (delta.seconds - (3600*self.hoursLeft))/60
-		# self.secondsLeft = (delta.seconds - (3600*self.hoursLeft) - (60*self.minutesLeft))

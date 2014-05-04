@@ -14,7 +14,7 @@ def updateContent(contentProvider):
 	ipList = ['192.168.1.21','192.168.1.20']
 	for ip in ipList:
 		p = Printer(ip)
-		#p.tryReadyMessage(contentToDisplay)
+		# p.tryReadyMessage(contentToDisplay)
 		p.setReadyMessage(contentToDisplay)
 
 
