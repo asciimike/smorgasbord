@@ -5,11 +5,11 @@ from pytz import timezone
 
 class ContentCountdown:
 	def __init__(self, day, month, year, hour, minute):
-		dt = datetime.datetime
+		self.dt = datetime
 		self.daysLeft = 0
 		self.hoursLeft = 0
 		self.minutesLeft = 0
-		self.date = dt(year, month, day, hour, minute)
+		self.date = datetime(year, month, day, hour, minute)
 
 	def __repr__(self):
 		return str(self.daysLeft) + ' Days left\n' + str(self.hoursLeft) + ' Hours left\n' + str(self.minutesLeft) + ' Minutes left\n' + str(self.secondsLeft) + ' Seconds left'
@@ -32,9 +32,8 @@ class ContentCountdown:
 		return line0 + line1 + line2 + line3
 
 	def updateContent(self):
-		dt = datetime
-		now = dt.now(tz=timezone('US/Eastern'))
-		delta = self.date - dt(year = now.year, month = now.month, day = now.day, hour = now.hour, minute = now.minute)
+		now = datetime.now(tz=timezone('US/Eastern'))
+		delta = self.date - datetime(year = now.year, month = now.month, day = now.day, hour = now.hour, minute = now.minute)
 		self.daysLeft = delta.days
 		self.hoursLeft = delta.seconds/3600
 		self.minutesLeft = (delta.seconds - (3600*self.hoursLeft))/60
