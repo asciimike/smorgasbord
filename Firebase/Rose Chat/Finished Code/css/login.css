@@ -1,0 +1,111 @@
+html { 
+  /*Photo credit: https://www.flickr.com/photos/jkleeman/5005056514/in/set-72157624989319518/*/
+  background: url("../images/white_chapel_2.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+	background-color:transparent;
+}
+
+.padD15 {
+	padding-bottom: 15px;
+}
+
+.marginD15 {
+  margin-bottom: 15px;
+}
+
+input { 
+	text-align: center; 
+} 
+
+.form-group img {
+  width: 100%;
+}
+
+.form-signin {
+  max-width: 330px;
+  margin-top: 120px; 
+  margin-right: auto;
+  margin-left: 8%;
+  background-color:transparent;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.registerStar {
+  float: right;
+  width: 500px;
+  height: 500px;
+  background: url("RegisterStar.png") no-repeat;
+  z-index: 1;
+}
+
+.registerStar:hover {
+  background: url("RegisterStarHover.png") no-repeat;
+}
+
+/*Overrides for bootstrap default colors*/
+.btn-primary {
+	border-color: #DA4453;
+	background-color: #DA4453;
+}
+
+.btn-primary:hover {
+	border-color: #ED5565;
+	background-color: #ED5565;
+}
+
+.btn-primary:active {
+	color:#ED5565;
+	border-color: #FFFFFF;
+	background-color: #FFFFFF;
+}
+
+.checkbox {
+  color:#DA4453;
+  font-size: 18px;
+}
+
+a {
+  margin-top: 5px;
+  color:#FFFFFF;
+  font-size: 14px;
+  float: right;
+}
+
+a:hover {
+  color:#FFFFFF;
+}
