@@ -6,7 +6,6 @@ body {
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
-  width: 500px;
   font-size: 24px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #424547;
@@ -52,6 +51,7 @@ em {
   height: 230px;
   padding: 10px;
   border: 8px solid #424547;
+  border-radius: 5px;
   margin-bottom: 5px;
   text-align: left;
 }
