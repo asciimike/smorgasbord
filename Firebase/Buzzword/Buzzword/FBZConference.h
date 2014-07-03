@@ -7,14 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <FirebaseSimpleLogin/FirebaseSimpleLogin.h>
+
 #import "FirebaseProtocol.h"
 
 @interface FBZConference : NSObject <FirebaseProtocol>
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *twitterID;
-@property (strong, nonatomic) NSMutableArray *attendes;
+@property (strong, nonatomic) NSString *creator;
+@property (strong, nonatomic) NSMutableArray *attendees;
+@property (strong, nonatomic) NSMutableArray *words;
 
+- (id)initWithTwitter:(NSString *)twitterID andCreator:(NSString *)creator;
+- (id)initWithTwitter:(NSString *)twitterID andCreator:(NSString *)creator andAttendees:(NSMutableArray *)attendees andWords:(NSMutableArray *)words;
 - (id)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)toDictionary;
 

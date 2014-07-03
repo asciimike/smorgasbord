@@ -58,7 +58,9 @@
         } else {
             // There is a logged in user
             // Continue with the below
-//            NSLog(@"User is currently logged in: %@", user.thirdPartyUserData);
+            NSLog(@"User is currently logged in: %@", user.thirdPartyUserData);
+            self.currentUser = user;
+            self.currentConference = nil;
         }
     }];
     
@@ -76,6 +78,7 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+//    [self logout];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -91,6 +94,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [self logout];
 }
 
 - (void)logout;
@@ -98,6 +102,8 @@
     Firebase *ref = [[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]];
     FirebaseSimpleLogin *authClient = [[FirebaseSimpleLogin alloc] initWithRef:ref];
     [authClient logout];
+    self.currentUser = nil;
+    self.currentConference = nil;
     
     UIApplication *app = [UIApplication sharedApplication];
     [app performSelector:@selector(suspend)];
@@ -108,6 +114,16 @@
     //exit app when app is in background
     exit(0);
     
+}
+
+- (FAUser *)getCurrentUser;
+{
+    return self.currentUser;
+}
+
+- (FBZConference *)getCurrentConference;
+{
+    return self.currentConference;
 }
 
 @end

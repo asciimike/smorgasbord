@@ -10,4 +10,19 @@
 
 @implementation FBZWord
 
+- (id)init
+{
+    return [self initWithWord:@"" andCount:0];
+}
+
+- (id)initWithWord:(NSString *)word andCount:(NSInteger)count;
+{
+    self = [super init];
+    if (self) {
+        self.word = word;
+        self.count = count;
+    }
+    return self;
+}
+
 @end

@@ -10,4 +10,9 @@
 
 @interface FBZWord : NSObject
 
+@property (strong, nonatomic) NSString *word;
+@property NSInteger count;
+
+- (id)initWithWord:(NSString *)word andCount:(NSInteger)count;
+
 @end

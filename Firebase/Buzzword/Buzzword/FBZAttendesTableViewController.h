@@ -10,4 +10,6 @@
 
 @interface FBZAttendesTableViewController : UITableViewController
 
+@property (strong, nonatomic) NSMutableArray *attendeeList;
+
 @end

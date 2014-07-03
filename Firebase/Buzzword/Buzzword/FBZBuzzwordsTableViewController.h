@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FBZConference.h"
+
 @interface FBZBuzzwordsTableViewController : UITableViewController
+
+@property (strong, nonatomic)FBZConference *currentConference;
+@property (strong, nonatomic)NSMutableArray *wordList;
 
 @end

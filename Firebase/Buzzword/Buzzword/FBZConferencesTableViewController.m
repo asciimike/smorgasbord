@@ -8,6 +8,8 @@
 
 #import "FBZConferencesTableViewController.h"
 #import "FBZConference.h"
+#import "FBZAppDelegate.h"
+#import "FBZAttendesTableViewController.h"
 
 #import <Firebase/Firebase.h>
 #import <FirebaseSimpleLogin/FirebaseSimpleLogin.h>
@@ -39,19 +41,48 @@
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320.0, 44)];
     self.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchBar;
+    
+    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addConference)];
+    UIBarButtonItem *logoutItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"exit3"] style:UIBarButtonItemStylePlain target:[[UIApplication sharedApplication] delegate] action:@selector(logout)];
+    self.navigationItem.rightBarButtonItems = @[logoutItem, addItem];
+    
+    [self initFirebaseCallbacks];
+}
 
+- (void)viewWillAppear:(BOOL)animated;
+{
+    // Nil out current conference, since no conference is selected
+    FBZAppDelegate *delegate = (FBZAppDelegate *)[[UIApplication sharedApplication] delegate];
+    FBZConference *currentConference = [delegate getCurrentConference];
+    
+    if (currentConference) {
+        Firebase *ref = [[[[[[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]] childByAppendingPath:@"conferences"] childByAppendingPath:currentConference.twitterID] childByAppendingPath:@"attendees"] childByAppendingPath:delegate.currentUser.uid];
+        [ref removeValue];
+    }
+    delegate.currentConference = nil;
+}
+
+- (void)initFirebaseCallbacks;
+{
     Firebase *ref = [[[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]] childByAppendingPath:@"conferences"];
+    
     [ref observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         // If a conference is added...
         NSDictionary *dict = snapshot.value;
         FBZConference *newConference = [[FBZConference alloc] initWithDictionary:dict];
         [self.conferenceList addObject:newConference];
+        [self.tableView reloadData];
     }];
     
-    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addConference)];
-    UIBarButtonItem *logoutItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"exit3"] style:UIBarButtonItemStylePlain target:[[UIApplication sharedApplication] delegate] action:@selector(logout)];
-    self.navigationItem.rightBarButtonItems = @[logoutItem, addItem];
+    [ref observeEventType:FEventTypeChildRemoved withBlock:^(FDataSnapshot *snapshot) {
+        //Remove conference
+        NSDictionary *dict = snapshot.value;
+        FBZConference *removedConference = [[FBZConference alloc] initWithDictionary:dict];
+        [self.conferenceList removeObject:removedConference];
+        [self.tableView reloadData];
+    }];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -63,14 +94,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [self.conferenceList count];
 }
@@ -81,13 +110,16 @@
     // TODO: Probably use custom table view cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     FBZConference *currentConference = [self.conferenceList objectAtIndex:indexPath.row];
     
     // Configure the cell...
-    cell.textLabel.text = @"test"; //currentConference.twitterID;
+    cell.textLabel.text = @"Conference name"; //currentConference.name;
+    cell.detailTextLabel.text = currentConference.twitterID;
+    cell.textLabel.textColor = [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:1.0];
+    cell.detailTextLabel.textColor = [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:0.5];
 
     return cell;
 }
@@ -107,7 +139,7 @@
     return NO;
 }
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
@@ -115,19 +147,48 @@
 {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-
+    FBZAttendesTableViewController *attendeesViewController = [[FBZAttendesTableViewController alloc] init];
     // Pass the selected object to the new view controller.
     
+    FBZConference *currentConference = [self.conferenceList objectAtIndex:indexPath.row];
+    
+    FBZAppDelegate *delegate = (FBZAppDelegate *)[[UIApplication sharedApplication] delegate];
+    delegate.currentConference = currentConference;
+
+    
     // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    [self.navigationController pushViewController:attendeesViewController animated:YES];
 }
  
- */
 
 - (void) addConference;
 {
     // Pop up the modal conference adder view
+    UIAlertView *addConferenceAlertView = [[UIAlertView alloc] initWithTitle:@"Add Conference" message:@"Add the conference's twitter handle: @conference" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
+    addConferenceAlertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [addConferenceAlertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if ([title isEqualToString:@"Add"]) {
+        UITextField *conferenceTextField = [alertView textFieldAtIndex:0];
+        NSString *conferenceName = conferenceTextField.text;
+        // CHeck that only twitter handles can be added here
+        // TODO Replace w/ NSRegularExpression
+        if ((![conferenceName isEqualToString:@""]) && ([conferenceName characterAtIndex:0] == '@')) {
+            Firebase *ref = [[[[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]] childByAppendingPath:@"conferences"] childByAppendingPath:conferenceName];
+            FBZAppDelegate *delegate = (FBZAppDelegate *)[[UIApplication sharedApplication] delegate];
+            FAUser *currentUser = [delegate getCurrentUser];
+            FBZConference *newConference = [[FBZConference alloc] initWithTwitter:conferenceName andCreator:currentUser.uid];
+            [ref setValue:newConference.toDictionary];
+        } else {
+            // Pop up an alert that says that they screwed up!
+            UIAlertView *failedToAddView = [[UIAlertView alloc] initWithTitle:@"Failed to add conference" message:@"Please check the conference title and try again" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+            [failedToAddView show];
+        }
+    }
 }
 
 @end

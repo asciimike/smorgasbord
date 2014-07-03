@@ -30,7 +30,10 @@
 		4C304CD31964A2F300946E97 /* FBZLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C304CD11964A2F300946E97 /* FBZLoginViewController.xib */; };
 		4C304CDE1964DA9E00946E97 /* FBZBuzzwordsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C304CDC1964DA9E00946E97 /* FBZBuzzwordsTableViewController.m */; };
 		4C304CDF1964DA9E00946E97 /* FBZBuzzwordsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C304CDD1964DA9E00946E97 /* FBZBuzzwordsTableViewController.xib */; };
-		4C304CE11964DB0500946E97 /* FBZAddWordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C304CE01964DB0500946E97 /* FBZAddWordView.xib */; };
+		4C304CE51965DAAB00946E97 /* FBZAttendesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C304CE31965DAAB00946E97 /* FBZAttendesTableViewController.m */; };
+		4C304CE61965DAAB00946E97 /* FBZAttendesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C304CE41965DAAB00946E97 /* FBZAttendesTableViewController.xib */; };
+		4C304CE81965E44300946E97 /* FBZNoConferenceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C304CE71965E44300946E97 /* FBZNoConferenceView.xib */; };
+		4C304CEB196601CC00946E97 /* FBZWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C304CEA196601CC00946E97 /* FBZWord.m */; };
 		61D79A064C144E339D4E21F2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B07A028E91E842E2B36C7842 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +80,12 @@
 		4C304CDB1964DA9E00946E97 /* FBZBuzzwordsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBZBuzzwordsTableViewController.h; sourceTree = "<group>"; };
 		4C304CDC1964DA9E00946E97 /* FBZBuzzwordsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBZBuzzwordsTableViewController.m; sourceTree = "<group>"; };
 		4C304CDD1964DA9E00946E97 /* FBZBuzzwordsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBZBuzzwordsTableViewController.xib; sourceTree = "<group>"; };
-		4C304CE01964DB0500946E97 /* FBZAddWordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBZAddWordView.xib; sourceTree = "<group>"; };
+		4C304CE21965DAAB00946E97 /* FBZAttendesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBZAttendesTableViewController.h; sourceTree = "<group>"; };
+		4C304CE31965DAAB00946E97 /* FBZAttendesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBZAttendesTableViewController.m; sourceTree = "<group>"; };
+		4C304CE41965DAAB00946E97 /* FBZAttendesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBZAttendesTableViewController.xib; sourceTree = "<group>"; };
+		4C304CE71965E44300946E97 /* FBZNoConferenceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBZNoConferenceView.xib; sourceTree = "<group>"; };
+		4C304CE9196601CC00946E97 /* FBZWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBZWord.h; sourceTree = "<group>"; };
+		4C304CEA196601CC00946E97 /* FBZWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBZWord.m; sourceTree = "<group>"; };
 		627D0D9A49204EB3B2614887 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		B07A028E91E842E2B36C7842 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -197,6 +205,9 @@
 				4C304CBE19648F8F00946E97 /* FBZConferencesTableViewController.h */,
 				4C304CBF19648F8F00946E97 /* FBZConferencesTableViewController.m */,
 				4C304CC019648F8F00946E97 /* FBZConferencesTableViewController.xib */,
+				4C304CE21965DAAB00946E97 /* FBZAttendesTableViewController.h */,
+				4C304CE31965DAAB00946E97 /* FBZAttendesTableViewController.m */,
+				4C304CE41965DAAB00946E97 /* FBZAttendesTableViewController.xib */,
 			);
 			name = Conferences;
 			sourceTree = "<group>";
@@ -207,6 +218,8 @@
 				4C304CC719649EE400946E97 /* FirebaseProtocol.h */,
 				4C304CC419649DEB00946E97 /* FBZConference.h */,
 				4C304CC519649DEB00946E97 /* FBZConference.m */,
+				4C304CE9196601CC00946E97 /* FBZWord.h */,
+				4C304CEA196601CC00946E97 /* FBZWord.m */,
 			);
 			name = "Model Objects";
 			sourceTree = "<group>";
@@ -227,7 +240,7 @@
 				4C304CDB1964DA9E00946E97 /* FBZBuzzwordsTableViewController.h */,
 				4C304CDC1964DA9E00946E97 /* FBZBuzzwordsTableViewController.m */,
 				4C304CDD1964DA9E00946E97 /* FBZBuzzwordsTableViewController.xib */,
-				4C304CE01964DB0500946E97 /* FBZAddWordView.xib */,
+				4C304CE71965E44300946E97 /* FBZNoConferenceView.xib */,
 			);
 			name = Buzzwords;
 			sourceTree = "<group>";
@@ -311,9 +324,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C304C981964712A00946E97 /* InfoPlist.strings in Resources */,
+				4C304CE61965DAAB00946E97 /* FBZAttendesTableViewController.xib in Resources */,
+				4C304CE81965E44300946E97 /* FBZNoConferenceView.xib in Resources */,
 				4C304CD31964A2F300946E97 /* FBZLoginViewController.xib in Resources */,
 				4C304CDF1964DA9E00946E97 /* FBZBuzzwordsTableViewController.xib in Resources */,
-				4C304CE11964DB0500946E97 /* FBZAddWordView.xib in Resources */,
 				4C304CA01964712A00946E97 /* Images.xcassets in Resources */,
 				4C304CC219648F8F00946E97 /* FBZConferencesTableViewController.xib in Resources */,
 			);
@@ -369,8 +383,10 @@
 			files = (
 				4C304CC619649DEB00946E97 /* FBZConference.m in Sources */,
 				4C304C9A1964712A00946E97 /* main.m in Sources */,
+				4C304CEB196601CC00946E97 /* FBZWord.m in Sources */,
 				4C304CD21964A2F300946E97 /* FBZLoginViewController.m in Sources */,
 				4C304CDE1964DA9E00946E97 /* FBZBuzzwordsTableViewController.m in Sources */,
+				4C304CE51965DAAB00946E97 /* FBZAttendesTableViewController.m in Sources */,
 				4C304CC119648F8F00946E97 /* FBZConferencesTableViewController.m in Sources */,
 				4C304C9E1964712A00946E97 /* FBZAppDelegate.m in Sources */,
 			);
