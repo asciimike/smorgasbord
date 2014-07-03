@@ -8,20 +8,17 @@
 
 #import "FBZBuzzwordsTableViewController.h"
 
-#import <Firebase/Firebase.h>
-
 @interface FBZBuzzwordsTableViewController ()
 
 @end
 
 @implementation FBZBuzzwordsTableViewController
 
-- (id)init;
+- (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [super init];
+    self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        self.tableview = [[UITableView alloc] init];
     }
     return self;
 }
@@ -30,26 +27,23 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Buzzwords";
+    NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"FBZAddWordView"
+                                                      owner:self
+                                                    options:nil];
+    
+    UIView *addView = [ nibViews objectAtIndex: 0];
+    
+    self.tableView.tableHeaderView = addView;
+    
+    self.title = @"Trending words";
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:1.0], NSForegroundColorAttributeName, [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:1.0], NSBackgroundColorAttributeName, nil];
+
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)viewWillAppear:(BOOL)animated;
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void)viewWillDisappear:(BOOL)animated;
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    UIBarButtonItem *logoutItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"exit3"] style:UIBarButtonItemStylePlain target:[[UIApplication sharedApplication] delegate] action:@selector(logout)];
+    self.navigationItem.rightBarButtonItems = @[logoutItem];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,14 +58,14 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 10;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -83,8 +77,6 @@
     }
     
     // Configure the cell...
-    cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
-    cell.textColor = [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:1.0];
     
     return cell;
 }
@@ -146,29 +138,4 @@
  
  */
 
-- (IBAction)addWordPressed:(id)sender;
-{
-    if (![self.wordInput.text isEqualToString:@""]) {
-        //Not empty
-        Firebase *ref = [[[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]] childByAppendingPath:@"conferences"];
-    } else {
-        //Empty, reject
-    }
-}
-
-// Use the notification dicationary
-# pragma mark - Keyboard will show/hide notifications to scroll the view properly
-- (void)keyboardWillShow:(NSNotification *)notification
-{
-    [UIView animateWithDuration:0.3f animations:^{
-        [self.view setFrame:CGRectMake(0,-30,320,460)];
-    }];
-}
-
--(void)keyboardWillHide:(NSNotification *)notification
-{
-    [UIView animateWithDuration:0.3f animations:^{
-        [self.view setFrame:CGRectMake(0,0,320,460)];
-    }];
-}
 @end

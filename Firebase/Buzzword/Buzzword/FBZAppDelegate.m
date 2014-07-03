@@ -93,4 +93,21 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)logout;
+{
+    Firebase *ref = [[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]];
+    FirebaseSimpleLogin *authClient = [[FirebaseSimpleLogin alloc] initWithRef:ref];
+    [authClient logout];
+    
+    UIApplication *app = [UIApplication sharedApplication];
+    [app performSelector:@selector(suspend)];
+    
+    //wait 2 seconds while app is going background
+    [NSThread sleepForTimeInterval:2.0];
+    
+    //exit app when app is in background
+    exit(0);
+    
+}
+
 @end

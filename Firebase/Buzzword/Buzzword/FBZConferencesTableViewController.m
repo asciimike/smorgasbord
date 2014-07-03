@@ -49,7 +49,7 @@
     }];
     
     UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addConference)];
-    UIBarButtonItem *logoutItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"exit3"] style:UIBarButtonItemStylePlain target:self action:@selector(logout)];
+    UIBarButtonItem *logoutItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"exit3"] style:UIBarButtonItemStylePlain target:[[UIApplication sharedApplication] delegate] action:@selector(logout)];
     self.navigationItem.rightBarButtonItems = @[logoutItem, addItem];
 }
 
@@ -128,23 +128,6 @@
 - (void) addConference;
 {
     // Pop up the modal conference adder view
-}
-
-- (void)logout;
-{
-    Firebase *ref = [[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]];
-    FirebaseSimpleLogin *authClient = [[FirebaseSimpleLogin alloc] initWithRef:ref];
-    [authClient logout];
-    
-    UIApplication *app = [UIApplication sharedApplication];
-    [app performSelector:@selector(suspend)];
-    
-    //wait 2 seconds while app is going background
-    [NSThread sleepForTimeInterval:2.0];
-    
-    //exit app when app is in background
-    exit(0);
-    
 }
 
 @end
