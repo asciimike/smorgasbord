@@ -14,6 +14,7 @@
 @interface FBZConference : NSObject <FirebaseProtocol>
 
 @property (strong, nonatomic) NSDictionary *twitter;
+@property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *creator;
 @property (strong, nonatomic) NSMutableArray *attendees;
 @property (strong, nonatomic) NSMutableArray *words;

@@ -36,6 +36,7 @@
 {
     self = [super init];
     if (self) {
+        self.name = [twitter objectForKey:@"name"];
         self.twitter = twitter;
         self.creator = creator;
         self.attendees = attendees;
@@ -52,6 +53,7 @@
     NSString *creator = [dict objectForKey:@"creator"];
     NSMutableArray *attendees = [dict objectForKey:@"attendees"];
     NSMutableArray *words = [dict objectForKey:@"words"];
+    self.name = [twitter objectForKey:@"name"];
     return [self initWithTwitter:twitter andCreator:creator andAttendees:attendees andWords:words];
 }
 

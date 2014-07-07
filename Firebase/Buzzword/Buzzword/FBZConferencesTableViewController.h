@@ -12,10 +12,10 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 
-@interface FBZConferencesTableViewController : UITableViewController <UISearchBarDelegate>
+@interface FBZConferencesTableViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
 
 @property (strong, nonatomic) NSMutableArray *conferenceList;
-@property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) NSMutableArray *filteredConferenceList;
 @property (strong, nonatomic) ACAccountStore *accountStore;
 
 @end

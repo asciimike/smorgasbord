@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FBZConferencesTableViewController">
             <connections>
+                <outlet property="searchDisplayController" destination="Sek-Bf-Wbv" id="5MP-VS-UzH"/>
                 <outlet property="view" destination="4" id="5"/>
             </connections>
         </placeholder>
@@ -20,10 +21,27 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <color key="separatorColor" red="0.0" green="0.59999999999999998" blue="0.40000000000000002" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <searchBar key="tableHeaderView" contentMode="redraw" id="lyf-y1-0mX">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                <textInputTraits key="textInputTraits"/>
+                <connections>
+                    <outlet property="delegate" destination="-1" id="Om2-jm-Qi4"/>
+                </connections>
+            </searchBar>
             <connections>
                 <outlet property="dataSource" destination="-1" id="6"/>
                 <outlet property="delegate" destination="-1" id="7"/>
             </connections>
         </tableView>
+        <searchDisplayController id="Sek-Bf-Wbv">
+            <connections>
+                <outlet property="delegate" destination="-1" id="Rq7-qd-SHN"/>
+                <outlet property="searchBar" destination="lyf-y1-0mX" id="HH4-lp-39N"/>
+                <outlet property="searchContentsController" destination="-1" id="kyi-In-idZ"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="ihG-AH-Rh1"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="VaD-3a-FhQ"/>
+            </connections>
+        </searchDisplayController>
     </objects>
 </document>

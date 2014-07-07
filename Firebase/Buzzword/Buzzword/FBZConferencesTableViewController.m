@@ -23,8 +23,8 @@
     if (self) {
         // Custom initialization
         self.conferenceList = [[NSMutableArray alloc] init];
+        self.filteredConferenceList = [[NSMutableArray alloc] init];
         self.accountStore = [[ACAccountStore alloc] init];
-        
     }
     return self;
 }
@@ -34,15 +34,13 @@
     [super viewDidLoad];
     self.clearsSelectionOnViewWillAppear = YES;
 
-//    self.tableView.backgroundColor = [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:1.0];
     self.title = @"Conferences";
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:1.0], NSForegroundColorAttributeName, [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:1.0], NSBackgroundColorAttributeName, nil];
 
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320.0, 44)];
-    self.searchBar.placeholder = @"Search by Twitter Handle";
-    self.searchBar.delegate = self;
-    self.searchBar.barTintColor = [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:0.25];
-    self.tableView.tableHeaderView = self.searchBar;
+    self.searchDisplayController.searchBar.barTintColor = [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:0.25];
+    self.searchDisplayController.delegate = self;
+    self.searchDisplayController.searchResultsDataSource = self;
+    self.searchDisplayController.searchResultsDelegate = self;
     
     UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addConference)];
     UIBarButtonItem *logoutItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"exit3"] style:UIBarButtonItemStylePlain target:[[UIApplication sharedApplication] delegate] action:@selector(logout)];
@@ -104,7 +102,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.conferenceList count];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.filteredConferenceList count];
+    } else {
+        return [self.conferenceList count];
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,7 +119,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    FBZConference *currentConference = [self.conferenceList objectAtIndex:indexPath.row];
+    FBZConference *currentConference;
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        currentConference = [self.filteredConferenceList objectAtIndex:indexPath.row];
+    } else {
+        currentConference = [self.conferenceList objectAtIndex:indexPath.row];
+    }
+        
+    
     
 //    NSDictionary *currentConference = [self.conferenceList objectAtIndex:indexPath.row];
     
@@ -143,22 +154,6 @@
 
     return cell;
 }
-
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return NO;
-}
-
-
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return NO;
-}
-
 
 #pragma mark - Table view delegate
 
@@ -209,6 +204,52 @@
         }
     }
 }
+
+//#pragma mark Search Bar Delegate methods
+//
+//- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;
+//{
+//    [searchBar resignFirstResponder];
+//}
+//
+//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText;
+//{
+//    
+//}
+
+#pragma mark Search Bar Display Delegate methods
+
+-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+    // Update the filtered array based on the search text and scope.
+    // Remove all objects from the filtered search array
+    [self.filteredConferenceList removeAllObjects];
+    // Filter the array using NSPredicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains[c] %@",searchText];
+    self.filteredConferenceList = [NSMutableArray arrayWithArray:[self.conferenceList filteredArrayUsingPredicate:predicate]];
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString;
+{
+    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                                         objectAtIndex:[self.searchDisplayController.searchBar
+                                                                        selectedScopeButtonIndex]]];
+    return YES;
+}
+
+//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption;
+//{
+//    // does this even apply to us?
+//    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+//                                                         objectAtIndex:[self.searchDisplayController.searchBar
+//                                                                        selectedScopeButtonIndex]]];
+//    return YES;
+//}
+
+- (void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller;
+{
+    
+}
+
 
 #pragma mark Twitter API methods
 
