@@ -10,21 +10,33 @@
 
 @implementation FBZConference
 
-- (id)init
+//- (id)init
+//{
+//    return [self initWithTwitter:@"" andCreator:nil andAttendees:[[NSMutableArray alloc] init] andWords:[[NSMutableArray alloc] init]];
+//}
+//
+- (id)initWithTwitter:(NSDictionary *)twitter andCreator:(NSString *)creator;
 {
-    return [self initWithTwitter:@"" andCreator:nil andAttendees:[[NSMutableArray alloc] init] andWords:[[NSMutableArray alloc] init]];
+    return [self initWithTwitter:twitter andCreator:creator andAttendees:[[NSMutableArray alloc] init] andWords:[[NSMutableArray alloc] init]];
 }
+//
+//- (id)initWithTwitter:(NSString *)twitterID andCreator:(NSString *)creator andAttendees:(NSMutableArray *)attendees andWords:(NSMutableArray *)words;
+//{
+//    self = [super init];
+//    if (self) {
+//        self.twitterID = twitterID;
+//        self.creator = creator;
+//        self.attendees = attendees;
+//        self.words = words;
+//    }
+//    return self;
+//}
 
-- (id)initWithTwitter:(NSString *)twitterID andCreator:(NSString *)creator;
-{
-    return [self initWithTwitter:twitterID andCreator:creator andAttendees:[[NSMutableArray alloc] init] andWords:[[NSMutableArray alloc] init]];
-}
-
-- (id)initWithTwitter:(NSString *)twitterID andCreator:(NSString *)creator andAttendees:(NSMutableArray *)attendees andWords:(NSMutableArray *)words;
+- (id)initWithTwitter:(NSDictionary *)twitter andCreator:(NSString *)creator andAttendees:(NSMutableArray *)attendees andWords:(NSMutableArray *)words;
 {
     self = [super init];
     if (self) {
-        self.twitterID = twitterID;
+        self.twitter = twitter;
         self.creator = creator;
         self.attendees = attendees;
         self.words = words;
@@ -36,21 +48,21 @@
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 {
-    NSString *twitterID = [dict objectForKey:@"Twitter ID"];
-    NSString *creator = [dict objectForKey:@"Creator"];
-    NSMutableArray *attendees = [dict objectForKey:@"Attendees"];
-    NSMutableArray *words = [dict objectForKey:@"Words"];
-    return [self initWithTwitter:twitterID andCreator:creator andAttendees:attendees andWords:words];
+    NSDictionary *twitter = [dict objectForKey:@"twitter"];
+    NSString *creator = [dict objectForKey:@"creator"];
+    NSMutableArray *attendees = [dict objectForKey:@"attendees"];
+    NSMutableArray *words = [dict objectForKey:@"words"];
+    return [self initWithTwitter:twitter andCreator:creator andAttendees:attendees andWords:words];
 }
 
 
 - (NSDictionary *)toDictionary;
 {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:self.twitterID forKey:@"Twitter ID"];
-    [dict setObject:self.creator forKey:@"Creator"];
-    [dict setObject:self.attendees forKey:@"Attendees"];
-    [dict setObject:self.words forKey:@"Words"];
+    [dict setObject:self.twitter forKey:@"twitter"];
+    [dict setObject:self.creator forKey:@"creator"];
+    [dict setObject:self.attendees forKey:@"attendees"];
+    [dict setObject:self.words forKey:@"words"];
     return dict;
 }
 
@@ -64,10 +76,11 @@
     return [self isEqualToConference:other];
 }
 
+// Dictionary contents may change?
 - (BOOL)isEqualToConference:(FBZConference *)conference {
     if (self == conference)
         return YES;
-    if (!([self.twitterID isEqualToString:conference.twitterID]))
+    if (!([self.twitter isEqualToDictionary:conference.twitter]))
         return NO;
     return YES;
 }

@@ -25,4 +25,22 @@
     return self;
 }
 
+#pragma mark Override isEqual methods
+
+- (BOOL)isEqual:(id)other {
+    if (other == self)
+        return YES;
+    if (!other || ![other isKindOfClass:[self class]])
+        return NO;
+    return [self isEqualToWord:other];
+}
+
+- (BOOL)isEqualToWord:(FBZWord *)word {
+    if (self == word)
+        return YES;
+    if (!([self.word isEqualToString:word.word]))
+        return NO;
+    return YES;
+}
+
 @end

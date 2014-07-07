@@ -11,9 +11,6 @@
 #import "FBZAppDelegate.h"
 #import "FBZAttendesTableViewController.h"
 
-#import <Firebase/Firebase.h>
-#import <FirebaseSimpleLogin/FirebaseSimpleLogin.h>
-
 @interface FBZConferencesTableViewController ()
 
 @end
@@ -26,6 +23,8 @@
     if (self) {
         // Custom initialization
         self.conferenceList = [[NSMutableArray alloc] init];
+        self.accountStore = [[ACAccountStore alloc] init];
+        
     }
     return self;
 }
@@ -33,13 +32,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.clearsSelectionOnViewWillAppear = YES;
+
 //    self.tableView.backgroundColor = [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:1.0];
     self.title = @"Conferences";
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:1.0], NSForegroundColorAttributeName, [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:1.0], NSBackgroundColorAttributeName, nil];
 
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320.0, 44)];
+    self.searchBar.placeholder = @"Search by Twitter Handle";
     self.searchBar.delegate = self;
+    self.searchBar.barTintColor = [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:0.25];
     self.tableView.tableHeaderView = self.searchBar;
     
     UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addConference)];
@@ -56,7 +58,8 @@
     FBZConference *currentConference = [delegate getCurrentConference];
     
     if (currentConference) {
-        Firebase *ref = [[[[[[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]] childByAppendingPath:@"conferences"] childByAppendingPath:currentConference.twitterID] childByAppendingPath:@"attendees"] childByAppendingPath:delegate.currentUser.uid];
+        NSString *screenName = [NSString stringWithFormat:@"@%@", [currentConference.twitter objectForKey:@"screen_name"]];
+        Firebase *ref = [[[[[[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]] childByAppendingPath:@"conferences"] childByAppendingPath:screenName] childByAppendingPath:@"attendees"] childByAppendingPath:delegate.currentUser.uid];
         [ref removeValue];
     }
     delegate.currentConference = nil;
@@ -115,11 +118,28 @@
     
     FBZConference *currentConference = [self.conferenceList objectAtIndex:indexPath.row];
     
+//    NSDictionary *currentConference = [self.conferenceList objectAtIndex:indexPath.row];
+    
     // Configure the cell...
-    cell.textLabel.text = @"Conference name"; //currentConference.name;
-    cell.detailTextLabel.text = currentConference.twitterID;
+    cell.textLabel.text = [currentConference.twitter objectForKey:@"name"];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"@%@",[currentConference.twitter objectForKey:@"screen_name"]];
     cell.textLabel.textColor = [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:1.0];
     cell.detailTextLabel.textColor = [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:0.5];
+    
+    // Download images in the background
+    NSURL *url = [NSURL URLWithString:[currentConference.twitter objectForKey:@"profile_image_url"]];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    cell.imageView.image = [UIImage imageWithData:data];
+    [cell.imageView.layer setMasksToBounds:YES];
+    [cell.imageView.layer setCornerRadius:5.0];
+    
+    // Resizing from :http://stackoverflow.com/questions/2788028/how-do-i-make-uitableviewcells-imageview-a-fixed-size-even-when-the-image-is-sm
+    CGSize itemSize = CGSizeMake(32, 32);
+    UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+    CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+    [cell.imageView.image drawInRect:imageRect];
+    cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
 
     return cell;
 }
@@ -154,12 +174,15 @@
     
     FBZAppDelegate *delegate = (FBZAppDelegate *)[[UIApplication sharedApplication] delegate];
     delegate.currentConference = currentConference;
-
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     // Push the view controller.
     [self.navigationController pushViewController:attendeesViewController animated:YES];
+
 }
  
+#pragma mark Navigation bar button item methods (adding a conference)
 
 - (void) addConference;
 {
@@ -177,12 +200,8 @@
         NSString *conferenceName = conferenceTextField.text;
         // CHeck that only twitter handles can be added here
         // TODO Replace w/ NSRegularExpression
-        if ((![conferenceName isEqualToString:@""]) && ([conferenceName characterAtIndex:0] == '@')) {
-            Firebase *ref = [[[[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]] childByAppendingPath:@"conferences"] childByAppendingPath:conferenceName];
-            FBZAppDelegate *delegate = (FBZAppDelegate *)[[UIApplication sharedApplication] delegate];
-            FAUser *currentUser = [delegate getCurrentUser];
-            FBZConference *newConference = [[FBZConference alloc] initWithTwitter:conferenceName andCreator:currentUser.uid];
-            [ref setValue:newConference.toDictionary];
+        if (![conferenceName isEqualToString:@""] && [conferenceName characterAtIndex:0] == '@') {
+            [self addConferenceViaTwitter:[conferenceName lowercaseString]];
         } else {
             // Pop up an alert that says that they screwed up!
             UIAlertView *failedToAddView = [[UIAlertView alloc] initWithTitle:@"Failed to add conference" message:@"Please check the conference title and try again" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
@@ -190,5 +209,65 @@
         }
     }
 }
+
+#pragma mark Twitter API methods
+
+- (BOOL)userHasAccessToTwitter;
+{
+    return [SLComposeViewController
+            isAvailableForServiceType:SLServiceTypeTwitter];
+}
+
+- (void)addConferenceViaTwitter:(NSString *)twitterID;
+{
+    if ([self userHasAccessToTwitter]) {
+        ACAccountType *twitterAccountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+        
+        [self.accountStore requestAccessToAccountsWithType:twitterAccountType options:NULL completion:^(BOOL granted, NSError *error) {
+            if (granted) {
+                // Request was granted, time to see if we can find out user info
+                NSArray *accounts = [self.accountStore accountsWithAccountType:twitterAccountType];
+                NSURL *twitterAPI = [NSURL URLWithString:@"https://api.twitter.com/1.1/users/show.json?screen_name"];
+                NSDictionary *params = @{@"screen_name":twitterID};
+                SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:twitterAPI parameters:params];
+                [request setAccount:[accounts lastObject]];
+                [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                    if (responseData) {
+                        if (urlResponse.statusCode >=200 && urlResponse.statusCode < 300) {
+                            NSError *jsonError;
+                            NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&jsonError];
+                            if (userData) {
+                                // We got user data back!
+                                Firebase *ref = [[[[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]] childByAppendingPath:@"conferences"] childByAppendingPath:twitterID];
+                                FBZAppDelegate *delegate = (FBZAppDelegate *)[[UIApplication sharedApplication] delegate];
+                                FAUser *currentUser = [delegate getCurrentUser];
+                                FBZConference *newConference = [[FBZConference alloc] initWithTwitter:userData andCreator:currentUser.uid];
+                                [ref setValue:newConference.toDictionary];
+//                                [ref setValue:userData];
+                            } else {
+                                // JSON Deserialization failed
+                                NSLog(@"%@", [jsonError localizedDescription]);
+                            }
+                        } else {
+                            // Some other error occurred, find out what it is
+                            NSLog(@"Response status code is: %d", urlResponse.statusCode);
+                            if (urlResponse.statusCode == 404) {
+                                UIAlertView *badTwitterHandle = [[UIAlertView alloc] initWithTitle:@"Failed to add!" message:@"Please check the twitter ID of the conference and try again" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+                                [badTwitterHandle show];
+                            }
+                        }
+                    }
+                }];
+            } else {
+                // Access denied!
+                NSLog(@"%@", [error localizedDescription]);
+            }
+        }];
+    } else {
+        // User needs to log in to twitter... but they should never be here because they have to be logged in in order to do anything here
+    }
+}
+
+
 
 @end

@@ -32,21 +32,55 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Trending words";
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:1.0], NSForegroundColorAttributeName, [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:1.0], NSBackgroundColorAttributeName, nil];
 
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.clearsSelectionOnViewWillAppear = YES;
  
     UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addWord)];
     UIBarButtonItem *logoutItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"exit3"] style:UIBarButtonItemStylePlain target:[[UIApplication sharedApplication] delegate] action:@selector(logout)];
     self.navigationItem.rightBarButtonItems = @[logoutItem, addItem];
 }
 
+- (void)viewWillAppear:(BOOL)animated;
+{
+    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"FBZNoConferenceView"
+                                                      owner:self
+                                                    options:nil];
+
+    UIView* myView = [nibViews objectAtIndex: 0];
+    self.tableView.backgroundView = myView;
+    
+    [self.wordList removeAllObjects];
+    [self.tableView reloadData];
+    
+    //check shared delegate for a conference, if one exists show everything, otherwise hide and disable buttons
+    FBZAppDelegate *delegate = (FBZAppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.currentConference = [delegate getCurrentConference];
+    
+    if (self.currentConference) {
+        self.title = @"Trending Words";
+        [self initFirebaseCallbacks];
+    }
+    
+    if (!self.currentConference) {
+        // Hide table view
+//        self.tableView.hidden = YES;
+        self.tableView.backgroundView.hidden = NO;
+        // Disable buttons
+        [[self.navigationItem.rightBarButtonItems objectAtIndex:1] setEnabled:NO];
+    } else {
+        // Unide table view
+//        self.tableView.hidden = NO;
+        self.tableView.backgroundView.hidden = YES;
+        // Enable buttons
+        [[self.navigationItem.rightBarButtonItems objectAtIndex:1] setEnabled:YES];
+    }
+}
+
 - (void)initFirebaseCallbacks;
 {
-    Firebase *ref = [[[[[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]] childByAppendingPath:@"conferences"] childByAppendingPath:self.currentConference.twitterID] childByAppendingPath:@"words"];
+    NSString *screenName = [NSString stringWithFormat:@"@%@", [self.currentConference.twitter objectForKey:@"screen_name"]];
+    Firebase *ref = [[[[[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]] childByAppendingPath:@"conferences"] childByAppendingPath:screenName] childByAppendingPath:@"words"];
     
     [ref observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         // If a conference is added...
@@ -70,41 +104,6 @@
 //        [self.conferenceList removeObject:removedConference];
         [self.tableView reloadData];
     }];
-}
-
-
-- (void)viewWillAppear:(BOOL)animated;
-{
-//    
-//    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"FBZNoConferenceView"
-//                                                      owner:self
-//                                                    options:nil];
-//    
-//    UIView* myView = [nibViews objectAtIndex: 0];
-    
-    [self.wordList removeAllObjects];
-    
-    //check shared delegate for a conference, if one exists show everything, otherwise hide and disable buttons
-    FBZAppDelegate *delegate = (FBZAppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.currentConference = [delegate getCurrentConference];
-    
-    if (self.currentConference) {
-        [self initFirebaseCallbacks];
-    }
-    
-    if (!self.currentConference) {
-        // Hide table view
-        self.tableView.hidden = YES;
-//        self.tableView.alpha = 0.0;
-        // Disable buttons
-        [[self.navigationItem.rightBarButtonItems objectAtIndex:1] setEnabled:NO];
-    } else {
-        // Unide table view
-        self.tableView.hidden = NO;
-//        self.tableView.alpha = 1.0;
-        // Enable buttons
-        [[self.navigationItem.rightBarButtonItems objectAtIndex:1] setEnabled:YES];
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -141,7 +140,6 @@
     cell.textLabel.text = currentWord.word;
     cell.textLabel.textColor = [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:1.0];
     cell.detailTextLabel.textColor = [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:0.5];
-
     
     return cell;
 }
@@ -161,6 +159,11 @@
     return NO;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 - (void)addWord;
 {
     // Pop up the modal conference adder view
@@ -176,7 +179,9 @@
         UITextField *wordTextField = [alertView textFieldAtIndex:0];
         NSString *word = wordTextField.text;
         if (![word isEqualToString:@""]) {
-            Firebase *ref = [[[[[[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]] childByAppendingPath:@"conferences"] childByAppendingPath:self.currentConference.twitterID] childByAppendingPath:@"words" ] childByAppendingPath:word];
+            NSString *screenName = [NSString stringWithFormat:@"@%@", [self.currentConference.twitter objectForKey:@"screen_name"]];
+            Firebase *ref = [[[[[[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]] childByAppendingPath:@"conferences"] childByAppendingPath:screenName] childByAppendingPath:@"words" ] childByAppendingPath:word];
+            // TODO: change this to pushing on a new child, set the value as the adding users screen name, then use childrenCount on the way out
             [ref setValue:[NSNumber numberWithInt:1]];
         }
     }

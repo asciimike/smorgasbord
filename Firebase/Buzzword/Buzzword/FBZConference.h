@@ -13,14 +13,13 @@
 
 @interface FBZConference : NSObject <FirebaseProtocol>
 
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *twitterID;
+@property (strong, nonatomic) NSDictionary *twitter;
 @property (strong, nonatomic) NSString *creator;
 @property (strong, nonatomic) NSMutableArray *attendees;
 @property (strong, nonatomic) NSMutableArray *words;
 
-- (id)initWithTwitter:(NSString *)twitterID andCreator:(NSString *)creator;
-- (id)initWithTwitter:(NSString *)twitterID andCreator:(NSString *)creator andAttendees:(NSMutableArray *)attendees andWords:(NSMutableArray *)words;
+- (id)initWithTwitter:(NSDictionary *)twitter andCreator:(NSString *)creator;
+- (id)initWithTwitter:(NSDictionary *)twitter andCreator:(NSString *)creator andAttendees:(NSMutableArray *)attendees andWords:(NSMutableArray *)words;
 - (id)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)toDictionary;
 

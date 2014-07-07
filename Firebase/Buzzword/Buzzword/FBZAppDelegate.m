@@ -58,7 +58,7 @@
         } else {
             // There is a logged in user
             // Continue with the below
-            NSLog(@"User is currently logged in: %@", user.thirdPartyUserData);
+//            NSLog(@"User is currently logged in: %@", user.thirdPartyUserData);
             self.currentUser = user;
             self.currentConference = nil;
         }
