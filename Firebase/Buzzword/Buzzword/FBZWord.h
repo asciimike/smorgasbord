@@ -11,8 +11,8 @@
 @interface FBZWord : NSObject
 
 @property (strong, nonatomic) NSString *word;
-@property NSInteger count;
+@property NSUInteger count;
 
-- (id)initWithWord:(NSString *)word andCount:(NSInteger)count;
+- (id)initWithWord:(NSString *)word andCount:(NSUInteger)count;
 
 @end

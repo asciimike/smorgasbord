@@ -84,25 +84,18 @@
     
     [ref observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         // If a conference is added...
-        FBZWord *newWord = [[FBZWord alloc] initWithWord:snapshot.name andCount:(NSInteger)snapshot.value];
+        FBZWord *newWord = [[FBZWord alloc] initWithWord:snapshot.name andCount:snapshot.childrenCount];
         [self.wordList addObject:newWord];
-//        FBZConference *newConference = [[FBZConference alloc] initWithDictionary:dict];
-//        [self.conferenceList addObject:newConference];
-        [self.tableView reloadData];
+        [self reloadData];
     }];
     
     [ref observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
         //Check which child had a value updated
-        
+        FBZWord *namedWord = [[FBZWord alloc] initWithWord:snapshot.name andCount:snapshot.childrenCount];
+        FBZWord *updatedWord = [self.wordList objectAtIndex:[self.wordList indexOfObject:namedWord]];
+        updatedWord.count = snapshot.childrenCount;
         //Update UI appropriately
-    }];
-    
-    [ref observeEventType:FEventTypeChildRemoved withBlock:^(FDataSnapshot *snapshot) {
-        //Remove conference
-        NSDictionary *dict = snapshot.value;
-//        FBZConference *removedConference = [[FBZConference alloc] initWithDictionary:dict];
-//        [self.conferenceList removeObject:removedConference];
-        [self.tableView reloadData];
+        [self reloadData];
     }];
 }
 
@@ -131,36 +124,27 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
     
     FBZWord *currentWord = [self.wordList objectAtIndex:indexPath.row];
     cell.textLabel.text = currentWord.word;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",currentWord.count];
     cell.textLabel.textColor = [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:1.0];
     cell.detailTextLabel.textColor = [UIColor colorWithRed:0.0 green:(153.0/255.0) blue:(102.0/255.0) alpha:0.5];
-    
     return cell;
-}
-
-
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return NO;
-}
-
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
+    NSString *screenName = [NSString stringWithFormat:@"@%@", [self.currentConference.twitter objectForKey:@"screen_name"]];
+    NSString *selectedWord = [[self.wordList objectAtIndex:indexPath.row] word];
+    Firebase *ref = [[[[[[[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]] childByAppendingPath:@"conferences"] childByAppendingPath:screenName] childByAppendingPath:@"words"] childByAppendingPath:selectedWord] childByAutoId];
+    FBZAppDelegate *delegate = (FBZAppDelegate *)[[UIApplication sharedApplication] delegate];
+    FAUser *currentUser = [delegate getCurrentUser];
+    [ref setValue:currentUser.uid];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -180,11 +164,21 @@
         NSString *word = wordTextField.text;
         if (![word isEqualToString:@""]) {
             NSString *screenName = [NSString stringWithFormat:@"@%@", [self.currentConference.twitter objectForKey:@"screen_name"]];
-            Firebase *ref = [[[[[[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]] childByAppendingPath:@"conferences"] childByAppendingPath:screenName] childByAppendingPath:@"words" ] childByAppendingPath:word];
-            // TODO: change this to pushing on a new child, set the value as the adding users screen name, then use childrenCount on the way out
-            [ref setValue:[NSNumber numberWithInt:1]];
+            Firebase *ref = [[[[[[[Firebase alloc] initWithUrl:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"FBZFirebaseURL"]] childByAppendingPath:@"conferences"] childByAppendingPath:screenName] childByAppendingPath:@"words" ] childByAppendingPath:word] childByAutoId];
+            FBZAppDelegate *delegate = (FBZAppDelegate *)[[UIApplication sharedApplication] delegate];
+            FAUser *currentUser = [delegate getCurrentUser];
+            [ref setValue:currentUser.uid];
         }
     }
+}
+
+- (void)reloadData;
+{
+    // It would probably be nice to animate changes... but hey
+    NSSortDescriptor *countDescriptor = [[NSSortDescriptor alloc] initWithKey:@"count" ascending:NO];
+    NSSortDescriptor *nameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"word" ascending:YES];
+    self.wordList = [[self.wordList sortedArrayUsingDescriptors:@[countDescriptor, nameDescriptor]] mutableCopy];
+    [self.tableView reloadData];
 }
 
 @end

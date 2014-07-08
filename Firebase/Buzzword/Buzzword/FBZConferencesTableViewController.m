@@ -32,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.clearsSelectionOnViewWillAppear = YES;
 
     self.title = @"Conferences";
@@ -177,7 +178,7 @@
 
 }
  
-#pragma mark Navigation bar button item methods (adding a conference)
+#pragma mark - Navigation bar button item methods (adding a conference)
 
 - (void) addConference;
 {
@@ -205,24 +206,12 @@
     }
 }
 
-//#pragma mark Search Bar Delegate methods
-//
-//- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;
-//{
-//    [searchBar resignFirstResponder];
-//}
-//
-//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText;
-//{
-//    
-//}
-
-#pragma mark Search Bar Display Delegate methods
+#pragma mark - Search Display Controller methods
 
 -(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
-    // Update the filtered array based on the search text and scope.
     // Remove all objects from the filtered search array
     [self.filteredConferenceList removeAllObjects];
+    
     // Filter the array using NSPredicate
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains[c] %@",searchText];
     self.filteredConferenceList = [NSMutableArray arrayWithArray:[self.conferenceList filteredArrayUsingPredicate:predicate]];
@@ -230,28 +219,11 @@
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString;
 {
-    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
-                                                         objectAtIndex:[self.searchDisplayController.searchBar
-                                                                        selectedScopeButtonIndex]]];
+    [self filterContentForSearchText:searchString scope:nil];
     return YES;
 }
 
-//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption;
-//{
-//    // does this even apply to us?
-//    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
-//                                                         objectAtIndex:[self.searchDisplayController.searchBar
-//                                                                        selectedScopeButtonIndex]]];
-//    return YES;
-//}
-
-- (void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller;
-{
-    
-}
-
-
-#pragma mark Twitter API methods
+#pragma mark - Twitter API methods
 
 - (BOOL)userHasAccessToTwitter;
 {
@@ -284,7 +256,6 @@
                                 FAUser *currentUser = [delegate getCurrentUser];
                                 FBZConference *newConference = [[FBZConference alloc] initWithTwitter:userData andCreator:currentUser.uid];
                                 [ref setValue:newConference.toDictionary];
-//                                [ref setValue:userData];
                             } else {
                                 // JSON Deserialization failed
                                 NSLog(@"%@", [jsonError localizedDescription]);

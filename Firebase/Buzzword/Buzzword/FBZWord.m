@@ -15,7 +15,7 @@
     return [self initWithWord:@"" andCount:0];
 }
 
-- (id)initWithWord:(NSString *)word andCount:(NSInteger)count;
+- (id)initWithWord:(NSString *)word andCount:(NSUInteger)count;
 {
     self = [super init];
     if (self) {
