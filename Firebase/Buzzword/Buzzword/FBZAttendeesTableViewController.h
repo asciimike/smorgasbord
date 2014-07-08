@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FBZAttendesTableViewController : UITableViewController
+@interface FBZAttendeesTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray *attendeeList;
 

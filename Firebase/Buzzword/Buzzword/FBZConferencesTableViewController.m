@@ -9,7 +9,7 @@
 #import "FBZConferencesTableViewController.h"
 #import "FBZConference.h"
 #import "FBZAppDelegate.h"
-#import "FBZAttendesTableViewController.h"
+#import "FBZAttendeesTableViewController.h"
 
 @interface FBZConferencesTableViewController ()
 
@@ -163,7 +163,7 @@
 {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    FBZAttendesTableViewController *attendeesViewController = [[FBZAttendesTableViewController alloc] init];
+    FBZAttendeesTableViewController *attendeesViewController = [[FBZAttendeesTableViewController alloc] init];
     // Pass the selected object to the new view controller.
     
     FBZConference *currentConference = [self.conferenceList objectAtIndex:indexPath.row];

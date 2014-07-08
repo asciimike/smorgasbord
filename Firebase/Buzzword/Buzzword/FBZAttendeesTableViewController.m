@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Firebase. All rights reserved.
 //
 
-#import "FBZAttendesTableViewController.h"
+#import "FBZAttendeesTableViewController.h"
 #import "FBZAppDelegate.h"
 
 #import <Firebase/Firebase.h>
 
-@interface FBZAttendesTableViewController ()
+@interface FBZAttendeesTableViewController ()
 
 @end
 
-@implementation FBZAttendesTableViewController
+@implementation FBZAttendeesTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
