@@ -9,6 +9,7 @@
 #import "FBZAppDelegate.h"
 #import "FBZConferencesTableViewController.h"
 #import "FBZBuzzwordsTableViewController.h"
+#import "FBZBingoCollectionViewController.h"
 #import "FBZLoginViewController.h"
 
 #import <Firebase/Firebase.h>
@@ -32,7 +33,10 @@
     UINavigationController *buzzwordsNavController = [[UINavigationController alloc] initWithRootViewController:buzzwordsViewController];
     
     //Create bingo view controller
-    UIViewController *bingoViewController = [[UIViewController alloc] init];
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    FBZBingoCollectionViewController *bingoViewController = [[FBZBingoCollectionViewController alloc] initWithCollectionViewLayout:flowLayout];
+    // Configure flow layout
     bingoViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Buzzword Bingo" image:[UIImage imageNamed:@"grid3"] tag:2];
     UINavigationController *bingoNavController = [[UINavigationController alloc] initWithRootViewController:bingoViewController];
     

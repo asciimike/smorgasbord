@@ -61,5 +61,6 @@
 }
 
 - (IBAction)loginWithFacebook:(id)sender {
+    // Do something here, since currently we don't do anything.
 }
 @end
