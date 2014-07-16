@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="5">
+            <objects>
+                <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cbz-3i-bL4"/>
+                        <viewControllerLayoutGuide type="bottom" id="u67-Ln-saA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5ER-WH-MeG" customClass="UITouchTableView">
+                                <rect key="frame" x="20" y="58" width="280" height="452"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2" id="oZG-Bs-7hj"/>
+                                    <outlet property="delegate" destination="2" id="EEI-gW-eDK"/>
+                                </connections>
+                            </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jDZ-g6-iFq">
+                                <rect key="frame" x="20" y="518" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2" id="ykN-T9-jeh"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCk-ST-3ke">
+                                <rect key="frame" x="20" y="20" width="280" height="30"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                <state key="normal" title="Guest">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQ6-FB-pcY">
+                                <rect key="frame" x="202" y="20" width="98" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Change Name">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeNameButtonPressed:" destination="2" eventType="touchUpInside" id="50a-if-Ked"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5ER-WH-MeG" secondAttribute="trailing" constant="20" symbolic="YES" id="ARs-0P-bW7"/>
+                            <constraint firstItem="jDZ-g6-iFq" firstAttribute="top" secondItem="5ER-WH-MeG" secondAttribute="bottom" constant="8" symbolic="YES" id="Cg0-9E-ONs"/>
+                            <constraint firstAttribute="bottom" secondItem="jDZ-g6-iFq" secondAttribute="bottom" constant="20" symbolic="YES" id="JIj-aC-Mtr"/>
+                            <constraint firstItem="jDZ-g6-iFq" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" id="SQD-7M-2hd"/>
+                            <constraint firstItem="5ER-WH-MeG" firstAttribute="top" secondItem="yCk-ST-3ke" secondAttribute="bottom" constant="8" symbolic="YES" id="SU3-2S-ghk"/>
+                            <constraint firstItem="yCk-ST-3ke" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" id="WWN-Nc-5Ou"/>
+                            <constraint firstItem="yCk-ST-3ke" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" id="aPk-mz-rbp"/>
+                            <constraint firstAttribute="trailing" secondItem="jDZ-g6-iFq" secondAttribute="trailing" constant="20" symbolic="YES" id="gsm-2p-Num"/>
+                            <constraint firstItem="5ER-WH-MeG" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" id="j10-hk-S0T"/>
+                            <constraint firstAttribute="trailing" secondItem="yCk-ST-3ke" secondAttribute="trailing" constant="20" symbolic="YES" id="tyq-pM-O8j"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="changeNameButton" destination="tQ6-FB-pcY" id="NNE-TQ-Lpu"/>
+                        <outlet property="nameField" destination="yCk-ST-3ke" id="AEX-dr-8bo"/>
+                        <outlet property="tableView" destination="5ER-WH-MeG" id="ox8-OO-CkQ"/>
+                        <outlet property="textField" destination="jDZ-g6-iFq" id="iVI-au-9yV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
