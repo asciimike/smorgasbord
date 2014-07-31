@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>46F5DD7F-5261-4D93-BA65-615D142065A0</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TwitterMultiLogin</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>037363AB-A6A8-4FD1-9D67-D65316C6B41D</key>
+		<string>https://github.com/mcdonamp/smorgasbord.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Firebase/TwitterMultiLogin/TwitterMultiLogin/TwitterMultiLogin.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>037363AB-A6A8-4FD1-9D67-D65316C6B41D</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mcdonamp/smorgasbord.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>037363AB-A6A8-4FD1-9D67-D65316C6B41D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>037363AB-A6A8-4FD1-9D67-D65316C6B41D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>smorgasbord</string>
+		</dict>
+	</array>
+</dict>
+</plist>
