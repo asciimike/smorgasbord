@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>28861EC0-8F6B-46C4-BDE0-DE3A784B1C7A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>NotificationTest</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>10B163D4-4783-4CF0-A67E-5A460F5B3B75</key>
+		<string>https://github.com/mcdonamp/smorgasbord.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Firebase/NotificationTest/NotificationTest.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>10B163D4-4783-4CF0-A67E-5A460F5B3B75</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mcdonamp/smorgasbord.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>10B163D4-4783-4CF0-A67E-5A460F5B3B75</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>10B163D4-4783-4CF0-A67E-5A460F5B3B75</string>
+			<key>IDESourceControlWCCName</key>
+			<string>smorgasbord</string>
+		</dict>
+	</array>
+</dict>
+</plist>

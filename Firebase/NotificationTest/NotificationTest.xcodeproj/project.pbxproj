@@ -1,0 +1,520 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0967FF557DD74276AC5BA2E6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D45A91739CF43AA83B5407E /* libPods.a */; };
+		4C3519CC19B642E2007A307B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3519CB19B642E2007A307B /* Foundation.framework */; };
+		4C3519CE19B642E2007A307B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3519CD19B642E2007A307B /* CoreGraphics.framework */; };
+		4C3519D019B642E2007A307B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3519CF19B642E2007A307B /* UIKit.framework */; };
+		4C3519D619B642E2007A307B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C3519D419B642E2007A307B /* InfoPlist.strings */; };
+		4C3519D819B642E2007A307B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3519D719B642E2007A307B /* main.m */; };
+		4C3519DC19B642E2007A307B /* FBZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3519DB19B642E2007A307B /* FBZAppDelegate.m */; };
+		4C3519DE19B642E2007A307B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C3519DD19B642E2007A307B /* Images.xcassets */; };
+		4C3519E519B642E2007A307B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3519E419B642E2007A307B /* XCTest.framework */; };
+		4C3519E619B642E2007A307B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3519CB19B642E2007A307B /* Foundation.framework */; };
+		4C3519E719B642E2007A307B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3519CF19B642E2007A307B /* UIKit.framework */; };
+		4C3519EF19B642E2007A307B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C3519ED19B642E2007A307B /* InfoPlist.strings */; };
+		4C3519F119B642E2007A307B /* NotificationTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3519F019B642E2007A307B /* NotificationTestTests.m */; };
+		4C3519FD19B64C33007A307B /* FBZMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3519FB19B64C33007A307B /* FBZMessagesViewController.m */; };
+		4C3519FE19B64C33007A307B /* FBZMessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C3519FC19B64C33007A307B /* FBZMessagesViewController.xib */; };
+		4C351A0219B679AC007A307B /* FBZMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C351A0119B679AC007A307B /* FBZMessage.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4C3519E819B642E2007A307B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C3519C019B642E2007A307B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C3519C719B642E2007A307B;
+			remoteInfo = NotificationTest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4C3519C819B642E2007A307B /* NotificationTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotificationTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C3519CB19B642E2007A307B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4C3519CD19B642E2007A307B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4C3519CF19B642E2007A307B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4C3519D319B642E2007A307B /* NotificationTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NotificationTest-Info.plist"; sourceTree = "<group>"; };
+		4C3519D519B642E2007A307B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4C3519D719B642E2007A307B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4C3519D919B642E2007A307B /* NotificationTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NotificationTest-Prefix.pch"; sourceTree = "<group>"; };
+		4C3519DA19B642E2007A307B /* FBZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBZAppDelegate.h; sourceTree = "<group>"; };
+		4C3519DB19B642E2007A307B /* FBZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBZAppDelegate.m; sourceTree = "<group>"; };
+		4C3519DD19B642E2007A307B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4C3519E319B642E2007A307B /* NotificationTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotificationTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C3519E419B642E2007A307B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		4C3519EC19B642E2007A307B /* NotificationTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NotificationTestTests-Info.plist"; sourceTree = "<group>"; };
+		4C3519EE19B642E2007A307B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4C3519F019B642E2007A307B /* NotificationTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationTestTests.m; sourceTree = "<group>"; };
+		4C3519FA19B64C33007A307B /* FBZMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBZMessagesViewController.h; path = ../FBZMessagesViewController.h; sourceTree = "<group>"; };
+		4C3519FB19B64C33007A307B /* FBZMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBZMessagesViewController.m; path = ../FBZMessagesViewController.m; sourceTree = "<group>"; };
+		4C3519FC19B64C33007A307B /* FBZMessagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FBZMessagesViewController.xib; path = ../FBZMessagesViewController.xib; sourceTree = "<group>"; };
+		4C3519FF19B67997007A307B /* FirebaseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseProtocol.h; sourceTree = "<group>"; };
+		4C351A0019B679AC007A307B /* FBZMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBZMessage.h; sourceTree = "<group>"; };
+		4C351A0119B679AC007A307B /* FBZMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBZMessage.m; sourceTree = "<group>"; };
+		7D45A91739CF43AA83B5407E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5DDCDADB06A4C67924D279B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C3519C519B642E2007A307B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C3519CE19B642E2007A307B /* CoreGraphics.framework in Frameworks */,
+				4C3519D019B642E2007A307B /* UIKit.framework in Frameworks */,
+				4C3519CC19B642E2007A307B /* Foundation.framework in Frameworks */,
+				0967FF557DD74276AC5BA2E6 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C3519E019B642E2007A307B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C3519E519B642E2007A307B /* XCTest.framework in Frameworks */,
+				4C3519E719B642E2007A307B /* UIKit.framework in Frameworks */,
+				4C3519E619B642E2007A307B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C3519BF19B642E2007A307B = {
+			isa = PBXGroup;
+			children = (
+				4C3519D119B642E2007A307B /* NotificationTest */,
+				4C3519EA19B642E2007A307B /* NotificationTestTests */,
+				4C3519CA19B642E2007A307B /* Frameworks */,
+				4C3519C919B642E2007A307B /* Products */,
+				C5DDCDADB06A4C67924D279B /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		4C3519C919B642E2007A307B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C3519C819B642E2007A307B /* NotificationTest.app */,
+				4C3519E319B642E2007A307B /* NotificationTestTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4C3519CA19B642E2007A307B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C3519CB19B642E2007A307B /* Foundation.framework */,
+				4C3519CD19B642E2007A307B /* CoreGraphics.framework */,
+				4C3519CF19B642E2007A307B /* UIKit.framework */,
+				4C3519E419B642E2007A307B /* XCTest.framework */,
+				7D45A91739CF43AA83B5407E /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4C3519D119B642E2007A307B /* NotificationTest */ = {
+			isa = PBXGroup;
+			children = (
+				4C3519FF19B67997007A307B /* FirebaseProtocol.h */,
+				4C3519FB19B64C33007A307B /* FBZMessagesViewController.m */,
+				4C3519FA19B64C33007A307B /* FBZMessagesViewController.h */,
+				4C3519FC19B64C33007A307B /* FBZMessagesViewController.xib */,
+				4C3519DA19B642E2007A307B /* FBZAppDelegate.h */,
+				4C3519DB19B642E2007A307B /* FBZAppDelegate.m */,
+				4C3519DD19B642E2007A307B /* Images.xcassets */,
+				4C3519D219B642E2007A307B /* Supporting Files */,
+				4C351A0019B679AC007A307B /* FBZMessage.h */,
+				4C351A0119B679AC007A307B /* FBZMessage.m */,
+			);
+			path = NotificationTest;
+			sourceTree = "<group>";
+		};
+		4C3519D219B642E2007A307B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4C3519D319B642E2007A307B /* NotificationTest-Info.plist */,
+				4C3519D419B642E2007A307B /* InfoPlist.strings */,
+				4C3519D719B642E2007A307B /* main.m */,
+				4C3519D919B642E2007A307B /* NotificationTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4C3519EA19B642E2007A307B /* NotificationTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				4C3519F019B642E2007A307B /* NotificationTestTests.m */,
+				4C3519EB19B642E2007A307B /* Supporting Files */,
+			);
+			path = NotificationTestTests;
+			sourceTree = "<group>";
+		};
+		4C3519EB19B642E2007A307B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4C3519EC19B642E2007A307B /* NotificationTestTests-Info.plist */,
+				4C3519ED19B642E2007A307B /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4C3519C719B642E2007A307B /* NotificationTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C3519F419B642E2007A307B /* Build configuration list for PBXNativeTarget "NotificationTest" */;
+			buildPhases = (
+				9028E4BC6BA7423DB3B03E60 /* Check Pods Manifest.lock */,
+				4C3519C419B642E2007A307B /* Sources */,
+				4C3519C519B642E2007A307B /* Frameworks */,
+				4C3519C619B642E2007A307B /* Resources */,
+				6991EA8A7A814F0B840FFB3A /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationTest;
+			productName = NotificationTest;
+			productReference = 4C3519C819B642E2007A307B /* NotificationTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4C3519E219B642E2007A307B /* NotificationTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C3519F719B642E2007A307B /* Build configuration list for PBXNativeTarget "NotificationTestTests" */;
+			buildPhases = (
+				4C3519DF19B642E2007A307B /* Sources */,
+				4C3519E019B642E2007A307B /* Frameworks */,
+				4C3519E119B642E2007A307B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4C3519E919B642E2007A307B /* PBXTargetDependency */,
+			);
+			name = NotificationTestTests;
+			productName = NotificationTestTests;
+			productReference = 4C3519E319B642E2007A307B /* NotificationTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4C3519C019B642E2007A307B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = FBZ;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = Firebase;
+				TargetAttributes = {
+					4C3519E219B642E2007A307B = {
+						TestTargetID = 4C3519C719B642E2007A307B;
+					};
+				};
+			};
+			buildConfigurationList = 4C3519C319B642E2007A307B /* Build configuration list for PBXProject "NotificationTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4C3519BF19B642E2007A307B;
+			productRefGroup = 4C3519C919B642E2007A307B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4C3519C719B642E2007A307B /* NotificationTest */,
+				4C3519E219B642E2007A307B /* NotificationTestTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4C3519C619B642E2007A307B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C3519FE19B64C33007A307B /* FBZMessagesViewController.xib in Resources */,
+				4C3519D619B642E2007A307B /* InfoPlist.strings in Resources */,
+				4C3519DE19B642E2007A307B /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C3519E119B642E2007A307B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C3519EF19B642E2007A307B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6991EA8A7A814F0B840FFB3A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9028E4BC6BA7423DB3B03E60 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4C3519C419B642E2007A307B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C3519D819B642E2007A307B /* main.m in Sources */,
+				4C3519FD19B64C33007A307B /* FBZMessagesViewController.m in Sources */,
+				4C351A0219B679AC007A307B /* FBZMessage.m in Sources */,
+				4C3519DC19B642E2007A307B /* FBZAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C3519DF19B642E2007A307B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C3519F119B642E2007A307B /* NotificationTestTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4C3519E919B642E2007A307B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C3519C719B642E2007A307B /* NotificationTest */;
+			targetProxy = 4C3519E819B642E2007A307B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4C3519D419B642E2007A307B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C3519D519B642E2007A307B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4C3519ED19B642E2007A307B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C3519EE19B642E2007A307B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4C3519F219B642E2007A307B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4C3519F319B642E2007A307B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4C3519F519B642E2007A307B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5DDCDADB06A4C67924D279B /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NotificationTest/NotificationTest-Prefix.pch";
+				INFOPLIST_FILE = "NotificationTest/NotificationTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4C3519F619B642E2007A307B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5DDCDADB06A4C67924D279B /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NotificationTest/NotificationTest-Prefix.pch";
+				INFOPLIST_FILE = "NotificationTest/NotificationTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4C3519F819B642E2007A307B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NotificationTest.app/NotificationTest";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NotificationTest/NotificationTest-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "NotificationTestTests/NotificationTestTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		4C3519F919B642E2007A307B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NotificationTest.app/NotificationTest";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NotificationTest/NotificationTest-Prefix.pch";
+				INFOPLIST_FILE = "NotificationTestTests/NotificationTestTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4C3519C319B642E2007A307B /* Build configuration list for PBXProject "NotificationTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C3519F219B642E2007A307B /* Debug */,
+				4C3519F319B642E2007A307B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C3519F419B642E2007A307B /* Build configuration list for PBXNativeTarget "NotificationTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C3519F519B642E2007A307B /* Debug */,
+				4C3519F619B642E2007A307B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C3519F719B642E2007A307B /* Build configuration list for PBXNativeTarget "NotificationTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C3519F819B642E2007A307B /* Debug */,
+				4C3519F919B642E2007A307B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4C3519C019B642E2007A307B /* Project object */;
+}
